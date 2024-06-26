@@ -2,6 +2,7 @@
 *.d
 cub3D
 *.log
+.vscode/
 
 # Object files
 *.o
