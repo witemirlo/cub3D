@@ -44,14 +44,14 @@ fclean: clean
 	make -C lib/libft fclean
 	make -C lib/minilibx-linux clean
 
-$(NAME): $(OBJ) $(LIBFT) $(MINILIBX)
+$(NAME): $(MINILIBX) $(LIBFT) $(OBJ)
 	$(CC) $(CFLAGS) $(INCLUDE) $(OBJ) $(LIBRARY) -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(LIBFT):
-	make -C lib/libft/
+	cd lib/libft/; make
 
 $(MINILIBX):
 	cd lib/minilibx-linux; make
