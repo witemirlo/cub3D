@@ -12,7 +12,7 @@ MINILIBX = libmlx.a
 
 SRC = src/main.c\
 	  src/parser/check_correct_file_type.c\
-	  src/parser/read_map.c
+	  src/parser/read_file.c
 
 # COLORS -----------------------------------------------------------------------
 BLACK  	= \033[1;30m
