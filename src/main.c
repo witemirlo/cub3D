@@ -6,11 +6,11 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 14:35:49 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/06/26 14:51:00 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/06/27 15:41:08 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	(void)argc;
 	(void)argv;
