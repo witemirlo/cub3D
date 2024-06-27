@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:42:25 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/06/27 20:14:45 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/06/27 22:36:32 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	check_file_content(t_list *file)
 /* check that exits one instruction per required texture */
 static t_check_flags	check_all_textures(t_list *file)
 {
+	//FIXME: si ponen 3 del mismo tipo el bitwise XORG daria un falso positivo
 	char			*tmp;
 	t_check_flags	mask;
 
