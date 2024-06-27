@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 12:07:22 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/06/27 12:24:15 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/06/27 12:36:21 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_list	*read_map(char const *name)
 	if (errno == ENOMEM)
 	{
 		ft_lstclear(&list, free);
-		return (NULL);
+		list = NULL;
 	}
 	close (fd);
 	return (list);
