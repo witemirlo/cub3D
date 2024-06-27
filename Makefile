@@ -4,7 +4,7 @@ CC = gcc
 
 CFLAGS  = -Wall -Wextra -Werror -pedantic -O0 -g3 #-fanalyzer
 INCLUDE = -I include/ -I lib/libft/ -I lib/minilibx-linux/
-LIBRARY = -L lib/libft/ -lft -L lib/minilibx-linux/ -lmlx -lXext -lX11 -lm -lz
+LIBRARY = -L lib/libft/ -lft -L lib/minilibx-linux/ -lmlx -lXext -lX11 -lm
 
 OBJ      = $(SRC:.c=.o)
 LIBFT    = libft.a
