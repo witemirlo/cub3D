@@ -6,15 +6,13 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:09:03 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/06/26 17:09:13 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/06/27 17:57:10 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/**
- * Returns 1 if name has corrext type
- */
+/* Returns 1 if name has corrext type */
 int	check_correct_file_type(char const *name)
 {
 	char	*tmp;

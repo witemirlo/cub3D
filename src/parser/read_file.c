@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 12:07:22 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/06/27 14:13:51 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/06/27 17:57:30 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@
 
 static t_list	*create_list(int fd);
 
-/**
- * Read all source file and returns a t_list * with all its content
- */
+/* Read all source file and returns a t_list * with all its content */
 t_list	*read_file(char const *name)
 {
 	t_list	*list;
