@@ -36,7 +36,7 @@ leaks: $(NAME)
 	--track-origins=yes --verbose --log-file="leaks.log" ./$(NAME)
 
 norm:
-	norminette include/ lib/libft/ src
+	norminette include/ lib/libft/ src | grep -v OK
 
 clean:
 	rm -f $(OBJ)
