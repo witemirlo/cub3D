@@ -1,10 +1,10 @@
 NAME = cub3D
 
-CC = gcc
+CC = cc
 
-CFLAGS  = -Wall -Wextra -Werror -pedantic -O0 -g3 #-fanalyzer
-INCLUDE = -I include/ -I lib/libft/ -I lib/minilibx-linux/
-LIBRARY = -L lib/libft/ -lft -L lib/minilibx-linux/ -lmlx -lXext -lX11 -lm
+CFLAGS  =-Wall -Wextra -Werror -pedantic -O0 -g3 #-fanalyzer
+CPPFLAGS =-I CPPFLAGS/ -I lib/libft/ -I lib/minilibx-linux/
+LIBRARY =-L lib/libft/ -lft -L lib/minilibx-linux/ -lmlx -lXext -lX11 -lm
 
 OBJ      = $(SRC:.c=.o)
 LIBFT    = libft.a
@@ -50,10 +50,10 @@ fclean: clean
 	make -C lib/minilibx-linux clean
 
 $(NAME): $(MINILIBX) $(LIBFT) $(OBJ)
-	$(CC) $(CFLAGS) $(INCLUDE) $(OBJ) $(LIBRARY) -o $(NAME)
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(OBJ) $(LIBRARY) -o $(NAME)
 
-%.o: %.c
-	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+# %.o: %.c
+# 	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 $(LIBFT):
 	cd lib/libft/; make
