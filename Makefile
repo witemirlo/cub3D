@@ -15,7 +15,8 @@ SRC = src/main.c\
 	  src/parser/check_file_content.c\
 	  src/parser/get_texture_paths.c\
 	  src/parser/read_file.c\
-	  src/parser/print_parse_error.c
+	  src/parser/print_parse_error.c\
+	  src/parser/parser.c\
 
 # COLORS -----------------------------------------------------------------------
 BLACK  	= \033[1;30m

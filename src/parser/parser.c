@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/26 14:35:49 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/06/28 17:36:28 by jberdugo         ###   ########.fr       */
+/*   Created: 2024/06/28 17:03:13 by jberdugo          #+#    #+#             */
+/*   Updated: 2024/06/28 18:07:37 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
 #include "libft.h"
 #include "colors.h"
+#include "parser.h"
 
-int	main(int argc, char *argv[])
+int	parser(t_data *data, char const *file_name)
 {
-	t_data	*data;
+	t_list			*raw_file;
 
-	if (argc < 2)
-		return (ft_putendl_fd("Error: Too few arguments", 2), EXIT_FAILURE);
-	data = (t_data *)(ft_calloc(1, sizeof(t_data *)));
-	if (!data)
-		return (perror(RED"Error"NC), EXIT_FAILURE);
-	if (!parser(data, argv[1]))
-		return (free(data), EXIT_FAILURE);
-
-	return (0);
+	if (!check_file_type(file_name))
+		return (0);
+	raw_file = read_file(file_name);
+	if (!raw_file)
+		return (0);
+	if (!check_file_content(raw_file))
+		return (close_file(&raw_file), 0);
 }

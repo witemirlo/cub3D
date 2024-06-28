@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 12:07:22 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/06/28 16:25:11 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/06/28 17:41:41 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_list	*read_file(char const *name)
 
 	fd = open(name, O_RDONLY);
 	if (fd < 0)
-		return (NULL);
+		return (perror("Error"), NULL);
 	list = create_list(fd);
 	close (fd);
 	return (list);
@@ -49,14 +49,11 @@ static t_list	*create_list(int fd)
 		if (!node)
 		{
 			free(tmp);
-			break ;
+			ft_lstclear(&list, free);
+			perror("Error");
+			return (NULL);
 		}
 		ft_lstadd_back(&list, node);
-	}
-	if (errno == ENOMEM)
-	{
-		ft_lstclear(&list, free);
-		list = NULL;
 	}
 	return (list);
 }

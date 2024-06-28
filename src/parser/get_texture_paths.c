@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_texture_paths.c                                :+:      :+:    :+:   */
+/*   get_texture_pathss.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -16,11 +16,11 @@ static char	*get_path(t_list *list, char const *key);
 
 /* Creates a struct with all the paths of the textures 
    (don't check if correct) */
-t_texture_path	*get_texture_path(t_list *raw_file)
+t_texture_paths	*get_texture_paths(t_list *raw_file)
 {
-	t_texture_path	*textures;
+	t_texture_paths	*textures;
 
-	textures = malloc(sizeof(t_texture_path));
+	textures = malloc(sizeof(t_texture_paths));
 	if (!textures)
 		return (NULL);
 	textures->north = get_path(raw_file, "NO");
