@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 18:13:27 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/06/28 19:10:57 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/06/28 20:03:04 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ t_list	*extract_data(t_list *raw_list)
 	new_list = NULL;
 	extract_texture_paths(&new_list, raw_list);
 	extract_map(&new_list, raw_list);
+	if (ft_lstsize(new_list) + count_blank_lines(raw_list) != ft_lstsize(raw_list))
+	{
+		ft_lstclear(new_list, free);
+		ft_putendl_fd("Error\nThe file has wrong data", 2);
+		return (NULL);
+	}
 
 	return (new_list);
 }
