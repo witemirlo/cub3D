@@ -3,7 +3,7 @@ NAME = cub3D
 CC = cc
 
 CFLAGS  =-Wall -Wextra -Werror -pedantic -O0 -g3 #-fanalyzer
-CPPFLAGS =-I CPPFLAGS/ -I lib/libft/ -I lib/minilibx-linux/
+CPPFLAGS =-I include/ -I lib/libft/ -I lib/minilibx-linux/
 LIBRARY =-L lib/libft/ -lft -L lib/minilibx-linux/ -lmlx -lXext -lX11 -lm
 
 OBJ      = $(SRC:.c=.o)
@@ -11,7 +11,9 @@ LIBFT    = libft.a
 MINILIBX = libmlx.a
 
 SRC = src/main.c\
-	  src/parser/check_correct_file_type.c\
+	  src/parser/check_file_type.c\
+	  src/parser/check_file_content.c\
+	  src/parser/get_texture_paths.c\
 	  src/parser/read_file.c
 
 # COLORS -----------------------------------------------------------------------
@@ -50,10 +52,10 @@ fclean: clean
 	make -C lib/minilibx-linux clean
 
 $(NAME): $(MINILIBX) $(LIBFT) $(OBJ)
-	$(CC) $(CFLAGS) $(CPPFLAGS) $(OBJ) $(LIBRARY) -o $(NAME)
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(OBJ) $(LIBRARY) -o $(NAME)
 
 # %.o: %.c
-# 	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+# 	$(CC) $(CPPFLAGS) $(CFLAGS)  -c $< -o $@
 
 $(LIBFT):
 	cd lib/libft/; make

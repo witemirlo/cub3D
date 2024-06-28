@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 14:12:32 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/06/27 19:30:41 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/06/28 13:52:48 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static char	*get_path(t_list *list, char const *key);
 
-/* Creates a struct with all the paths of the textures */
+/* Creates a struct with all the paths of the textures 
+   (don't check if correct) */
 t_texture_path	*get_texture_path(t_list *raw_file)
 {
 	t_texture_path	*textures;

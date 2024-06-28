@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 14:10:55 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/06/28 11:57:57 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/06/28 14:23:28 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ typedef struct s_texture_path
      00000000 00100000 -> 0x20       -> CEILING
      00000000 00111111 -> 0x3F       -> ALL_TEXTURES
 
-     100...........000 -> 0x80000000 -> FAILURE
-     010...........000 -> 0x40000000 -> REPEATED
+     010...........000 -> 0x80000000 -> FAILURE
+     001...........000 -> 0x40000000 -> REPEATED
 */
 typedef enum e_check_flags
 {
@@ -49,14 +49,14 @@ typedef enum e_check_flags
 	F_FLOOR = 0x10,
 	F_CEILING = 0x20,
 	ALL_TEXTURES = 0x3F,
-	FAILURE = 0x80000000,
-	REPEATED = 0x40000000
+	FAILURE = 0x40000000,
+	REPEATED = 0x20000000
 	//SUCCESS = 
 }	t_check_flags;
 
 /******************************************************************************/
-int				check_correct_file_type(char const *name);
-t_list			*read_map(char const *name);
+int				check_file_type(char const *name);
+t_list			*read_file(char const *name);
 int				check_file_content(t_list *file);
 t_texture_path	*get_texture_path(t_list *raw_file);
 
