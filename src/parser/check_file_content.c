@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:42:25 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/06/28 15:31:34 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/06/28 17:00:33 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	check_file_content(t_list *file)
 	mask |= check_correct_order(file);
 	mask |= check_all_textures(file);
 	mask |= check_unique_textures(file);
+	if (mask != ALL_TEXTURES)// NOTE: probablemente haya que retornar la mascara para los errores posteriores (?)
+		print_parse_error(mask);
 	return (mask == ALL_TEXTURES);
 }
 
@@ -66,12 +68,12 @@ static t_check_flags	check_unique_textures(t_list *file)
 	char	str[6][4];
 
 	i = 0;
-	ft_memcpy(str[0], "NO ", 3);
-	ft_memcpy(str[1], "SO ", 3);
-	ft_memcpy(str[2], "WE ", 3);
-	ft_memcpy(str[3], "EA ", 3);
-	ft_memcpy(str[4], "F ", 2);
-	ft_memcpy(str[5], "C ", 2);
+	ft_memcpy(str[0], "NO \0", 4);
+	ft_memcpy(str[1], "SO \0", 4);
+	ft_memcpy(str[2], "WE \0", 4);
+	ft_memcpy(str[3], "EA \0", 4);
+	ft_memcpy(str[4], "F \0", 3);
+	ft_memcpy(str[5], "C \0", 3);
 	while (i < 6)
 	{
 		count = 0;
@@ -94,15 +96,15 @@ static t_check_flags	check_correct_order(t_list *file)
 	char			*tmp;
 
 	mask = FAILURE;
-	while (file)
+	while (file || mask != 0)
 	{
 		tmp = (char *)(file->content);
-		while (*tmp != '\0' && (*tmp == ' ' || *tmp == '1'))
-			tmp++;
-		if (*tmp == '\0')
+		if (ft_strlen(tmp) > 0)
 		{
-			mask = 0;
-			break ;
+			while (*tmp != '\0' && (*tmp == ' ' || *tmp == '1'))
+				tmp++;
+			if (*tmp == '\0')
+				mask = 0;
 		}
 		file = file->next;
 	}

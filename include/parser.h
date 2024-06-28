@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 14:10:55 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/06/28 14:23:28 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/06/28 16:20:57 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,13 @@ typedef enum e_check_flags
 
 /******************************************************************************/
 int				check_file_type(char const *name);
+
 t_list			*read_file(char const *name);
+
 int				check_file_content(t_list *file);
+
 t_texture_path	*get_texture_path(t_list *raw_file);
+
+void			print_parse_error(t_check_flags flags);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 12:07:22 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/06/27 17:57:30 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/06/28 16:25:11 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ static t_list	*create_list(int fd)
 		tmp = get_next_line(fd);
 		if (!tmp)
 			break ;
+		if (tmp[ft_strlen(tmp) - 1] == '\n')
+			tmp[ft_strlen(tmp) - 1] = '\0';
 		node = ft_lstnew(tmp);
 		if (!node)
 		{
