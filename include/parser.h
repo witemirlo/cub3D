@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 14:10:55 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/06/30 13:19:16 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/06/30 15:47:08 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@ typedef struct s_texture_path
 	char	*south;
 	char	*west;
 	char	*east;
-	char	*floor;
-	char	*ceiling;
+	int		floor;
+	int		ceiling;
 }	t_texture_paths;
 
-typedef struct s_data
+typedef struct s_map_data
 {
 	t_texture_paths	*texture_paths;
 	char			**map;
-}	t_data;
+}	t_map_data;
 
 /******************************************************************************/
 /*
@@ -61,7 +61,7 @@ typedef enum e_check_flags
 }	t_check_flags;
 
 /******************************************************************************/
-int				parser(t_data *data, char const *file_name);
+int				parser(t_map_data *data, char const *file_name);
 
 t_list			*read_file(char const *name);
 void			close_file(t_list **file);

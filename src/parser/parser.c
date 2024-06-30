@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 17:03:13 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/06/30 12:37:27 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/06/30 15:40:28 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "colors.h"
 #include "parser.h"
 
-int	parser(t_data *data, char const *file_name)
+int	parser(t_map_data *data, char const *file_name)
 {
 	t_list			*raw_file;
 
