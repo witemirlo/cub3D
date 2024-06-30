@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 14:10:55 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/06/28 17:58:15 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/06/30 13:19:16 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int				parser(t_data *data, char const *file_name);
 t_list			*read_file(char const *name);
 void			close_file(t_list **file);
 
+void			set_map_key_values(char mem[6][4]);
 int				check_file_type(char const *name);
 int				check_file_content(t_list *file);
 

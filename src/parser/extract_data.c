@@ -6,11 +6,12 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 18:13:27 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/06/28 20:03:04 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/06/30 13:21:11 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "parser.h"
 
 static void	extract_texture_paths(t_list **new_list, t_list *raw_list);
 static void	extract_map(t_list **new_list, t_list *raw_list);
@@ -23,28 +24,23 @@ t_list	*extract_data(t_list *raw_list)
 	new_list = NULL;
 	extract_texture_paths(&new_list, raw_list);
 	extract_map(&new_list, raw_list);
-	if (ft_lstsize(new_list) + count_blank_lines(raw_list) != ft_lstsize(raw_list))
+	if (ft_lstsize(new_list) + count_blank_lines(raw_list)
+		!= ft_lstsize(raw_list))
 	{
-		ft_lstclear(new_list, free);
+		ft_lstclear(&new_list, free);
 		ft_putendl_fd("Error\nThe file has wrong data", 2);
 		return (NULL);
 	}
-
 	return (new_list);
 }
 
 static void	extract_texture_paths(t_list **new_list, t_list *raw_list)
 {
+	int		i;
 	t_list	*tmp;
 	char	str[6][4];
-	int		i;
 
-	ft_memcpy(str[0], "NO \0", 4);
-	ft_memcpy(str[1], "SO \0", 4);
-	ft_memcpy(str[2], "WE \0", 4);
-	ft_memcpy(str[3], "EA \0", 4);
-	ft_memcpy(str[4], "F \0", 3);
-	ft_memcpy(str[5], "C \0", 3);
+	set_map_key_values(str);
 	i = 0;
 	while (i < 6)
 	{
@@ -52,10 +48,7 @@ static void	extract_texture_paths(t_list **new_list, t_list *raw_list)
 		while (tmp)
 		{
 			if (ft_strncmp(tmp->content, str[i], ft_strlen(str[i])) == 0)
-			{
 				ft_lstadd_back(new_list, ft_lstnew(ft_strdup(tmp->content)));// TODO: la gestion de errores
-				break;
-			}
 			tmp = tmp->next;
 		}
 		i++;
@@ -95,7 +88,7 @@ static int	count_blank_lines(t_list *raw_list)
 	count = 0;
 	while (raw_list)
 	{
-		if (raw_list->content == '\0')
+		if (*(char *)(raw_list->content) == '\0')
 			count++;
 		raw_list = raw_list->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 12:07:22 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/06/28 17:41:41 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/06/30 12:37:54 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <fcntl.h>
 #include <errno.h>
 #include <unistd.h>
+#include <stdio.h>
 
 static t_list	*create_list(int fd);
 

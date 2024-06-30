@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:42:25 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/06/28 17:46:59 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/06/30 13:18:42 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,23 +65,20 @@ static t_check_flags	check_unique_textures(t_list *file)
 {
 	int		i;
 	int		count;
+	t_list	*tmp;
 	char	str[6][4];
 
+	set_map_key_values(str);
 	i = 0;
-	ft_memcpy(str[0], "NO \0", 4);
-	ft_memcpy(str[1], "SO \0", 4);
-	ft_memcpy(str[2], "WE \0", 4);
-	ft_memcpy(str[3], "EA \0", 4);
-	ft_memcpy(str[4], "F \0", 3);
-	ft_memcpy(str[5], "C \0", 3);
 	while (i < 6)
 	{
 		count = 0;
-		while (file)
+		tmp = file;
+		while (tmp)
 		{
-			if (ft_strncmp(file->content, str[i], ft_strlen(str[i])) == 0)
+			if (ft_strncmp(tmp->content, str[i], ft_strlen(str[i])) == 0)
 				count++;
-			file = file->next;
+			tmp = tmp->next;
 		}
 		if (count > 1)
 			return (REPEATED);
