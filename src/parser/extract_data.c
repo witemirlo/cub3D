@@ -6,14 +6,14 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 18:13:27 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/06/30 13:21:11 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/01 17:25:41 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "parser.h"
 
-static void	extract_texture_paths(t_list **new_list, t_list *raw_list);
+static int	extract_texture_paths(t_list **new_list, t_list *raw_list);
 static void	extract_map(t_list **new_list, t_list *raw_list);
 static int	count_blank_lines(t_list *raw_list);
 
@@ -34,25 +34,33 @@ t_list	*extract_data(t_list *raw_list)
 	return (new_list);
 }
 
-static void	extract_texture_paths(t_list **new_list, t_list *raw_list)
+static int	extract_texture_paths(t_list **new_list, t_list *raw_list)
 {
 	int		i;
-	t_list	*tmp;
+	t_list	*p;
+	t_list	*node;
+	char	*content;
 	char	str[6][4];
 
 	set_map_key_values(str);
 	i = 0;
-	while (i < 6)
+	while (i++ < 6)
 	{
-		tmp = raw_list;
-		while (tmp)
+		p = raw_list;
+		while (p)
 		{
-			if (ft_strncmp(tmp->content, str[i], ft_strlen(str[i])) == 0)
-				ft_lstadd_back(new_list, ft_lstnew(ft_strdup(tmp->content)));// TODO: la gestion de errores
-			tmp = tmp->next;
+			if (ft_strncmp(p->content, str[i - 1], ft_strlen(str[i - 1])) == 0)
+			{
+				content = ft_strdup(p->content);
+				node = ft_lstnew(content);
+				if (!node || !content)
+					return (free(content), ft_lstclear(new_list, free), 0);
+				ft_lstadd_back(new_list, node);
+			}
+			p = p->next;
 		}
-		i++;
 	}
+	return (1);
 }
 
 static void	extract_map(t_list **new_list, t_list *raw_list)
