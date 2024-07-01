@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 15:50:58 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/01 17:27:55 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/01 17:30:08 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static t_list	*get_key(t_list *file, char const *key)
 	return (NULL);
 }
 
-static int	set_color(char const *raw_data, int *status)
+static int	set_color(char const *data, int *status)
 {
 	int		i;
 	int		color;
@@ -55,7 +55,7 @@ static int	set_color(char const *raw_data, int *status)
 	char	**splited;
 	char	*tmp;
 
-	splited = ft_split(raw_data, ',');
+	splited = ft_split(data, ',');
 	if (!splited)
 		return (*status = -1, 0);
 	if (size_2d_array((char const **)splited) != 3)
