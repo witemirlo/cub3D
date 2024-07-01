@@ -6,7 +6,9 @@ GREEN   := \033[1;32m
 EC      := \033[0m
 #-----------------------------------SOURCES-------------------------------------
 SRCS    := var_strjoin.c\
-           clean_2d_array.c\
+           size_2d_array.c\
+           strisnum.c\
+           clear_2d_array.c\
            get_next_line.c\
            ft_isalpha.c\
            ft_isdigit.c\

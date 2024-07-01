@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   strisnum.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/28 17:03:13 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/01 16:56:52 by jberdugo         ###   ########.fr       */
+/*   Created: 2024/07/01 16:27:27 by jberdugo          #+#    #+#             */
+/*   Updated: 2024/07/01 16:30:45 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "parser.h"
 
-int	parser(t_map_data *data, char const *file_name)
+int	strisnum(char const *str)
 {
-	t_list			*raw_file;
-
-	(void)data;
-	if (!check_file_type(file_name))
+	if (!str)
 		return (0);
-	raw_file = read_file(file_name);
-	if (!raw_file)
-		return (0);
-	if (!check_file_content(raw_file))
-		return (close_file(&raw_file), 0);
+	if (*str == '-')
+		str++;
+	while (str)
+	{
+		if (!ft_isdigit(*str))
+			return (0);
+		str++;
+	}
 	return (1);
 }

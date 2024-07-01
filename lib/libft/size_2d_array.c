@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   size_2d_array.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/28 17:03:13 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/01 16:56:52 by jberdugo         ###   ########.fr       */
+/*   Created: 2024/07/01 16:11:13 by jberdugo          #+#    #+#             */
+/*   Updated: 2024/07/01 16:28:51 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "parser.h"
 
-int	parser(t_map_data *data, char const *file_name)
+size_t	size_2d_array(char const **array)
 {
-	t_list			*raw_file;
+	size_t	size;
 
-	(void)data;
-	if (!check_file_type(file_name))
+	if (!array)
 		return (0);
-	raw_file = read_file(file_name);
-	if (!raw_file)
-		return (0);
-	if (!check_file_content(raw_file))
-		return (close_file(&raw_file), 0);
-	return (1);
+	size = 0;
+	while (array[size] != NULL)
+		size++;
+	return (size);
 }

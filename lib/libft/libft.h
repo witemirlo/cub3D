@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 19:25:51 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/04/26 13:08:32 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/01 16:17:58 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,11 @@ typedef struct s_list
  */
 char	*var_strjoin(char **src);
 
-void	clean_2d_array(char **array);
+int		strisnum(char const *str);
+
+size_t	size_2d_array(char const **array);
+
+void	clear_2d_array(char **array);
 
 char	*get_next_line(int fd);
 
