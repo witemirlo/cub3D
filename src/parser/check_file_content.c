@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:42:25 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/06/30 13:18:42 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/02 13:26:17 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static t_check_flags	check_unique_textures(t_list *file)
 			tmp = tmp->next;
 		}
 		if (count > 1)
-			return (REPEATED);
+			return (REPEATED_TEXTURE);
 		i++;
 	}
 	return (0);

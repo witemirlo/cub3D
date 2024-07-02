@@ -17,7 +17,7 @@
 void	print_parse_error(t_check_flags flags)
 {
 	ft_putendl_fd(RED "Error" NC, 2);
-	if ((flags & REPEATED) == REPEATED)
+	if ((flags & REPEATED_TEXTURE) == REPEATED_TEXTURE)
 		ft_putendl_fd("There is a more than one path for a texture", 2);
 	if ((flags & ALL_TEXTURES) != ALL_TEXTURES)
 	{

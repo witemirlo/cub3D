@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 18:13:27 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/01 17:25:41 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/02 13:25:17 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ static int	extract_texture_paths(t_list **new_list, t_list *raw_list);
 static void	extract_map(t_list **new_list, t_list *raw_list);
 static int	count_blank_lines(t_list *raw_list);
 
-t_list	*extract_data(t_list *raw_list)
+t_list	*extract_data(t_list *raw_list, t_check_flags *flags)
 {
+	// FIXME: que retorne el mapa y que la comprobacion de las lineas blancas las haga el checkfile
 	t_list	*new_list;
 
 	new_list = NULL;
@@ -28,7 +29,7 @@ t_list	*extract_data(t_list *raw_list)
 		!= ft_lstsize(raw_list))
 	{
 		ft_lstclear(&new_list, free);
-		ft_putendl_fd("Error\nThe file has wrong data", 2);
+		*flags |= (FAILURE | WRONG_DATA);
 		return (NULL);
 	}
 	return (new_list);

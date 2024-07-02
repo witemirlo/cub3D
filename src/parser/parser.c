@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 17:03:13 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/01 16:56:52 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/01 17:32:25 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	parser(t_map_data *data, char const *file_name)
 {
-	t_list			*raw_file;
+	t_list	*raw_file;
 
 	(void)data;
 	if (!check_file_type(file_name))
