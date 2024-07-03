@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:42:25 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/02 13:26:17 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/03 13:15:27 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,11 @@ static t_check_flags	check_all_textures(t_list *file)
 /* check that only exists one instance of each texture instrucction */
 static t_check_flags	check_unique_textures(t_list *file)
 {
-	int		i;
-	int		count;
-	t_list	*tmp;
-	char	str[6][4];
+	const char	str[6][4] = {"NO ", "SO ", "WE ", "EA ", "F ", "C "};
+	int			i;
+	int			count;
+	t_list		*tmp;
 
-	set_map_key_values(str);
 	i = 0;
 	while (i < 6)
 	{
