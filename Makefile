@@ -20,7 +20,6 @@ SRC = src/main.c\
 	  src/parser/parser.c\
 	  src/parser/print_parse_error.c\
 	  src/parser/read_file.c\
-	  src/parser/close_file.c\
 
 # COLORS -----------------------------------------------------------------------
 BLACK  	= \033[1;30m
