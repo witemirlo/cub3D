@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 15:39:11 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/03 14:59:51 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/03 17:04:29 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,6 @@ void	print_parse_error(t_check_flags flags)
 		ft_putendl_fd("No correct map was found", 2);
 	if ((flags & FORBIDDEN_MAP) == FORBIDDEN_MAP)
 		ft_putendl_fd("The map has forbidden char", 2);
+	if ((flags & MAP_NOT_CLOSED) == MAP_NOT_CLOSED)
+		ft_putendl_fd("The map is not closed", 2);
 }

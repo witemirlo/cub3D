@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 14:10:55 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/03 14:57:49 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/03 17:03:57 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_map_data
      00001000 00000000 0000000 00000000 -> 0x4000000  -> NO_MAP 
      00010000 00000000 0000000 00000000 -> 0x10000000 -> BAD_SITE_MAP
      00000000 00000000 0000001 00000000 -> 0x100      -> FORBIDDEN_MAP
+     00000000 00000000 0000010 00000000 -> 0x200      -> MAP_NOT_CLOSED
 */
 typedef enum e_check_flags
 {
@@ -65,6 +66,7 @@ typedef enum e_check_flags
 	NO_MAP = 0x4000000,
 	BAD_SITE_MAP = 0x10000000,
 	FORBIDDEN_MAP = 0x100,
+	MAP_NOT_CLOSED = 0x200,
 }	t_check_flags;
 
 /******************************************************************************/

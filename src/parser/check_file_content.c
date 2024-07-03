@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:42:25 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/03 14:52:00 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/03 15:05:07 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,36 +90,7 @@ static t_check_flags	check_unique_textures(t_list *file)
 
 static t_check_flags	check_correct_order(t_list *file)
 {
-	// t_check_flags	mask;
-	// char			*tmp;
-
-	// mask = FAILURE;
-	// while (file && mask != 0)
-	// {
-	// 	tmp = (char *)(file->content);
-	// 	if (ft_strlen(tmp) > 0)
-	// 	{
-	// 		while (*tmp != '\0' && (*tmp == ' ' || *tmp == '1'))
-	// 			tmp++;
-	// 		if (*tmp == '\0')
-	// 			mask = 0;
-	// 	}
-	// 	file = file->next;
-	// }
-	// while (file && mask == 0)
-	// {
-	// 	tmp = (char *)(file->content);
-	// 	while(*tmp != '\0')
-	// 	{
-	// 		if (!ft_strrchr(" 01NSEW", *tmp))// FIXME:
-	// 			mask = (FAILURE | BAD_SITE_MAP);
-	// 		tmp++;
-	// 	}
-	// 	file = file->next;
-	// }
-	// return (mask);
-
-	char			*tmp;
+	char	*tmp;
 
 	file = goto_map(file);
 	if (!file)
@@ -129,7 +100,7 @@ static t_check_flags	check_correct_order(t_list *file)
 		tmp = (char *)(file->content);
 		while(*tmp != '\0')
 		{
-			if (!ft_strrchr(" 01NSEW", *tmp))// FIXME:
+			if (!ft_strrchr(" 01NSEW", *tmp))
 				return (FAILURE | BAD_SITE_MAP);
 			tmp++;
 		}
