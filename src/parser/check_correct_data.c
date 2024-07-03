@@ -36,13 +36,12 @@ t_check_flags	check_correct_data(t_list *raw_list)
 
 static int	extract_texture_paths(t_list **new_list, t_list *raw_list)
 {
-	int		i;
-	t_list	*p;
-	t_list	*node;
-	char	*content;
-	char	str[6][4];
+	const char	str[6][4] = {"NO ", "SO ", "WE ", "EA ", "F ", "C "};
+	int			i;
+	t_list		*p;
+	t_list		*node;
+	char		*content;
 
-	set_map_key_values(str);
 	i = 0;
 	while (i++ < 6)
 	{
