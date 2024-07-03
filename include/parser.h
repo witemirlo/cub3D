@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 14:10:55 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/02 13:55:57 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/03 13:33:47 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,10 @@ typedef struct s_map_data
      00000000 00000000 0000000 00100000 -> 0x20       -> CEILING
      00000000 00000000 0000000 00111111 -> 0x3F       -> ALL_TEXTURES
 
-     00000000 00000000 0000000 10000000 -> 0x80       -> REPEATED_TEXTURE
+	 01000000 00000000 0000000 00000000 -> 0x40000000 -> FAILURE
+	 00000000 00000000 0000000 10000000 -> 0x80       -> REPEATED_TEXTURE
+     00000000 00000000 0000001 00000000 -> 0x100      -> FORBIDDEN_MAP
      00100000 00000000 0000000 00000000 -> 0x20000000 -> WRONG_DATA
-     01000000 00000000 0000000 00000000 -> 0x40000000 -> FAILURE
 */
 typedef enum e_check_flags
 {
@@ -57,9 +58,9 @@ typedef enum e_check_flags
 	F_CEILING = 0x20,
 	ALL_TEXTURES = 0x3F,
 	FAILURE = 0x40000000,
-	WRONG_DATA = 0x20000000,
 	REPEATED_TEXTURE = 0X80,
-	//SUCCESS = 
+	FORBIDDEN_MAP = 0x100,
+	WRONG_DATA = 0x20000000,
 }	t_check_flags;
 
 /******************************************************************************/
