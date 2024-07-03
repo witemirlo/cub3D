@@ -1,38 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   extract_data.c                                     :+:      :+:    :+:   */
+/*   check_correct_data.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 18:13:27 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/02 13:25:17 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/02 14:53:55 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "parser.h"
 
-static int	extract_texture_paths(t_list **new_list, t_list *raw_list);
-static void	extract_map(t_list **new_list, t_list *raw_list);
-static int	count_blank_lines(t_list *raw_list);
+static int				extract_texture_paths(t_list **new_list, t_list *raw_list);
+static t_check_flags	extract_map(t_list **new_list, t_list *raw_list);
+static t_list			*goto_map(t_list *raw_list);
+static int				count_blank_lines(t_list *raw_list);
 
-t_list	*extract_data(t_list *raw_list, t_check_flags *flags)
+t_check_flags	check_correct_data(t_list *raw_list)
 {
-	// FIXME: que retorne el mapa y que la comprobacion de las lineas blancas las haga el checkfile
-	t_list	*new_list;
+	t_list			*new_list;
+	t_check_flags	mask;
 
 	new_list = NULL;
+	mask = 0;
 	extract_texture_paths(&new_list, raw_list);
 	extract_map(&new_list, raw_list);
 	if (ft_lstsize(new_list) + count_blank_lines(raw_list)
 		!= ft_lstsize(raw_list))
-	{
-		ft_lstclear(&new_list, free);
-		*flags |= (FAILURE | WRONG_DATA);
-		return (NULL);
-	}
-	return (new_list);
+		mask = (FAILURE | WRONG_DATA);
+	ft_lstclear(&new_list, free);
+	return (mask);
 }
 
 static int	extract_texture_paths(t_list **new_list, t_list *raw_list)
@@ -64,10 +63,34 @@ static int	extract_texture_paths(t_list **new_list, t_list *raw_list)
 	return (1);
 }
 
-static void	extract_map(t_list **new_list, t_list *raw_list)
+static t_check_flags	extract_map(t_list **new_list, t_list *raw_list)
 {
 	char	*tmp;
 	t_list	*node;
+
+	raw_list = goto_map(raw_list);
+	if (!raw_list)
+		return (FAILURE | NO_MAP);
+	while (raw_list)
+	{
+		tmp = (char *)(raw_list->content);
+		while (*tmp != '\0')
+		{
+			if (!ft_strrchr(" 01NSEW", *tmp))
+				return (FAILURE | BAD_SITE_MAP);
+			tmp++;
+		}
+		tmp = ft_strdup(raw_list->content);
+		node = ft_lstnew(tmp);
+		ft_lstadd_back(new_list, node);
+		raw_list = raw_list->next;
+	}
+	return (0);
+}
+
+static t_list	*goto_map(t_list *raw_list)
+{
+	char	*tmp;
 
 	while (raw_list)
 	{
@@ -81,13 +104,7 @@ static void	extract_map(t_list **new_list, t_list *raw_list)
 		}
 		raw_list = raw_list->next;
 	}
-	while (raw_list)
-	{
-		tmp = ft_strdup(raw_list->content);
-		node = ft_lstnew(tmp);
-		ft_lstadd_back(new_list, node);
-		raw_list = raw_list->next;
-	}
+	return (raw_list);
 }
 
 static int	count_blank_lines(t_list *raw_list)

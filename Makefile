@@ -2,7 +2,7 @@ NAME = cub3D
 
 CC = cc
 
-CFLAGS  =-Wall -Wextra -Werror -pedantic -O0 -g3 -fanalyzer
+CFLAGS  =-Wall -Wextra -Werror -pedantic -O0 -g3#-fanalyzer
 CPPFLAGS =-I include/ -I lib/libft/ -I lib/minilibx-linux/
 LIBRARY =-L lib/libft/ -lft -L lib/minilibx-linux/ -lmlx -lXext -lX11 -lm
 
@@ -11,15 +11,15 @@ LIBFT    = libft.a
 MINILIBX = libmlx.a
 
 SRC = src/main.c\
+	  src/parser/check_correct_data.c\
 	  src/parser/check_file_content.c\
 	  src/parser/check_file_type.c\
-	  src/parser/extract_data.c\
+	  src/parser/close_file.c\
 	  src/parser/get_colors_map.c\
 	  src/parser/get_texture_paths.c\
 	  src/parser/parser.c\
 	  src/parser/print_parse_error.c\
 	  src/parser/read_file.c\
-	  src/parser/close_file.c\
 	  src/parser/set_map_key_values.c\
 
 # COLORS -----------------------------------------------------------------------
@@ -71,3 +71,4 @@ $(MINILIBX):
 
 .SECONDARY: $(OBJ) $(LIBFT) $(MINILIBX)
 .PHONY: all clean fclean re leaks
+

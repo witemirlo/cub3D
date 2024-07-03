@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:42:25 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/02 13:26:17 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/02 19:05:45 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 static t_check_flags	check_correct_order(t_list *file);
 static t_check_flags	check_all_textures(t_list *file);
 static t_check_flags	check_unique_textures(t_list *file);
+static t_list			*goto_map(t_list *raw_list);
 
 /* check if the file has correct FORMAT (map correctness is not checked) */
 int	check_file_content(t_list *file)
@@ -26,6 +27,7 @@ int	check_file_content(t_list *file)
 	mask |= check_correct_order(file);
 	mask |= check_all_textures(file);
 	mask |= check_unique_textures(file);
+	mask |= check_correct_data(file);
 	if (mask != ALL_TEXTURES)
 		print_parse_error(mask);
 	return (mask == ALL_TEXTURES);
@@ -89,28 +91,69 @@ static t_check_flags	check_unique_textures(t_list *file)
 
 static t_check_flags	check_correct_order(t_list *file)
 {
-	t_check_flags	mask;
+	// t_check_flags	mask;
+	// char			*tmp;
+
+	// mask = FAILURE;
+	// while (file && mask != 0)
+	// {
+	// 	tmp = (char *)(file->content);
+	// 	if (ft_strlen(tmp) > 0)
+	// 	{
+	// 		while (*tmp != '\0' && (*tmp == ' ' || *tmp == '1'))
+	// 			tmp++;
+	// 		if (*tmp == '\0')
+	// 			mask = 0;
+	// 	}
+	// 	file = file->next;
+	// }
+	// while (file && mask == 0)
+	// {
+	// 	tmp = (char *)(file->content);
+	// 	while(*tmp != '\0')
+	// 	{
+	// 		if (!ft_strrchr(" 01NSEW", *tmp))// FIXME:
+	// 			mask = (FAILURE | BAD_SITE_MAP);
+	// 		tmp++;
+	// 	}
+	// 	file = file->next;
+	// }
+	// return (mask);
+
 	char			*tmp;
 
-	mask = FAILURE;
-	while (file || mask != 0)
+	file = goto_map(file);
+	if (!file)
+		return (FAILURE | NO_MAP);
+	while (file)
 	{
 		tmp = (char *)(file->content);
+		while(*tmp != '\0')
+		{
+			if (!ft_strrchr(" 01NSEW", *tmp))// FIXME:
+				return (FAILURE | BAD_SITE_MAP);
+			tmp++;
+		}
+		file = file->next;
+	}
+	return (0);
+}
+
+static t_list	*goto_map(t_list *raw_list)
+{
+	char	*tmp;
+
+	while (raw_list)
+	{
+		tmp = (char *)(raw_list->content);
 		if (ft_strlen(tmp) > 0)
 		{
 			while (*tmp != '\0' && (*tmp == ' ' || *tmp == '1'))
 				tmp++;
 			if (*tmp == '\0')
-				mask = 0;
+				break ;
 		}
-		file = file->next;
+		raw_list = raw_list->next;
 	}
-	while (file)
-	{
-		tmp = (char *)(file->content);
-		if (!ft_strrchr(" 01NSEW", *tmp))
-			mask = FAILURE;
-		file = file->next;
-	}
-	return (mask);
+	return (raw_list);
 }

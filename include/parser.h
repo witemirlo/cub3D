@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 14:10:55 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/02 13:55:57 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/02 18:53:42 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,14 @@ typedef struct s_map_data
      00000000 00000000 0000000 00001000 -> 0x8        -> EAST
      00000000 00000000 0000000 00010000 -> 0x10       -> FLOOR
      00000000 00000000 0000000 00100000 -> 0x20       -> CEILING
-     00000000 00000000 0000000 00111111 -> 0x3F       -> ALL_TEXTURES
 
+     00000000 00000000 0000000 00111111 -> 0x3F       -> ALL_TEXTURES
      00000000 00000000 0000000 10000000 -> 0x80       -> REPEATED_TEXTURE
+
      00100000 00000000 0000000 00000000 -> 0x20000000 -> WRONG_DATA
+
+     00001000 00000000 0000000 00000000 -> 0x4000000  -> NO_MAP 
+     00010000 00000000 0000000 00000000 -> 0x10000000 -> BAD_SITE_MAP
      01000000 00000000 0000000 00000000 -> 0x40000000 -> FAILURE
 */
 typedef enum e_check_flags
@@ -58,8 +62,9 @@ typedef enum e_check_flags
 	ALL_TEXTURES = 0x3F,
 	FAILURE = 0x40000000,
 	WRONG_DATA = 0x20000000,
+	BAD_SITE_MAP = 0x10000000,
+	NO_MAP = 0x4000000,
 	REPEATED_TEXTURE = 0X80,
-	//SUCCESS = 
 }	t_check_flags;
 
 /******************************************************************************/
@@ -74,6 +79,7 @@ int				check_file_content(t_list *file);
 
 t_texture_paths	*get_texture_paths(t_list *raw_file);
 
+t_check_flags	check_correct_data(t_list *raw_list);
 void			print_parse_error(t_check_flags flags);
 
 #endif
