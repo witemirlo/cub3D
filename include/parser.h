@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 14:10:55 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/03 14:53:42 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/03 14:57:49 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ typedef enum e_check_flags
 	FAILURE = 0x40000000,
 	REPEATED_TEXTURE = 0X80,
 	WRONG_DATA = 0x20000000,
-	FORBIDDEN_MAP = 0x100,
-	BAD_SITE_MAP = 0x10000000,
 	NO_MAP = 0x4000000,
+	BAD_SITE_MAP = 0x10000000,
+	FORBIDDEN_MAP = 0x100,
 }	t_check_flags;
 
 /******************************************************************************/
@@ -73,7 +73,6 @@ int				parser(t_map_data *data, char const *file_name);
 t_list			*read_file(char const *name);
 void			close_file(t_list **file);
 
-void			set_map_key_values(char mem[6][4]);
 int				check_file_type(char const *name);
 int				check_file_content(t_list *file);
 
