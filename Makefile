@@ -14,12 +14,14 @@ SRC = src/main.c\
 	  src/parser/check_correct_data.c\
 	  src/parser/check_file_content.c\
 	  src/parser/check_file_type.c\
+	  src/parser/check_map.c\
 	  src/parser/close_file.c\
 	  src/parser/get_colors_map.c\
 	  src/parser/get_texture_paths.c\
 	  src/parser/parser.c\
 	  src/parser/print_parse_error.c\
 	  src/parser/read_file.c\
+
 
 # COLORS -----------------------------------------------------------------------
 BLACK  	= \033[1;30m

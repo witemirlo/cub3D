@@ -90,15 +90,21 @@ static t_check_flags	extract_map(t_list **new_list, t_list *raw_list)
 static t_list	*goto_map(t_list *raw_list)
 {
 	char	*tmp;
+	int		check;
 
 	while (raw_list)
 	{
+		check = 0;
 		tmp = (char *)(raw_list->content);
 		if (ft_strlen(tmp) > 0)
 		{
-			while (*tmp != '\0' && (*tmp == ' ' || *tmp == '1'))
+			// while (*tmp != '\0' && (*tmp == ' ' || *tmp == '1'))
+			while (*tmp && ft_strchr(" 01NSEW", *tmp))
+			{
+				check = 1;
 				tmp++;
-			if (*tmp == '\0')
+			}
+			if (*tmp == '\0' && check)
 				break ;
 		}
 		raw_list = raw_list->next;
@@ -108,9 +114,26 @@ static t_list	*goto_map(t_list *raw_list)
 
 static int	count_blank_lines(t_list *raw_list)
 {
-	int	count;
+	const t_list	*start_map = goto_map(raw_list);
+	char			*tmp;
+	int				count;
 
 	count = 0;
+	while (raw_list != start_map)
+	{
+		if (*(char *)(raw_list->content) == '\0')
+			count++;
+		raw_list = raw_list->next;
+	}
+	while (raw_list)
+	{
+		tmp = (char *)(raw_list->content);
+		while (*tmp && ft_strchr(" 01NSEW", *tmp))
+			tmp++;
+		if (*tmp != '\0')
+			break;
+		raw_list = raw_list->next;
+	}
 	while (raw_list)
 	{
 		if (*(char *)(raw_list->content) == '\0')

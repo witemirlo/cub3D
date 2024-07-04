@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:42:25 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/04 15:41:46 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/04 20:01:18 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,58 @@ static t_check_flags	check_all_textures(t_list *file);
 static t_check_flags	check_unique_textures(t_list *file);
 static t_list			*goto_map(t_list *raw_list);
 
+#include <stdio.h>
+static void printData(t_list *data)
+{
+	size_t i = 1;
+	const t_list *map = goto_map(data);
+	char *tmp;
+
+	while (data != map) {
+		tmp = (char *)(data->content);
+		printf("%zu\t┃ %s\n",i, tmp);
+		data = data->next;
+		i++;
+	}
+
+	while (data) {
+		tmp = (char *)(data->content);
+		while (*tmp && ft_strchr(" 01NSEW", *tmp))
+			tmp++;
+		if (*tmp != '\0')
+			break;
+
+		tmp = (char *)(data->content);
+		printf("%zu\t┃ ",i);
+		while (*tmp) {
+
+			if (ft_strchr("NSEW", *tmp))
+				printf("\033[42;32m%c%c\033[0m", *tmp, *tmp);
+			else if (*tmp == '1')
+				printf("\033[41;31m%c%c\033[0m", *tmp, *tmp);
+			else if (*tmp == '0')
+				printf("\033[47;37m%c%c\033[0m", *tmp, *tmp);
+			else
+				printf("%c%c", *tmp, *tmp);
+			tmp++;
+		}
+
+		printf("\n");
+		data = data->next;
+		i++;
+	}
+
+	while (data) {
+		tmp = (char *)(data->content);
+		printf("%zu\t┃ %s\n",i, tmp);
+		data = data->next;
+		i++;
+	}
+}
 /* check if the file has correct FORMAT (map correctness is not checked) */
 int	check_file_content(t_list *file)
 {
+	printData(file);
 	t_check_flags	mask;
 
 	mask = 0;
@@ -28,7 +77,7 @@ int	check_file_content(t_list *file)
 	mask |= check_all_textures(file);
 	mask |= check_unique_textures(file);
 	mask |= check_correct_data(file);
-	mask |= check_map(file);
+	mask |= check_map(goto_map(file));
 	if (mask != ALL_TEXTURES)
 	{
 		print_parse_error(mask);
@@ -122,7 +171,9 @@ static t_list	*goto_map(t_list *raw_list)
 		tmp = (char *)(raw_list->content);
 		if (ft_strlen(tmp) > 0)
 		{
-			while (*tmp != '\0' && (*tmp == ' ' || *tmp == '1'))
+			// while (*tmp != '\0' && (*tmp == ' ' || *tmp == '1'))
+			// 	tmp++;
+			while (*tmp != '\0' && ft_strchr(" 1NSEW", *tmp))
 				tmp++;
 			if (*tmp == '\0')
 				break ;

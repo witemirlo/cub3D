@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 15:39:11 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/04 15:13:10 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/04 18:49:45 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	print_parse_error(t_check_flags flags)
 	if ((flags & F_EAST) != F_EAST)
 		ft_putendl_fd("There is no East path", 2);
 	if ((flags & F_FLOOR) != F_FLOOR)
-		ft_putendl_fd("There is no Floor path", 2);
+		ft_putendl_fd("There is no Floor color", 2);
 	if ((flags & F_CEILING) != F_CEILING)
-		ft_putendl_fd("There is no Ceiling path", 2);
+		ft_putendl_fd("There is no Ceiling color", 2);
 	if ((flags & WRONG_DATA) == WRONG_DATA)
 		ft_putendl_fd("There is wrong data in the file", 2);
 	if ((flags & BAD_SITE_MAP) == BAD_SITE_MAP)
@@ -45,4 +45,6 @@ void	print_parse_error(t_check_flags flags)
 		ft_putendl_fd("There is more than one player", 2);
 	if ((flags & NO_PLAYER) == NO_PLAYER)
 		ft_putendl_fd("There is no player", 2);
+	if ((flags & MAP_BREAK) == MAP_BREAK)
+		ft_putendl_fd("The map is break", 2);
 }
