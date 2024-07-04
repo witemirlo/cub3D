@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 15:39:11 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/03 17:04:29 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/04 15:13:10 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,8 @@ void	print_parse_error(t_check_flags flags)
 		ft_putendl_fd("The map has forbidden char", 2);
 	if ((flags & MAP_NOT_CLOSED) == MAP_NOT_CLOSED)
 		ft_putendl_fd("The map is not closed", 2);
+	if ((flags & REPEATED_PLAYER) == REPEATED_PLAYER)
+		ft_putendl_fd("There is more than one player", 2);
+	if ((flags & NO_PLAYER) == NO_PLAYER)
+		ft_putendl_fd("There is no player", 2);
 }

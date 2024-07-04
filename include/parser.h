@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 14:10:55 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/03 17:03:57 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/04 15:10:45 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ typedef struct s_map_data
      00010000 00000000 0000000 00000000 -> 0x10000000 -> BAD_SITE_MAP
      00000000 00000000 0000001 00000000 -> 0x100      -> FORBIDDEN_MAP
      00000000 00000000 0000010 00000000 -> 0x200      -> MAP_NOT_CLOSED
+     00000000 00000000 0000100 00000000 -> 0x400      -> REPEADED_PLAYER
+     00000000 00000000 0001000 00000000 -> 0x800      -> NO_PLAYER
 */
 typedef enum e_check_flags
 {
@@ -67,6 +69,8 @@ typedef enum e_check_flags
 	BAD_SITE_MAP = 0x10000000,
 	FORBIDDEN_MAP = 0x100,
 	MAP_NOT_CLOSED = 0x200,
+	REPEATED_PLAYER = 0x400,
+	NO_PLAYER = 0x800,
 }	t_check_flags;
 
 /******************************************************************************/
