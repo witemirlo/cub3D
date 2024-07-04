@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 12:24:46 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/04 15:11:09 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/04 15:39:29 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ t_check_flags	check_map(t_list *map)
 	t_check_flags	mask;
 	char			**tmp_map;
 
-	// TODO: crear array con el mapa
 	tmp_map = generate_map(map);
 	if (!tmp_map)
 		return (FAILURE);

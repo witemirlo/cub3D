@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:42:25 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/03 15:05:07 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/04 15:41:46 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,13 @@ int	check_file_content(t_list *file)
 	mask |= check_all_textures(file);
 	mask |= check_unique_textures(file);
 	mask |= check_correct_data(file);
+	mask |= check_map(file);
 	if (mask != ALL_TEXTURES)
+	{
 		print_parse_error(mask);
-	return (mask == ALL_TEXTURES);
+		return (0);
+	}
+	return (1);
 }
 
 /* check that exits one instruction per required texture */
