@@ -6,10 +6,11 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 14:12:32 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/01 17:04:40 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/05 12:41:45 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "parser.h"
 
 static char	*get_path(t_list *list, char const *key);
@@ -20,7 +21,7 @@ t_texture_paths	*get_texture_paths(t_list *raw_file)
 {
 	t_texture_paths	*textures;
 
-	textures = malloc(sizeof(t_texture_paths));
+	textures = ft_calloc(1, sizeof(t_texture_paths));
 	if (!textures)
 		return (NULL);
 	textures->north = get_path(raw_file, "NO");
@@ -30,11 +31,12 @@ t_texture_paths	*get_texture_paths(t_list *raw_file)
 	if (!textures->north || !textures->south || !textures->east
 		|| !textures->west)
 	{
-		free(textures->north);
-		free(textures->south);
-		free(textures->east);
-		free(textures->west);
-		free(textures);
+		clear_texture_paths(&textures);
+		return (NULL);
+	}
+	if (!get_colors_map(raw_file, textures))
+	{
+		clear_texture_paths(&textures);
 		return (NULL);
 	}
 	return (textures);

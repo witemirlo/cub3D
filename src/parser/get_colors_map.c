@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 15:50:58 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/01 17:30:08 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/05 13:06:02 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,19 +59,19 @@ static int	set_color(char const *data, int *status)
 	if (!splited)
 		return (*status = -1, 0);
 	if (size_2d_array((char const **)splited) != 3)
-		return (clear_2d_array(splited), *status = -1, 0);
+		return (clear_2d_array(&splited), *status = -1, 0);
 	i = 0;
 	color = 0;
 	while (splited[i])
 	{
 		tmp = ft_strtrim(splited[i++], " ");
 		if (!strisnum(tmp))
-			return (free(tmp), clear_2d_array(splited), *status = -1, 0);
+			return (free(tmp), clear_2d_array(&splited), *status = -1, 0);
 		color_tmp = atoi(tmp);
 		free(tmp);
 		if (color_tmp > 255)
-			return (clear_2d_array(splited), *status = -1, 0);
+			return (clear_2d_array(&splited), *status = -1, 0);
 		color = ((color << 8) | (0xFF & color_tmp));
 	}
-	return (clear_2d_array(splited), *status = 0, color);
+	return (clear_2d_array(&splited), *status = 0, color);
 }

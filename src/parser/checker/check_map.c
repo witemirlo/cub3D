@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 12:24:46 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/05 11:43:41 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/05 12:50:32 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_check_flags	check_map(t_list *map)
 	mask |= check_map_closed(tmp_map);
 	mask |= check_map_unique_player(tmp_map);
 	mask |= check_map_not_break(tmp_map);
-	clear_2d_array(tmp_map);
+	clear_2d_array(&tmp_map);
 	return (mask);
 }
 

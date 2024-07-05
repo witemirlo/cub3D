@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:42:48 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/05 11:44:34 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/05 12:51:12 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char **generate_map(t_list *list_map)
 		array_map[i] = ft_strdup((char *)(list_map->content));
 		if (!array_map[i])
 		{
-			clear_2d_array(array_map);
+			clear_2d_array(&array_map);
 			return (NULL);
 		}
 		i++;
