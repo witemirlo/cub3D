@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:42:25 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/05 09:48:05 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/05 11:53:04 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 static t_check_flags	check_correct_order(t_list *file);
 static t_check_flags	check_all_textures(t_list *file);
 static t_check_flags	check_unique_textures(t_list *file);
-static t_list			*goto_map(t_list *raw_list);
 
 #include <stdio.h>
 static void printData(t_list *data)
@@ -163,23 +162,3 @@ static t_check_flags	check_correct_order(t_list *file)
 	return (0);
 }
 
-static t_list	*goto_map(t_list *raw_list)
-{
-	char	*tmp;
-
-	while (raw_list)
-	{
-		tmp = (char *)(raw_list->content);
-		if (ft_strlen(tmp) > 0)
-		{
-			// while (*tmp != '\0' && (*tmp == ' ' || *tmp == '1'))
-			// 	tmp++;
-			while (*tmp != '\0' && ft_strchr(" 1NSEW", *tmp))
-				tmp++;
-			if (*tmp == '\0')
-				break ;
-		}
-		raw_list = raw_list->next;
-	}
-	return (raw_list);
-}

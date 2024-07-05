@@ -20,6 +20,7 @@ SRC = src/main.c\
 	  src/parser/generate_map.c\
 	  src/parser/get_colors_map.c\
 	  src/parser/get_texture_paths.c\
+	  src/parser/goto_map.c\
 	  src/parser/parser.c\
 	  src/parser/read_file.c\
 

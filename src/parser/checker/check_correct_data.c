@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_correct_data.c                                     :+:      :+:    :+:   */
+/*   check_correct_data.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 18:13:27 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/02 14:53:55 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/05 11:56:48 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 static int				extract_texture_paths(t_list **new_list, t_list *raw_list);
 static t_check_flags	extract_map(t_list **new_list, t_list *raw_list);
-static t_list			*goto_map(t_list *raw_list);
 static int				count_blank_lines(t_list *raw_list);
 
 t_check_flags	check_correct_data(t_list *raw_list)
@@ -85,31 +84,6 @@ static t_check_flags	extract_map(t_list **new_list, t_list *raw_list)
 		raw_list = raw_list->next;
 	}
 	return (0);
-}
-
-static t_list	*goto_map(t_list *raw_list)
-{
-	char	*tmp;
-	int		check;
-
-	while (raw_list)
-	{
-		check = 0;
-		tmp = (char *)(raw_list->content);
-		if (ft_strlen(tmp) > 0)
-		{
-			// while (*tmp != '\0' && (*tmp == ' ' || *tmp == '1'))
-			while (*tmp && ft_strchr(" 01NSEW", *tmp))
-			{
-				check = 1;
-				tmp++;
-			}
-			if (*tmp == '\0' && check)
-				break ;
-		}
-		raw_list = raw_list->next;
-	}
-	return (raw_list);
 }
 
 static int	count_blank_lines(t_list *raw_list)
