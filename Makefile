@@ -17,6 +17,7 @@ SRC = src/main.c\
 	  src/parser/checker/check_map.c\
 	  src/parser/checker/print_parse_error.c\
 	  src/parser/close_file.c\
+	  src/parser/generate_map.c\
 	  src/parser/get_colors_map.c\
 	  src/parser/get_texture_paths.c\
 	  src/parser/parser.c\

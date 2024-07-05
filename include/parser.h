@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 14:10:55 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/04 18:49:08 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/05 11:43:35 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,6 @@ t_check_flags	check_correct_data(t_list *raw_list);
 t_check_flags	check_map(t_list *map);
 
 void			print_parse_error(t_check_flags flags);
+char		 	**generate_map(t_list *map);
 
 #endif
