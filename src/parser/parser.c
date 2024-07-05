@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 17:03:13 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/01 17:32:25 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/05 09:46:39 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ int	parser(t_map_data *data, char const *file_name)
 		return (0);
 	if (!check_file_content(raw_file))
 		return (close_file(&raw_file), 0);
+	close_file(&raw_file);
 	return (1);
 }

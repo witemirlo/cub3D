@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:42:25 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/04 20:01:18 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/05 09:48:05 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ static void printData(t_list *data)
 	}
 }
 /* check if the file has correct FORMAT (map correctness is not checked) */
+// FIXME: el comentario de arriba no se acaba de ajustar a la realidad
 int	check_file_content(t_list *file)
 {
 	printData(file);
