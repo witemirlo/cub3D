@@ -15,6 +15,7 @@ SRC = src/main.c\
 	  src/parser/checker/check_file_content.c\
 	  src/parser/checker/check_file_type.c\
 	  src/parser/checker/check_map.c\
+	  src/parser/checker/check_map_closed.c\
 	  src/parser/checker/print_parse_error.c\
 	  src/parser/close_file.c\
 	  src/parser/generate_map.c\

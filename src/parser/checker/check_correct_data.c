@@ -6,34 +6,37 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 18:13:27 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/05 11:56:48 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/05 13:25:22 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "parser.h"
 
-static int				extract_texture_paths(t_list **new_list, t_list *raw_list);
-static t_check_flags	extract_map(t_list **new_list, t_list *raw_list);
-static int				count_blank_lines(t_list *raw_list);
+static int				extract_texture_paths(t_list **n_list, t_list *o_list);
+static t_check_flags	extract_map(t_list **new_list, t_list *o_list);
+static void				count_blank_lines(t_list *o_list, int *blank_lines);
 
-t_check_flags	check_correct_data(t_list *raw_list)
+t_check_flags	check_correct_data(t_list *o_list)
 {
 	t_list			*new_list;
 	t_check_flags	mask;
+	int				blank_lines;
 
 	new_list = NULL;
 	mask = 0;
-	extract_texture_paths(&new_list, raw_list);
-	extract_map(&new_list, raw_list);
-	if (ft_lstsize(new_list) + count_blank_lines(raw_list)
-		!= ft_lstsize(raw_list))
+	blank_lines = 0;
+	count_blank_lines(o_list, &blank_lines);
+	extract_texture_paths(&new_list, o_list);
+	extract_map(&new_list, o_list);
+	if (ft_lstsize(new_list) + blank_lines
+		!= ft_lstsize(o_list))
 		mask = (FAILURE | WRONG_DATA);
 	ft_lstclear(&new_list, free);
 	return (mask);
 }
 
-static int	extract_texture_paths(t_list **new_list, t_list *raw_list)
+static int	extract_texture_paths(t_list **n_list, t_list *o_list)
 {
 	const char	str[6][4] = {"NO ", "SO ", "WE ", "EA ", "F ", "C "};
 	int			i;
@@ -44,7 +47,7 @@ static int	extract_texture_paths(t_list **new_list, t_list *raw_list)
 	i = 0;
 	while (i++ < 6)
 	{
-		p = raw_list;
+		p = o_list;
 		while (p)
 		{
 			if (ft_strncmp(p->content, str[i - 1], ft_strlen(str[i - 1])) == 0)
@@ -52,8 +55,8 @@ static int	extract_texture_paths(t_list **new_list, t_list *raw_list)
 				content = ft_strdup(p->content);
 				node = ft_lstnew(content);
 				if (!node || !content)
-					return (free(content), ft_lstclear(new_list, free), 0);
-				ft_lstadd_back(new_list, node);
+					return (free(content), ft_lstclear(n_list, free), 0);
+				ft_lstadd_back(n_list, node);
 			}
 			p = p->next;
 		}
@@ -61,58 +64,55 @@ static int	extract_texture_paths(t_list **new_list, t_list *raw_list)
 	return (1);
 }
 
-static t_check_flags	extract_map(t_list **new_list, t_list *raw_list)
+static t_check_flags	extract_map(t_list **new_list, t_list *o_list)
 {
 	char	*tmp;
 	t_list	*node;
 
-	raw_list = goto_map(raw_list);
-	if (!raw_list)
+	o_list = goto_map(o_list);
+	if (!o_list)
 		return (FAILURE | NO_MAP);
-	while (raw_list)
+	while (o_list)
 	{
-		tmp = (char *)(raw_list->content);
+		tmp = (char *)(o_list->content);
 		while (*tmp != '\0')
 		{
 			if (!ft_strrchr(" 01NSEW", *tmp))
 				return (FAILURE | BAD_SITE_MAP);
 			tmp++;
 		}
-		tmp = ft_strdup(raw_list->content);
+		tmp = ft_strdup(o_list->content);
 		node = ft_lstnew(tmp);
 		ft_lstadd_back(new_list, node);
-		raw_list = raw_list->next;
+		o_list = o_list->next;
 	}
 	return (0);
 }
 
-static int	count_blank_lines(t_list *raw_list)
+static void	count_blank_lines(t_list *o_list, int *blank_lines)
 {
-	const t_list	*start_map = goto_map(raw_list);
+	const t_list	*start_map = goto_map(o_list);
 	char			*tmp;
-	int				count;
 
-	count = 0;
-	while (raw_list != start_map)
+	while (o_list != start_map)
 	{
-		if (*(char *)(raw_list->content) == '\0')
-			count++;
-		raw_list = raw_list->next;
+		if (*(char *)(o_list->content) == '\0')
+			*blank_lines = *blank_lines + 1;
+		o_list = o_list->next;
 	}
-	while (raw_list)
+	while (o_list)
 	{
-		tmp = (char *)(raw_list->content);
+		tmp = (char *)(o_list->content);
 		while (*tmp && ft_strchr(" 01NSEW", *tmp))
 			tmp++;
 		if (*tmp != '\0')
-			break;
-		raw_list = raw_list->next;
+			break ;
+		o_list = o_list->next;
 	}
-	while (raw_list)
+	while (o_list)
 	{
-		if (*(char *)(raw_list->content) == '\0')
-			count++;
-		raw_list = raw_list->next;
+		if (*(char *)(o_list->content) == '\0')
+			*blank_lines = *blank_lines + 1;
+		o_list = o_list->next;
 	}
-	return (count);
 }

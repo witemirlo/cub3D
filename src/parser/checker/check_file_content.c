@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:42:25 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/05 11:53:04 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/05 13:52:20 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static t_check_flags	check_correct_order(t_list *file);
 static t_check_flags	check_all_textures(t_list *file);
 static t_check_flags	check_unique_textures(t_list *file);
 
+/* TODO: borrar
 #include <stdio.h>
 static void printData(t_list *data)
 {
@@ -65,11 +66,11 @@ static void printData(t_list *data)
 		i++;
 	}
 }
-/* check if the file has correct FORMAT (map correctness is not checked) */
-// FIXME: el comentario de arriba no se acaba de ajustar a la realidad
+printData(file);
+*/
+/* check if the file is correct*/
 int	check_file_content(t_list *file)
 {
-	printData(file);
 	t_check_flags	mask;
 
 	mask = 0;
@@ -151,7 +152,7 @@ static t_check_flags	check_correct_order(t_list *file)
 	while (file)
 	{
 		tmp = (char *)(file->content);
-		while(*tmp != '\0')
+		while (*tmp != '\0')
 		{
 			if (!ft_strrchr(" 01NSEW", *tmp))
 				return (FAILURE | BAD_SITE_MAP);
@@ -161,4 +162,3 @@ static t_check_flags	check_correct_order(t_list *file)
 	}
 	return (0);
 }
-

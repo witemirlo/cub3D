@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 14:10:55 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/05 12:39:29 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/05 13:52:51 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,10 @@ void			clear_texture_paths(t_texture_paths **textures);
 
 t_check_flags	check_correct_data(t_list *raw_list);
 t_check_flags	check_map(t_list *map);
+t_check_flags	check_map_closed(char **map);
 
 void			print_parse_error(t_check_flags flags);
-char		 	**generate_map(t_list *map);
+char			**generate_map(t_list *map);
 t_list			*goto_map(t_list *raw_list);
 
 #endif

@@ -6,14 +6,14 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:42:48 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/05 12:51:12 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/05 13:53:58 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "parser.h"
 
-char **generate_map(t_list *list_map)
+char	**generate_map(t_list *list_map)
 {
 	char	**array_map;
 	char	*tmp;
@@ -29,7 +29,7 @@ char **generate_map(t_list *list_map)
 		while (*tmp && ft_strchr(" 01NSEW", *tmp))
 			tmp++;
 		if (*tmp != '\0')
-			break;
+			break ;
 		array_map[i] = ft_strdup((char *)(list_map->content));
 		if (!array_map[i])
 		{

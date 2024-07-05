@@ -6,15 +6,15 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 12:24:46 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/05 12:50:32 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/05 13:47:35 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "parser.h"
+#include <stdlib.h>
 
 static t_check_flags	check_map_chars(char **map);
-static t_check_flags	check_map_closed(char **map);
 static t_check_flags	check_map_unique_player(char **map);
 static t_check_flags	check_map_not_break(char **map);
 
@@ -49,39 +49,6 @@ static t_check_flags	check_map_chars(char **map)
 		{
 			if (ft_strchr(allowed_chars, map[i][j]) == NULL)
 				return (FAILURE | FORBIDDEN_MAP);
-			j++;
-		}
-		i++;
-	}
-	return (0);
-}
-
-static t_check_flags	check_map_closed(char **map)
-{
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	while (map[i])
-	{
-		j = 0;
-		while (map[i][j] != '\0')
-		{
-			if (ft_strchr("0NSEW", map[i][j]))
-			{
-				if (j == 0 || i == 0)
-					return (FAILURE | MAP_NOT_CLOSED);
-				else if (j && map[i][j - 1] == ' ')
-					return (FAILURE | MAP_NOT_CLOSED);
-				else if (map[i][j + 1] && map[i][j + 1] == ' ')
-					return (FAILURE | MAP_NOT_CLOSED);
-				else if (i && ft_strlen(map[i - 1]) >= j && map[i - 1][j] == ' ')
-					return (FAILURE | MAP_NOT_CLOSED);
-				else if (map[i + 1] && ft_strlen(map[i + 1]) >= j && map[i][j] == ' ')
-					return (FAILURE | MAP_NOT_CLOSED);
-				else if (!map[i + 1])
-					return (FAILURE | MAP_NOT_CLOSED);
-			}
 			j++;
 		}
 		i++;
