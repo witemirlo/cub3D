@@ -18,12 +18,12 @@ SRC = src/main.c\
 	  src/parser/checker/print_parse_error.c\
 	  src/parser/close_file.c\
 	  src/parser/generate_map.c\
-	  src/parser/get_colors_map.c\
-	  src/parser/get_texture_paths.c\
 	  src/parser/goto_map.c\
 	  src/parser/parser.c\
 	  src/parser/read_file.c\
-
+	  src/parser/texture/clear_texture_paths.c\
+	  src/parser/texture/get_colors_map.c\
+	  src/parser/texture/get_texture_paths.c\
 
 # COLORS -----------------------------------------------------------------------
 BLACK  	= \033[1;30m
@@ -74,4 +74,3 @@ $(MINILIBX):
 
 .SECONDARY: $(OBJ) $(LIBFT) $(MINILIBX)
 .PHONY: all clean fclean re leaks
-
