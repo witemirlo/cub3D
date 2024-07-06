@@ -65,18 +65,18 @@ all: $(NAME)
 re: fclean all
 
 $(NAME): $(OBJS) libft.h
-	ar $(LFLAGS) $(NAME) $(OBJS)
+	@ar $(LFLAGS) $(NAME) $(OBJS) && printf "Linking: $(NAME)\n"
 	@printf "$(GREEN)Libft compiled$(EC)\n"
 
 %.o: %.c
-	cc $(CFLAGS) -c $< -o $@
+	@cc $(CFLAGS) -c $< -o $@ && printf "Compiling: $(notdir $<)\n"
 
 clean:
-	rm -f $(OBJS)
+	@rm -f $(OBJS) && printf "Deleting: objects\n" 
 	@printf "$(RED)Libft objects deleted$(EC)\n"
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME) && printf "Deleting: $(NAME)\n"
 	@printf "$(RED)Libft deleted$(EC)\n"
 
 .SECONDARY: $(OBJS)
