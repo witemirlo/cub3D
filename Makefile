@@ -2,13 +2,13 @@ NAME = cub3D
 
 CC = cc
 
-CFLAGS  =-Wall -Wextra -Werror -pedantic -O0 -g3#-fanalyzer
-CPPFLAGS =-I include/ -I lib/libft/ -I lib/minilibx-linux/
-LIBRARY =-L lib/libft/ -lft -L lib/minilibx-linux/ -lmlx -lXext -lX11 -lm
+CFLAGS  = -Wall -Wextra -Werror -pedantic -O0 -g3#-fanalyzer
+CPPFLAGS = -I include/ -I lib/libft/ -I lib/MLX42/include
+LIBRARY = -L lib/libft/ -lft -L lib/MLX42/build/ -ldl -lglfw -pthread -lm
 
 OBJ      = $(SRC:.c=.o)
 LIBFT    = libft.a
-MINILIBX = libmlx.a
+MLX42    = libmlx42.a
 
 SRC = src/main.c\
 	  src/parser/checker/check_correct_data.c\
@@ -51,27 +51,25 @@ norm:
 	norminette include/ lib/libft/ src | grep -v OK
 
 clean:
-	rm -f $(OBJ)
-	rm -f leaks.log
-	make -C lib/libft clean
-	make -C lib/minilibx-linux clean
+	@rm -f $(OBJ) && printf "$(RED)Objects files deleted\n$(NC)"
+	@rm -f leaks.log && printf "$(RED)Leaks report deleted\n$(NC)"
+	@make -C lib/libft fclean
+	@rm -rf lib/MLX42/build && printf "$(RED)MLX42 deleted\n$(NC)"
 
 fclean: clean
-	rm -f $(NAME)
-	make -C lib/libft fclean
-	make -C lib/minilibx-linux clean
+	@rm -f $(NAME) && printf "$(RED)Program deleted$(NC)\n"
 
-$(NAME): $(MINILIBX) $(LIBFT) $(OBJ)
-	$(CC) $(CPPFLAGS) $(CFLAGS) $(OBJ) $(LIBRARY) -o $(NAME)
+$(NAME): $(MLX42) $(LIBFT) $(OBJ) 
+	@$(CC) $(CPPFLAGS) $(CFLAGS) $(OBJ) $(LIBRARY) -o $(NAME) && printf "$(GREEN)Program linked\n$(NC)"
 
-# %.o: %.c
-# 	$(CC) $(CPPFLAGS) $(CFLAGS)  -c $< -o $@
+%.o: %.c
+	@$(CC) $(CPPFLAGS) $(CFLAGS)  -c $< -o $@ && printf "Compiling: $(notdir $<)\n"
 
 $(LIBFT):
-	cd lib/libft/; make
+	@make -C lib/libft/ -j4
 
-$(MINILIBX):
-	cd lib/minilibx-linux; make
+$(MLX42):
+	@cmake lib/MLX42/ -B lib/MLX42/build && make -C lib/MLX42/build -j4
 
-.SECONDARY: $(OBJ) $(LIBFT) $(MINILIBX)
+.SECONDARY: $(OBJ) $(LIBFT) $(MLX42)
 .PHONY: all clean fclean re leaks
