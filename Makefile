@@ -72,4 +72,4 @@ $(MLX42):
 	@cmake lib/MLX42/ -B lib/MLX42/build && make -C lib/MLX42/build -j4
 
 .SECONDARY: $(OBJ) $(LIBFT) $(MLX42)
-.PHONY: all clean fclean re leaks
+.PHONY: all clean fclean re leaks libmlx42
