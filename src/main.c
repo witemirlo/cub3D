@@ -6,13 +6,14 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 14:35:49 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/06/30 15:40:28 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/08 14:49:47 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 #include "libft.h"
 #include "colors.h"
+#include "MLX42.h"
 #include <stdio.h>
 
 int	main(int argc, char *argv[])
@@ -26,6 +27,10 @@ int	main(int argc, char *argv[])
 		return (perror(RED"Error"NC), EXIT_FAILURE);
 	if (!parser(data, argv[1]))
 		return (free(data), EXIT_FAILURE);
+// -----------------------------------------------------------------------------
+	mlx_t	*mlx = mlx_init(1080, 720, "TESTING", false);
+	mlx_image_t	*img = mlx_new_image(mlx, 64, 64);
+	mlx_image_to_window(mlx, img, 0, 0);
 
 	return (0);
 }

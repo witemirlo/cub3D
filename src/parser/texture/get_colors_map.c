@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 15:50:58 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/05 13:06:02 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/08 14:37:31 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,5 @@ static int	set_color(char const *data, int *status)
 			return (clear_2d_array(&splited), *status = -1, 0);
 		color = ((color << 8) | (0xFF & color_tmp));
 	}
-	return (clear_2d_array(&splited), *status = 0, color);
+	return (clear_2d_array(&splited), *status = 0, (color << 8));
 }
