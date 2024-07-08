@@ -57,7 +57,7 @@ static void error(void)
 int32_t	main(void)
 {
 	// Start mlx
-	mlx_t* mlx = mlx_init(WIDTH, HEIGHT, "Test", true);
+	mlx_t* mlx = mlx_init(WIDTH, HEIGHT, "Test", false);
 	if (!mlx)
         error();
 

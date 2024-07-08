@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:27:27 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/01 16:30:45 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/08 18:51:48 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	strisnum(char const *str)
 		return (0);
 	if (*str == '-')
 		str++;
-	while (str)
+	while (*str)
 	{
 		if (!ft_isdigit(*str))
 			return (0);
