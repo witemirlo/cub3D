@@ -3,8 +3,8 @@ NAME = cub3D
 CC = cc
 
 CFLAGS  = -Wall -Wextra -Werror -pedantic -O0 -g3#-fanalyzer
-CPPFLAGS = -I include/ -I lib/libft/ -I lib/MLX42/include
-LIBRARY = -L lib/libft/ -lft -L lib/MLX42/build/ -ldl -lglfw -pthread -lm
+CPPFLAGS = -I include/ -I lib/libft/ -I lib/MLX42/include/MLX42/
+LIBRARY = -L lib/libft/ -lft -L lib/MLX42/build/ -lmlx42 -ldl -lglfw -pthread -lm
 
 OBJ      = $(SRC:.c=.o)
 LIBFT    = libft.a
@@ -25,6 +25,7 @@ SRC = src/main.c\
 	  src/parser/texture/clear_texture_paths.c\
 	  src/parser/texture/get_colors_map.c\
 	  src/parser/texture/get_texture_paths.c\
+
 
 # COLORS -----------------------------------------------------------------------
 BLACK  	= \033[1;30m
@@ -60,16 +61,16 @@ fclean: clean
 	@rm -f $(NAME) && printf "$(RED)Program deleted$(NC)\n"
 
 $(NAME): $(MLX42) $(LIBFT) $(OBJ) 
-	@$(CC) $(CPPFLAGS) $(CFLAGS) $(OBJ) $(LIBRARY) -o $(NAME) && printf "$(GREEN)Program linked\n$(NC)"
+	@$(CC) $(CPPFLAGS) $(CFLAGS) $(OBJ) -o $(NAME) $(LIBRARY) && printf "$(GREEN)Program linked\n$(NC)"
 
 %.o: %.c
-	@$(CC) $(CPPFLAGS) $(CFLAGS)  -c $< -o $@ && printf "Compiling: $(notdir $<)\n"
+	@$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@ && printf "Compiling: $(notdir $<)\n"
 
 $(LIBFT):
-	@make -C lib/libft/ -j4
+	@make -C lib/libft/
 
 $(MLX42):
-	@cmake lib/MLX42/ -B lib/MLX42/build && make -C lib/MLX42/build -j4
+	@cmake lib/MLX42/ -B lib/MLX42/build/ && make -C lib/MLX42/build/
 
 .SECONDARY: $(OBJ) $(LIBFT) $(MLX42)
-.PHONY: all clean fclean re leaks libmlx42
+.PHONY: all clean fclean re leaks
