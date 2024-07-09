@@ -6,14 +6,14 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 17:03:13 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/08 16:37:38 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/09 15:52:20 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "parser.h"
 
-int	parser(t_map_data *data, char const *file_name)
+int	parser(t_map_data *data, char *file_name)
 {
 	t_list	*raw_file;
 
