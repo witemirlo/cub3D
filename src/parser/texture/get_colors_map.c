@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 15:50:58 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/09 16:06:12 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/09 16:55:42 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 static t_list	*get_key(t_list *file, char const *key);
 static int		set_color(char const *data, int *color);
 
-// TODO: setear que imprima error cuando esta mal
 int	get_colors_map(t_list *file, t_texture_paths *texture_paths)
 {
 	t_list	*tmp;
@@ -75,8 +74,7 @@ static int	set_color(char const *data, int *color)
 	{
 		tmp = ft_strtrim(splited[i++], " ");
 		if (!strisnum(tmp))
-			return (perror(RED"Error"NC), free(tmp), \
-			clear_2d_array(&splited), 0);
+			return (free(tmp), clear_2d_array(&splited), 0);
 		color_tmp = atoi(tmp);
 		free(tmp);
 		if (color_tmp > 255)

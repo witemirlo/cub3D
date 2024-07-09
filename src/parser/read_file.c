@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 12:07:22 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/09 15:53:11 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/09 16:13:25 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_list	*read_file(char *name)
 		ft_putstr_fd(RED"Error: "NC"'", 2);
 		ft_putstr_fd(name, 2);
 		ft_putendl_fd("': is a directory", 2);
+		return (NULL);
 	}
 	fd = open(name, O_RDONLY);
 	if (fd < 0)
