@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 12:24:46 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/05 13:47:35 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/10 14:53:13 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 #include "parser.h"
 #include <stdlib.h>
 
-static t_check_flags	check_map_chars(char **map);
-static t_check_flags	check_map_unique_player(char **map);
-static t_check_flags	check_map_not_break(char **map);
+static t_error_flags	check_map_chars(char **map);
+static t_error_flags	check_map_unique_player(char **map);
+static t_error_flags	check_map_not_break(char **map);
 
-t_check_flags	check_map(t_list *map)
+t_error_flags	check_map(t_list *map)
 {
-	t_check_flags	mask;
+	t_error_flags	mask;
 	char			**tmp_map;
 
 	tmp_map = generate_map(map);
@@ -35,7 +35,7 @@ t_check_flags	check_map(t_list *map)
 	return (mask);
 }
 
-static t_check_flags	check_map_chars(char **map)
+static t_error_flags	check_map_chars(char **map)
 {
 	const char	allowed_chars[] = " 01NSEW";
 	size_t		i;	
@@ -56,7 +56,7 @@ static t_check_flags	check_map_chars(char **map)
 	return (0);
 }
 
-static t_check_flags	check_map_unique_player(char **map)
+static t_error_flags	check_map_unique_player(char **map)
 {
 	size_t	i;
 	size_t	j;
@@ -84,10 +84,10 @@ static t_check_flags	check_map_unique_player(char **map)
 	return (0);
 }
 
-static t_check_flags	check_map_not_break(char **map)
+static t_error_flags	check_map_not_break(char **map)
 {
 	size_t			i;
-	t_check_flags	mask;
+	t_error_flags	mask;
 
 	i = 0;
 	mask = 0;

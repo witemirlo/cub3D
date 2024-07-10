@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 14:12:32 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/05 12:41:45 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/10 18:56:15 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "parser.h"
 
 static char	*get_path(t_list *list, char const *key);
+static void	clear_texture_paths(t_texture_paths **textures);
 
 /* Creates a struct with all the paths of the textures 
    (don't check if correct) */
@@ -65,4 +66,20 @@ static char	*get_path(t_list *list, char const *key)
 		list = list->next;
 	}
 	return (NULL);
+}
+
+static void	clear_texture_paths(t_texture_paths **textures)
+{
+	if (!textures)
+		return ;
+	free((*textures)->north);
+	(*textures)->north = NULL;
+	free((*textures)->south);
+	(*textures)->south = NULL;
+	free((*textures)->west);
+	(*textures)->west = NULL;
+	free((*textures)->east);
+	(*textures)->east = NULL;
+	free(*textures);
+	*textures = NULL;
 }

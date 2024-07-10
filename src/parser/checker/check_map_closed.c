@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_closed.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jberdugo <jberdugo@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:46:28 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/05 13:48:15 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/10 14:53:13 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static int	check_map_surrounding(char **map, size_t i, size_t j);
 
-t_check_flags	check_map_closed(char **map)
+t_error_flags	check_map_closed(char **map)
 {
 	size_t	i;
 	size_t	j;

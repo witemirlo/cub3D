@@ -17,15 +17,17 @@ SRC = src/main.c\
 	  src/parser/checker/check_map.c\
 	  src/parser/checker/check_map_closed.c\
 	  src/parser/checker/print_parse_error.c\
-	  src/parser/close_file.c\
-	  src/parser/generate_map.c\
-	  src/parser/goto_map.c\
-	  src/parser/parser.c\
-	  src/parser/read_file.c\
-	  src/parser/texture_path/clear_texture_paths.c\
+	  src/parser/file/close_file.c\
+	  src/parser/file/generate_map.c\
+	  src/parser/file/goto_map.c\
+	  src/parser/file/read_file.c\
 	  src/parser/texture_path/get_colors_map.c\
 	  src/parser/texture_path/get_texture_paths.c\
-
+	  src/parser/clear_parser.c\
+	  src/parser/parser.c\
+	  src/texturer/clean_textures.c\
+	  src/texturer/print_texturer_error.c\
+	  src/texturer/texturer.c\
 
 # COLORS -----------------------------------------------------------------------
 BLACK  	= \033[1;30m
@@ -74,3 +76,4 @@ $(MLX42):
 
 .SECONDARY: $(OBJ) $(LIBFT) $(MLX42)
 .PHONY: all clean fclean re leaks
+

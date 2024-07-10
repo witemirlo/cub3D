@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 18:13:27 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/05 13:25:22 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/10 14:53:13 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 #include "parser.h"
 
 static int				extract_texture_paths(t_list **n_list, t_list *o_list);
-static t_check_flags	extract_map(t_list **new_list, t_list *o_list);
+static t_error_flags	extract_map(t_list **new_list, t_list *o_list);
 static void				count_blank_lines(t_list *o_list, int *blank_lines);
 
-t_check_flags	check_correct_data(t_list *o_list)
+t_error_flags	check_correct_data(t_list *o_list)
 {
 	t_list			*new_list;
-	t_check_flags	mask;
+	t_error_flags	mask;
 	int				blank_lines;
 
 	new_list = NULL;
@@ -64,7 +64,7 @@ static int	extract_texture_paths(t_list **n_list, t_list *o_list)
 	return (1);
 }
 
-static t_check_flags	extract_map(t_list **new_list, t_list *o_list)
+static t_error_flags	extract_map(t_list **new_list, t_list *o_list)
 {
 	char	*tmp;
 	t_list	*node;

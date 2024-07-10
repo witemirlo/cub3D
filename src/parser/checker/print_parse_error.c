@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 15:39:11 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/05 13:56:12 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/10 14:53:13 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include "colors.h"
 #include "parser.h"
 
-static void	print_parse_error2(t_check_flags flags);
+static void	print_parse_error2(t_error_flags flags);
 
-void	print_parse_error(t_check_flags flags)
+void	print_parse_error(t_error_flags flags)
 {
 	ft_putendl_fd(RED "Error" NC, 2);
 	if ((flags & REPEATED_TEXTURE) == REPEATED_TEXTURE)
@@ -44,7 +44,7 @@ void	print_parse_error(t_check_flags flags)
 	print_parse_error2(flags);
 }
 
-static void	print_parse_error2(t_check_flags flags)
+static void	print_parse_error2(t_error_flags flags)
 {
 	if ((flags & MAP_NOT_CLOSED) == MAP_NOT_CLOSED)
 		ft_putendl_fd("The map is not closed", 2);

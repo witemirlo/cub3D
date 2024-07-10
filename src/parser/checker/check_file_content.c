@@ -6,16 +6,16 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:42:25 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/05 13:52:20 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/10 14:53:13 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "parser.h"
 
-static t_check_flags	check_correct_order(t_list *file);
-static t_check_flags	check_all_textures(t_list *file);
-static t_check_flags	check_unique_textures(t_list *file);
+static t_error_flags	check_correct_order(t_list *file);
+static t_error_flags	check_all_textures(t_list *file);
+static t_error_flags	check_unique_textures(t_list *file);
 
 /* TODO: borrar
 #include <stdio.h>
@@ -71,7 +71,7 @@ printData(file);
 /* check if the file is correct*/
 int	check_file_content(t_list *file)
 {
-	t_check_flags	mask;
+	t_error_flags	mask;
 
 	mask = 0;
 	mask |= check_correct_order(file);
@@ -88,10 +88,10 @@ int	check_file_content(t_list *file)
 }
 
 /* check that exits one instruction per required texture */
-static t_check_flags	check_all_textures(t_list *file)
+static t_error_flags	check_all_textures(t_list *file)
 {
 	char			*tmp;
-	t_check_flags	mask;
+	t_error_flags	mask;
 
 	mask = 0;
 	while (file)
@@ -117,7 +117,7 @@ static t_check_flags	check_all_textures(t_list *file)
 }
 
 /* check that only exists one instance of each texture instrucction */
-static t_check_flags	check_unique_textures(t_list *file)
+static t_error_flags	check_unique_textures(t_list *file)
 {
 	const char	str[6][4] = {"NO ", "SO ", "WE ", "EA ", "F ", "C "};
 	int			i;
@@ -142,7 +142,7 @@ static t_check_flags	check_unique_textures(t_list *file)
 	return (0);
 }
 
-static t_check_flags	check_correct_order(t_list *file)
+static t_error_flags	check_correct_order(t_list *file)
 {
 	char	*tmp;
 
