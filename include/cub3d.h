@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:12:46 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/10 15:03:30 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/11 13:42:13 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,23 @@
 typedef struct s_texture_paths t_texture_paths;
 typedef struct s_textures t_textures;
 
+typedef struct s_vector
+{
+	double	x;
+	double	y;
+}	t_vector;
+
+typedef struct s_player
+{
+	t_vector	position;
+	t_vector	direction;
+}	t_player;
+
 typedef struct s_data
 {
 	t_texture_paths	*texture_paths;
 	t_textures		*textures;
+	t_player		player;
 	char			**map;
 }	t_data;
 

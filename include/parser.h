@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 14:10:55 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/10 18:59:24 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/11 14:28:37 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int				check_file_content(t_list *file);
 
 t_texture_paths	*get_texture_paths(t_list *raw_file);
 int				get_colors_map(t_list *file, t_texture_paths *texture_paths);
+t_player		get_player(char **map);
 
 t_error_flags	check_correct_data(t_list *raw_list);
 t_error_flags	check_map(t_list *map);
