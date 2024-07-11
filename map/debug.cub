@@ -1,7 +1,7 @@
-NO ./tmp.png
-SO ./tmp.png
-WE ./tmp.png
-EA ./tmp.png
+NO map/tmp.png
+SO map/tmp.png
+WE map/tmp.png
+EA map/tmp.png
 C 77, 44, 90
 F 170, 86, 86
 111

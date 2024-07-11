@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 14:12:32 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/10 18:56:15 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/11 17:54:16 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static char	*get_path(t_list *list, char const *key)
 		{
 			tmp = list->content;
 			i = ft_strlen(key);
-			while (tmp[i] == ' ')
+			while (tmp[i] == ' ' || tmp[i] == '\t' || tmp[i] == '\r')
 				i++;
 			tmp = ft_substr(tmp, i, ft_strlen(tmp + i));
 			if (!tmp)
