@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:28:24 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/10 19:38:12 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/11 15:04:41 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ int	texturer(t_data *data)
 		return (0);
 	}
 	error = 0;
-	data->textures->north = get_texture(data->texture_paths->north, &error, 0);
-	data->textures->east = get_texture(data->texture_paths->east, &error, 1);
-	data->textures->west = get_texture(data->texture_paths->west, &error, 2);
-	data->textures->east = get_texture(data->texture_paths->east, &error, 3);
+	data->textures->north = get_texture(data->raw_textures->north, &error, 0);
+	data->textures->east = get_texture(data->raw_textures->east, &error, 1);
+	data->textures->west = get_texture(data->raw_textures->west, &error, 2);
+	data->textures->east = get_texture(data->raw_textures->east, &error, 3);
 	if (error)
 	{
 		print_texturer_error(error);

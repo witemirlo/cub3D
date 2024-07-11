@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:12:46 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/11 14:57:04 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/11 15:04:41 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_player
 
 typedef struct s_data
 {
-	t_texture_paths	*texture_paths;
+	t_texture_paths	*raw_textures;
 	t_textures		*textures;
 	t_player		player;
 	char			**map;

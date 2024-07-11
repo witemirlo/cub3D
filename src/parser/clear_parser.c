@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 18:54:24 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/10 19:01:45 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/11 15:04:41 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ void	clear_parser(t_data *data)
 {
 	if (!data)
 		return ;
-	free(data->texture_paths->north);
-	data->texture_paths->north = NULL;
-	free(data->texture_paths->south);
-	data->texture_paths->south = NULL;
-	free(data->texture_paths->west);
-	data->texture_paths->west = NULL;
-	free(data->texture_paths->east);
-	data->texture_paths->east = NULL;
-	free(data->texture_paths);
-	data->texture_paths = NULL;
+	free(data->raw_textures->north);
+	data->raw_textures->north = NULL;
+	free(data->raw_textures->south);
+	data->raw_textures->south = NULL;
+	free(data->raw_textures->west);
+	data->raw_textures->west = NULL;
+	free(data->raw_textures->east);
+	data->raw_textures->east = NULL;
+	free(data->raw_textures);
+	data->raw_textures = NULL;
 }

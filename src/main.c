@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 14:35:49 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/10 19:02:07 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/11 16:59:45 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,24 @@
 
 int	main(int argc, char *argv[])
 {
-	t_data	*data;
+	// t_data	*data;
+	t_data	data;
 
 	if (argc < 2)
 		return (ft_putendl_fd("Error: Too few arguments", 2), EXIT_FAILURE);
-	data = (t_data *)(ft_calloc(1, sizeof(t_data *)));
-	if (!data)
-		return (perror(RED"Error"NC), EXIT_FAILURE);
-	if (!parser(data, argv[1]))
+	// data = (t_data *)(ft_calloc(1, sizeof(t_data *)));
+	// if (!data)
+		// return (perror(RED"Error"NC), EXIT_FAILURE);
+	ft_memset(&data, 0, sizeof(t_data));
+	if (!parser(&data, argv[1]))
 	{
-		free(data);
+		// free(data);
 		return (EXIT_FAILURE);
 	}
-	if (!texturer(data))
+	if (!texturer(&data))
 	{
-		clear_parser(data);
-		free(data);
+		clear_parser(&data);
+		// free(data);
 		return (EXIT_FAILURE);
 	}
 // -----------------------------------------------------------------------------
@@ -48,7 +50,7 @@ int	main(int argc, char *argv[])
 	while (i < 128) {
 		j = 0;
 		while (j < 128) {
-			mlx_put_pixel(img, i, j, data->texture_paths->ceiling);
+			mlx_put_pixel(img, i, j, data.raw_textures->ceiling);
 			j++;
 		}
 		i++;
@@ -56,11 +58,20 @@ int	main(int argc, char *argv[])
 	while (i < 256) {
 		j = 0;
 		while (j < 128) {
-			mlx_put_pixel(img, i, j, data->texture_paths->floor);
+			mlx_put_pixel(img, i, j, data.raw_textures->floor);
 			j++;
 		}
 		i++;
 	}
+	// i = 0;
+	// while (i < 128) {
+	// 	j = 128;
+	// 	while (j < 256) {
+	// 		mlx_put_pixel(img, i, j, data->textures.);
+	// 		j++;
+	// 	}
+	// 	i++;
+	// }
 
 	mlx_image_to_window(mlx, img, 0, 0);
 	mlx_loop(mlx);

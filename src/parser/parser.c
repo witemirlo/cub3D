@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 17:03:13 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/11 14:57:56 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/11 15:04:41 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int	parser(t_data *data, char *file_name)
 	data->player = get_player(data->map);
 	if (data->player.position.x == -1 || data->player.direction.x == -1)
 		return (close_file(&raw_file), clear_2d_array(&data->map), 0);
-	data->texture_paths = get_texture_paths(raw_file);
-	if (!data->texture_paths)
+	data->raw_textures = get_texture_paths(raw_file);
+	if (!data->raw_textures)
 		return (close_file(&raw_file), clear_2d_array(&data->map), 0);
 	close_file(&raw_file);
 	return (1);
