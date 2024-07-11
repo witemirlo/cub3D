@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 14:35:49 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/11 16:59:45 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/11 19:54:15 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,29 +20,20 @@
 
 int	main(int argc, char *argv[])
 {
-	// t_data	*data;
+	mlx_t	*mlx = mlx_init(720, 720, "TESTING", false);
 	t_data	data;
 
 	if (argc < 2)
 		return (ft_putendl_fd("Error: Too few arguments", 2), EXIT_FAILURE);
-	// data = (t_data *)(ft_calloc(1, sizeof(t_data *)));
-	// if (!data)
-		// return (perror(RED"Error"NC), EXIT_FAILURE);
 	ft_memset(&data, 0, sizeof(t_data));
 	if (!parser(&data, argv[1]))
-	{
-		// free(data);
 		return (EXIT_FAILURE);
-	}
 	if (!texturer(&data))
 	{
 		clear_parser(&data);
-		// free(data);
 		return (EXIT_FAILURE);
 	}
 // -----------------------------------------------------------------------------
-
-	mlx_t	*mlx = mlx_init(1080, 720, "TESTING", false);
 	mlx_image_t	*img = mlx_new_image(mlx, 640, 640);
 
 	int i, j;
@@ -63,17 +54,11 @@ int	main(int argc, char *argv[])
 		}
 		i++;
 	}
-	// i = 0;
-	// while (i < 128) {
-	// 	j = 128;
-	// 	while (j < 256) {
-	// 		mlx_put_pixel(img, i, j, data->textures.);
-	// 		j++;
-	// 	}
-	// 	i++;
-	// }
+	mlx_image_t *img2 = mlx_texture_to_image(mlx, data.textures->north);
+	
 
 	mlx_image_to_window(mlx, img, 0, 0);
+	mlx_image_to_window(mlx, img2, 0, 128);
 	mlx_loop(mlx);
 
 	return (0);

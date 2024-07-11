@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:28:24 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/11 17:48:58 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/11 19:54:35 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ static mlx_texture_t *get_texture(char *path, int *error, int n)
 {
 	mlx_texture_t	*texture;
 
-	ft_putendl_fd(path, 2);
 	texture = mlx_load_png(path);
 	if (!texture)
 	{
