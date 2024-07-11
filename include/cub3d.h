@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:12:46 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/11 13:42:13 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/11 14:57:04 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ typedef struct s_textures t_textures;
 
 typedef struct s_vector
 {
-	double	x;
 	double	y;
+	double	x;
 }	t_vector;
 
 typedef struct s_player
