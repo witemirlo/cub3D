@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 15:10:26 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/15 10:27:08 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/15 11:26:43 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 void	clear_texturer(t_textures **textures)
 {
-	if (!*textures)
+	if (!(*textures))
 		return ;
 	if ((*textures)->north)
 	{

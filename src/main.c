@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 14:35:49 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/15 10:31:20 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/15 11:13:17 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,7 @@ int	main(int argc, char *argv[])
 		clear_parser(&data);
 		return (EXIT_FAILURE);
 	}
+	clear_parser(&data);
+	clear_texturer(&data.textures);
 	return (0);
 }

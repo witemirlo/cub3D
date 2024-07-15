@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:28:24 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/15 10:26:30 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/15 11:30:46 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	texturer(t_data *data)
 {
 	int	error;
 
-	data->textures = ft_calloc(1, sizeof(t_textures *));
+	data->textures = ft_calloc(1, sizeof(t_textures));
 	if (!data->textures)
 	{
 		perror(RED"Error"NC);
@@ -33,7 +33,7 @@ int	texturer(t_data *data)
 	}
 	error = 0;
 	data->textures->north = get_texture(data->raw_textures->north, &error, 0);
-	data->textures->east = get_texture(data->raw_textures->east, &error, 1);
+	data->textures->south = get_texture(data->raw_textures->south, &error, 1);
 	data->textures->west = get_texture(data->raw_textures->west, &error, 2);
 	data->textures->east = get_texture(data->raw_textures->east, &error, 3);
 	if (error)

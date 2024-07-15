@@ -6,10 +6,11 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 18:54:24 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/11 15:04:41 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/15 10:51:59 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "parser.h"
 
 void	clear_parser(t_data *data)
@@ -25,5 +26,6 @@ void	clear_parser(t_data *data)
 	free(data->raw_textures->east);
 	data->raw_textures->east = NULL;
 	free(data->raw_textures);
+	clear_2d_array(&data->map);
 	data->raw_textures = NULL;
 }

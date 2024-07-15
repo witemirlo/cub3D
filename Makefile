@@ -2,7 +2,7 @@ NAME = cub3D
 
 CC = cc
 
-CFLAGS  = -Wall -Wextra -Werror -pedantic -O0 -g3#-fanalyzer
+CFLAGS  = -Wall -Wextra -Werror -pedantic -O0 -g3#-fsanitize=leak,address#-fanalyzer
 CPPFLAGS = -I include/ -I lib/libft/ -I lib/MLX42/include/MLX42/
 LIBRARY = -L lib/libft/ -lft -L lib/MLX42/build/ -lmlx42 -ldl -lglfw -pthread -lm
 
@@ -49,7 +49,8 @@ re: fclean all
 
 leaks: $(NAME)
 	valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all \
-	--track-origins=yes --verbose --log-file="leaks.log" ./$(NAME)
+	--track-origins=yes --log-file="leaks.log" \
+	./$(NAME) map/debug.cub
 
 norm:
 	norminette include/ lib/libft/ src | grep -v OK

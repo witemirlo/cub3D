@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 12:07:22 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/09 16:13:25 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/15 10:40:50 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_list	*read_file(char *name)
 	int		fd;
 
 	fd = open(name, O_RDONLY | O_DIRECTORY);
-	if (fd > 0)
+	if (fd >= 0)
 	{
 		close(fd);
 		ft_putstr_fd(RED"Error: "NC"'", 2);
