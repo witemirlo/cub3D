@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:28:24 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/11 19:54:35 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/15 10:26:30 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	texturer(t_data *data)
 	if (error)
 	{
 		print_texturer_error(error);
-		clean_textures(&data->textures);
+		clear_texturer(&data->textures);
 		return (0);;
 	}
 	return (1);

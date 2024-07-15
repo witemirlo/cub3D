@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean_textures.c                                   :+:      :+:    :+:   */
+/*   clear_texturer.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 15:10:26 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/10 15:14:29 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/15 10:27:08 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "texturer.h"
 #include "MLX42.h"
+#include <stdlib.h>
 
-void	clean_textures(t_textures **textures)
+void	clear_texturer(t_textures **textures)
 {
 	if (!*textures)
 		return ;
@@ -37,5 +38,6 @@ void	clean_textures(t_textures **textures)
 		mlx_delete_texture((*textures)->east);
 		(*textures)->east = NULL;
 	}
+	free(*textures);
 	*textures = NULL;
 }

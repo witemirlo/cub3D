@@ -26,7 +26,7 @@ SRC = src/main.c\
 	  src/parser/texture_path/get_texture_paths.c\
 	  src/parser/clear_parser.c\
 	  src/parser/parser.c\
-	  src/texturer/clean_textures.c\
+	  src/texturer/clear_texturer.c\
 	  src/texturer/print_texturer_error.c\
 	  src/texturer/texturer.c\
 
