@@ -69,7 +69,7 @@ $(NAME): $(OBJS) libft.h
 	@printf "$(GREEN)Libft compiled$(EC)\n"
 
 %.o: %.c
-	@cc $(CFLAGS) -c $< -o $@ && printf "Compiling: $(notdir $<)\n"
+	@cc $(CFLAGS) -c $< -o $@ && printf "Compiled: $(notdir $<)\n"
 
 clean:
 	@rm -f $(OBJS) && printf "$(RED)Libft objects deleted$(EC)\n"

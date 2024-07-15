@@ -67,7 +67,7 @@ $(NAME): $(MLX42) $(LIBFT) $(OBJ)
 	@$(CC) $(CPPFLAGS) $(CFLAGS) $(OBJ) -o $(NAME) $(LIBRARY) && printf "$(GREEN)Program linked\n$(NC)"
 
 %.o: %.c
-	@$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@ && printf "Compiling: $(notdir $<)\n"
+	@$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@ && printf "Compiled: $(notdir $<)\n" 
 
 $(LIBFT):
 	@make -C lib/libft/
