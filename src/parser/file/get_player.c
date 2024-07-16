@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 13:44:24 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/16 13:21:07 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/16 13:29:15 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,10 @@ t_player	get_player(char **map)
 	if (player.position.x == -1 && player.position.y == -1)
 		return (player);
 	player.direction = \
-		get_dir(map[(long)(player.position.y)][(long)(player.position.x)]);
+		get_dir(map[(size_t)(player.position.y)][(size_t)(player.position.x)]);
 	if (player.direction.x == -1 && player.direction.y == -1)
 		return (player);
+	player.camera = (t_vector){1, 0};
 	map[(size_t)(player.position.x)][(size_t)(player.position.y)] = '0';
 	return (player);
 }
