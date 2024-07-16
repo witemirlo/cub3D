@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:28:24 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/15 11:30:46 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/16 13:33:46 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 #include "MLX42.h"
 #include <stdio.h>
 
-static mlx_texture_t *get_texture(char *path, int *error, int n);
-static void	error_loaded(int *error, int n);
-static void	error_size(int *error, int n);
+static mlx_texture_t	*get_texture(char *path, int *error, int n);
+static void				error_loaded(int *error, int n);
+static void				error_size(int *error, int n);
 
 int	texturer(t_data *data)
 {
@@ -40,12 +40,12 @@ int	texturer(t_data *data)
 	{
 		print_texturer_error(error);
 		clear_texturer(&data->textures);
-		return (0);;
+		return (0);
 	}
 	return (1);
 }
 
-static mlx_texture_t *get_texture(char *path, int *error, int n)
+static mlx_texture_t	*get_texture(char *path, int *error, int n)
 {
 	mlx_texture_t	*texture;
 
