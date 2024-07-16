@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 13:44:24 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/11 17:42:06 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/16 13:21:07 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 
 static t_vector	get_position(char **map);
-static t_vector	get_direction(t_vector position, char **map);
+static t_vector	get_dir(char content);
 
 t_player	get_player(char **map)
 {
@@ -24,12 +24,13 @@ t_player	get_player(char **map)
 	if (!map)
 		return (player);
 	player.position = get_position(map);
-	if (player.position.x == -1)
+	if (player.position.x == -1 && player.position.y == -1)
 		return (player);
-	player.direction = get_direction(player.position, map);
-	if (player.direction.x == -1)
+	player.direction = \
+		get_dir(map[(long)(player.position.y)][(long)(player.position.x)]);
+	if (player.direction.x == -1 && player.direction.y == -1)
 		return (player);
-	map[(size_t){player.position.x}][(size_t){player.position.y}] = '0';
+	map[(size_t)(player.position.x)][(size_t)(player.position.y)] = '0';
 	return (player);
 }
 
@@ -62,19 +63,16 @@ static t_vector	get_position(char **map)
 	return ((t_vector){x, y});
 }
 
-static t_vector	get_direction(t_vector position, char **map)
+static t_vector	get_dir(char content)
 {
-	size_t const	x = position.x;
-	size_t const	y = position.y;
-
-	if (map[y][x] == 'N')
-		return ((t_vector){x, (y - 1)});
-	else if (map[y][x] == 'S')
-		return ((t_vector){x, (y + 1)});
-	else if (map[y][x] == 'W')
-		return ((t_vector){(x - 1), y});
-	else if (map[y][x] == 'E')
-		return ((t_vector){(x + 1), y});
+	if (content == 'N')
+		return ((t_vector){0, -1});
+	else if (content == 'S')
+		return ((t_vector){0, 1});
+	else if (content == 'W')
+		return ((t_vector){-1, 0});
+	else if (content == 'E')
+		return ((t_vector){1, 0});
 	else
 		return ((t_vector){-1, -1});
 }
