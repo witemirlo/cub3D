@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 14:10:55 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/11 14:28:37 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/17 18:47:12 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ t_error_flags	check_map_closed(char **map);
 void			print_parse_error(t_error_flags flags);
 char			**generate_map(t_list *map);
 t_list			*goto_map(t_list *raw_list);
+t_list			*search_key(t_list *file, char const *key);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:42:25 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/17 18:12:46 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/17 18:48:00 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 static t_error_flags	check_correct_order(t_list *file);
 static t_error_flags	check_all_textures(t_list *file);
 static t_error_flags	check_unique_textures(t_list *file);
-static t_list			*search_key(t_list *file, char *key);
 
 /* TODO: borrar
 #include <stdio.h>
@@ -91,33 +90,21 @@ int	check_file_content(t_list *file)
 /* check that exits one instruction per required texture */
 static t_error_flags	check_all_textures(t_list *file)
 {
-	// char			*tmp;
 	t_error_flags	mask;
 
 	mask = 0;
-	while (file)
-	{
-		// tmp = (char *)(file->content);
-		// if (ft_strncmp(tmp, "NO ", 3) == 0)
-		if (!search_key(file, "NO"))
-			mask |= F_NORTH;
-		// else if (ft_strncmp(tmp, "SO ", 3) == 0)
-		else if (!search_key(file, "SO"))
-			mask |= F_SOUTH;
-		// else if (ft_strncmp(tmp, "WE ", 3) == 0)
-		else if (!search_key(file, "WE"))
-			mask |= F_WEST;
-		// else if (ft_strncmp(tmp, "EA ", 3) == 0)
-		else if (!search_key(file, "EA"))
-			mask |= F_EAST;
-		// else if (ft_strncmp(tmp, "F ", 2) == 0)
-		else if (!search_key(file, "F"))
-			mask |= F_FLOOR;
-		// else if (ft_strncmp(tmp, "C ", 2) == 0)
-		else if (!search_key(file, "C"))
-			mask |= F_CEILING;
-		file = file->next;
-	}
+	if (search_key(file, "NO"))
+		mask |= F_NORTH;
+	if (search_key(file, "SO"))
+		mask |= F_SOUTH;
+	if (search_key(file, "WE"))
+		mask |= F_WEST;
+	if (search_key(file, "EA"))
+		mask |= F_EAST;
+	if (search_key(file, "F"))
+		mask |= F_FLOOR;
+	if (search_key(file, "C"))
+		mask |= F_CEILING;
 	if ((mask & ALL_TEXTURES) != ALL_TEXTURES)
 		mask |= FAILURE;
 	return (mask);
@@ -126,7 +113,7 @@ static t_error_flags	check_all_textures(t_list *file)
 /* check that only exists one instance of each texture instrucction */
 static t_error_flags	check_unique_textures(t_list *file)
 {
-	const char	str[6][4] = {"NO ", "SO ", "WE ", "EA ", "F ", "C "};
+	const char	str[6][3] = {"NO", "SO", "WE", "EA", "F", "C"};
 	int			i;
 	int			count;
 	t_list		*tmp;
@@ -138,9 +125,12 @@ static t_error_flags	check_unique_textures(t_list *file)
 		tmp = file;
 		while (tmp)
 		{
-			if (ft_strncmp(tmp->content, str[i], ft_strlen(str[i])) == 0)
+			tmp = search_key(tmp, str[i]);
+			if (tmp)
+			{
 				count++;
-			tmp = tmp->next;
+				tmp = tmp->next;
+			}
 		}
 		if (count > 1)
 			return (REPEATED_TEXTURE);
@@ -168,20 +158,4 @@ static t_error_flags	check_correct_order(t_list *file)
 		file = file->next;
 	}
 	return (0);
-}
-
-static t_list	*search_key(t_list *file, char *key)
-{
-	char	*tmp;
-	while (file)
-	{
-		tmp = (char *)(file->content);
-		if (ft_strncmp(tmp, key, ft_strlen(key)) == 0)
-		{
-			if (tmp[ft_strlen(key)] && ft_isspace(tmp[ft_strlen(key)]))
-				return (file);
-		}
-		file = file->next;
-	}
-	return (NULL);
 }

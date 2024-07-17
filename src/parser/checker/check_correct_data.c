@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 18:13:27 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/10 14:53:13 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/17 18:53:19 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,28 +38,25 @@ t_error_flags	check_correct_data(t_list *o_list)
 
 static int	extract_texture_paths(t_list **n_list, t_list *o_list)
 {
-	const char	str[6][4] = {"NO ", "SO ", "WE ", "EA ", "F ", "C "};
+	const char	str[6][3] = {"NO", "SO", "WE", "EA", "F", "C"};
 	int			i;
 	t_list		*p;
 	t_list		*node;
 	char		*content;
 
 	i = 0;
-	while (i++ < 6)
+	while (i < 6)
 	{
-		p = o_list;
-		while (p)
+		p = search_key(o_list, str[i]);
+		if (p)
 		{
-			if (ft_strncmp(p->content, str[i - 1], ft_strlen(str[i - 1])) == 0)
-			{
-				content = ft_strdup(p->content);
-				node = ft_lstnew(content);
-				if (!node || !content)
-					return (free(content), ft_lstclear(n_list, free), 0);
-				ft_lstadd_back(n_list, node);
-			}
-			p = p->next;
+			content = ft_strdup(p->content);
+			node = ft_lstnew(content);
+			if (!node || !content)
+				return (free(content), ft_lstclear(n_list, free), 0);
+			ft_lstadd_back(n_list, node);
 		}
+		i++;
 	}
 	return (1);
 }

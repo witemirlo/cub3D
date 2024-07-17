@@ -2,7 +2,7 @@ NAME = cub3D
 
 CC = cc
 
-CFLAGS  = -Wall -Wextra -Werror -pedantic -O0 -g3#-fsanitize=leak,address#-fanalyzer
+CFLAGS  = -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=leak,address#-fanalyzer
 CPPFLAGS = -I include/ -I lib/libft/ -I lib/MLX42/include/MLX42/
 LIBRARY = -L lib/libft/ -lft -L lib/MLX42/build/ -lmlx42 -ldl -lglfw -pthread -lm
 
@@ -17,6 +17,7 @@ SRC = src/main.c\
 	  src/parser/checker/check_map.c\
 	  src/parser/checker/check_map_closed.c\
 	  src/parser/checker/print_parse_error.c\
+	  src/parser/checker/search_key.c\
 	  src/parser/file/close_file.c\
 	  src/parser/file/generate_map.c\
 	  src/parser/file/get_player.c\

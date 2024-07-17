@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 15:39:11 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/10 14:53:13 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/17 18:55:52 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static void	print_parse_error2(t_error_flags flags);
 void	print_parse_error(t_error_flags flags)
 {
 	ft_putendl_fd(RED "Error" NC, 2);
+	if ((flags & WRONG_DATA) == WRONG_DATA)
+		ft_putendl_fd("There is wrong data in the file", 2);
 	if ((flags & REPEATED_TEXTURE) == REPEATED_TEXTURE)
 		ft_putendl_fd("There is a more than one path for a texture", 2);
 	if ((flags & F_NORTH) != F_NORTH)
@@ -33,8 +35,6 @@ void	print_parse_error(t_error_flags flags)
 		ft_putendl_fd("There is no Floor color", 2);
 	if ((flags & F_CEILING) != F_CEILING)
 		ft_putendl_fd("There is no Ceiling color", 2);
-	if ((flags & WRONG_DATA) == WRONG_DATA)
-		ft_putendl_fd("There is wrong data in the file", 2);
 	if ((flags & BAD_SITE_MAP) == BAD_SITE_MAP)
 		ft_putendl_fd("The map is not at the end of the file", 2);
 	if ((flags & NO_MAP) == NO_MAP)

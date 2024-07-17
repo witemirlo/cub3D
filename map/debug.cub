@@ -1,10 +1,11 @@
-NO	map/tmp.png
+C 77, 44, 90
+
+F 170, 86, 86
+
+NO map/tmp.png
 SO map/tmp.png
 WE map/tmp.png
 EA map/tmp.png
-
-C 77, 44, 90
-F 170, 86, 86
 
 11111111111
 1N000000001
