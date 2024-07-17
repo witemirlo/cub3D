@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:46:28 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/10 14:53:13 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/17 17:43:19 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int	check_map_surrounding(char **map, size_t i, size_t j)
 			return (0);
 		else if (map[i + 1]
 			&& ft_strlen(map[i + 1]) >= j
-			&& map[i][j] == ' ')
+			&& map[i + 1][j] == ' ')
 			return (0);
 		else if (!map[i + 1])
 			return (0);
