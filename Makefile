@@ -64,7 +64,7 @@ clean:
 fclean: clean
 	@rm -f $(NAME) && printf "$(RED)Program deleted$(NC)\n"
 
-$(NAME): $(MLX42) $(LIBFT) $(OBJ) 
+$(NAME): $(MLX42) $(LIBFT) $(OBJ)
 	@$(CC) $(CPPFLAGS) $(CFLAGS) $(OBJ) -o $(NAME) $(LIBRARY) && printf "$(GREEN)Program linked\n$(NC)"
 
 %.o: %.c
