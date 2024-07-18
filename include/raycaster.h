@@ -1,18 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   raycaster.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/16 11:29:05 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/18 09:48:36 by psacrist         ###   ########.fr       */
+/*   Created: 2024/07/18 09:48:50 by psacrist          #+#    #+#             */
+/*   Updated: 2024/07/18 11:28:14 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "render.h"
+#ifndef RAYCASTER_H
+# define RAYCASTER_H
 
-void render(t_data *data, t_list *rays)
+# include "cub3d.h"
+# include "libft.h"
+
+# define MV_U 1
+# define MV_D -1
+# define MV_L -1
+# define MV_R 1
+
+typedef enum e_wall_dir
 {
-	//this will use the casted rays to render an image
-}
+	N,
+	S,
+	W,
+	E,
+}	t_wall_dir;
+
+typedef struct s_ray
+{
+	double		len;
+	t_wall_dir	wall_dir;
+}	t_ray;
+
+#endif
