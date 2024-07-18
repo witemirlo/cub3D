@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 09:48:31 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/18 11:29:29 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/18 14:57:36 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,39 @@ t_ray	*cast_one_ray(t_player player, char **map, int ray_num)
 {
 	double		offset;
 	t_vector	move;
-	t_vector	ray_len;
-	t_vector	ray_advance;
+	t_ray		*ray;
 
-	offset = (2 * ray_num) / (double)WIDTH - 1;
-	move = get_ray_dir(ray_num, player);
+	ray = ft_calloc(1, sizeof (t_ray));
+	if (!ray)
+		return (NULL);
+	ray->ray_dir = get_ray_dir(ray_num, player);
+	move = get_ray_mov(ray_num, player);
 }
 
+/*
+	Calculates the ray direction
+	Args:	ray_num -> the column number in the screen
+			player -> player info
+	Return:
+			a t_vector with the direcction of the ray
+*/
 t_vector	get_ray_dir(int ray_num, t_player player)
+{
+	double		offset;
+
+	offset = (2 * ray_num) / (double)WIDTH - 1;
+	return ((t_vector){player.direction.x + player.camera.x * offset, \
+		player.direction.y + player.camera.y * offset});
+}
+
+/*
+	Calculates if the ray is moving up or down, left or right
+	Args:	ray_num -> the column number in the screen
+			player -> player info
+	Return:
+			a t_vector with the movement of the ray in the x and y axes
+*/
+t_vector	get_ray_mov(int ray_num, t_player player)
 {
 	double		offset;
 	t_vector	move;

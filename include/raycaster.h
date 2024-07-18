@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 09:48:50 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/18 11:28:14 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/18 14:56:27 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,11 @@ typedef enum e_wall_dir
 
 typedef struct s_ray
 {
-	double		len;
+	double		wall_len;
 	t_wall_dir	wall_dir;
+	t_vector	ray_dir;
+	t_vector	ray_len;
+	t_vector	advance;
 }	t_ray;
 
 #endif
