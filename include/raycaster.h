@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 09:48:50 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/19 09:01:37 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/19 09:05:10 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # define MV_R 1
 # define HORI 0
 # define VERT 1
+
+t_list	*raycaster(t_player player, char **map);
 
 typedef enum e_wall_dir
 {
