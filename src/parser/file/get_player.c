@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_player.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 13:44:24 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/16 13:29:15 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/19 10:00:01 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_player	get_player(char **map)
 		get_dir(map[(size_t)(player.position.y)][(size_t)(player.position.x)]);
 	if (player.direction.x == -1 && player.direction.y == -1)
 		return (player);
-	player.camera = (t_vector){1, 0};
+	player.camera = (t_vector){0, 1};
 	map[(size_t)(player.position.x)][(size_t)(player.position.y)] = '0';
 	return (player);
 }
@@ -61,7 +61,7 @@ static t_vector	get_position(char **map)
 	}
 	if (!map[y])
 		return ((t_vector){-1, -1});
-	return ((t_vector){x, y});
+	return ((t_vector){x + 0.5, y + 0.5});
 }
 
 static t_vector	get_dir(char content)
