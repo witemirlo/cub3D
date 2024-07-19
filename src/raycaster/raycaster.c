@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 09:48:31 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/18 16:37:38 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/19 09:02:53 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,35 @@ t_ray	*cast_one_ray(t_player player, char **map, int ray_num)
 	ray->advance = (t_vector){1 / ray->ray_dir.x, 1 / ray->ray_dir.y};//div by 0?
 	move = get_ray_mov(ray_num, player);
 	ray->ray_len = first_iteration(player, *ray, move);
+	ray->wall_len = dda(ray, move, map);
+	return (ray);
+}
+
+int	dda(t_ray *ray, t_vector move, char **map)
+{
+	int	hit_dir;
+
+	while (42)
+	{
+		if (ray->ray_len.x < ray->ray_len.y)
+		{
+			ray->ray_len.x += ray->advance.x;
+			ray->ray_pos.x += move.x;
+			hit_dir = HORI;
+		}
+		else
+		{
+			ray->ray_len.y += ray->advance.y;
+			ray->ray_pos.y += move.y;
+			hit_dir = VERT;
+		}
+		if (map[(int)ray->ray_pos.x][(int)ray->ray_pos.y] == 1)
+			break ;
+	}
+	if (hit_dir == HORI)
+		return (HEIGHT / (ray->ray_len.x - ray->advance.x));
+	else
+		return (HEIGHT / (ray->ray_len.y - ray->advance.y));
 }
 
 t_vector	first_iteration(t_player player, t_ray ray, t_vector move)

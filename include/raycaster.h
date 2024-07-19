@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 09:48:50 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/18 16:22:30 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/19 09:01:37 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # define MV_D -1
 # define MV_L -1
 # define MV_R 1
+# define HORI 0
+# define VERT 1
 
 typedef enum e_wall_dir
 {
@@ -31,7 +33,7 @@ typedef enum e_wall_dir
 
 typedef struct s_ray
 {
-	double		wall_len;
+	int			wall_len;
 	t_wall_dir	wall_dir;
 	t_vector	ray_pos;
 	t_vector	ray_dir;
