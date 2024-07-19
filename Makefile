@@ -54,6 +54,9 @@ leaks: $(NAME)
 	--track-origins=yes --log-file="leaks.log" \
 	./$(NAME) map/debug.cub
 
+check:
+	@cppcheck --project=compile_commands.json --check-level=exhaustive
+
 norm:
 	norminette include/ lib/libft/ src | grep -v OK
 
@@ -79,5 +82,5 @@ $(MLX42):
 	@cmake lib/MLX42/ -B lib/MLX42/build/ && make -C lib/MLX42/build/
 
 .SECONDARY: $(OBJ) $(LIBFT) $(MLX42)
-.PHONY: all clean fclean re leaks
+.PHONY: all clean fclean re leaks norm
 
