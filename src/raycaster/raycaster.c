@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 09:48:31 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/19 10:44:51 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/19 10:51:46 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ t_vector	first_iteration(t_player player, t_ray ray, t_vector move);
 t_vector	get_ray_dir(int ray_num, t_player player);
 t_vector	get_ray_mov(int ray_num, t_player player);
 double		ft_dabs(double num);
+void		set_wall_hit_dir(int hit_dir, t_ray *ray, t_vector move);
 
 /*
 	Generates all the rays for an specific scene with a player and a map
@@ -81,21 +82,40 @@ int	dda(t_ray *ray, t_vector move, char **map)
 		{
 			ray->ray_len.x += ray->advance.x;
 			ray->ray_pos.x += move.x;
-			hit_dir = HORI;
+			hit_dir = VERT;
 		}
 		else
 		{
 			ray->ray_len.y += ray->advance.y;
 			ray->ray_pos.y += move.y;
-			hit_dir = VERT;
+			hit_dir = HORI;
 		}
+		set_wall_hit_dir(hit_dir, ray, move);
 		if (map[(int)ray->ray_pos.y][(int)ray->ray_pos.x] == '1')
 			break ;
 	}
-	if (hit_dir == HORI)
+	if (hit_dir == VERT)
 		return (HEIGHT / (ray->ray_len.x - ray->advance.x));
 	else
 		return (HEIGHT / (ray->ray_len.y - ray->advance.y));
+}
+
+void	set_wall_hit_dir(int hit_dir, t_ray *ray, t_vector move)
+{
+	if (hit_dir == HORI)
+	{
+		if (move.y == -1)
+			ray->wall_dir = N;
+		else
+			ray->wall_dir = S;
+	}
+	else
+	{
+		if (move.x == -1)
+			ray->wall_dir = E;
+		else
+			ray->wall_dir = W;
+	}
 }
 
 t_vector	first_iteration(t_player pl, t_ray ray, t_vector move)
