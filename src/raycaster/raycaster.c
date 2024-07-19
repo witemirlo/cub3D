@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 09:48:31 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/18 14:57:36 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/18 16:37:38 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,26 @@ t_ray	*cast_one_ray(t_player player, char **map, int ray_num)
 	ray = ft_calloc(1, sizeof (t_ray));
 	if (!ray)
 		return (NULL);
+	ray->ray_pos = (t_vector){(int)player.position.x, (int)player.position.y};
 	ray->ray_dir = get_ray_dir(ray_num, player);
+	ray->advance = (t_vector){1 / ray->ray_dir.x, 1 / ray->ray_dir.y};//div by 0?
 	move = get_ray_mov(ray_num, player);
+	ray->ray_len = first_iteration(player, *ray, move);
+}
+
+t_vector	first_iteration(t_player player, t_ray ray, t_vector move)
+{
+	t_vector	ray_init;
+
+	if (move.x == -1)
+		ray_init.x = (player.position.x - ray.ray_pos.x) / ray.ray_dir.x;
+	else
+		ray_init.x = (ray.ray_pos.x - player.position.x + 1) / ray.ray_dir.x;
+	if (move.y == -1)
+		ray_init.y = (player.position.y - ray.ray_pos.y) / ray.ray_dir.y;
+	else
+		ray_init.y = (ray.ray_pos.y - player.position.y + 1) / ray.ray_dir.y;
+	return (ray_init);
 }
 
 /*
