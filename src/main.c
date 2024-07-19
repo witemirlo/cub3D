@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 14:35:49 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/19 09:13:02 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/19 11:29:10 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,15 @@
 #include "parser.h"
 #include "texturer.h"
 #include "raycaster.h"
+#include "render.h"
 #include "MLX42.h"
 
+#include <stdio.h>
 int	main(int argc, char *argv[])
 {
 	t_data	data;
 	t_list	*rays;
+	void	*mlx;
 
 	if (argc < 2)
 		return (ft_putendl_fd(RED "Error: Too few arguments" NC, 2), EXIT_FAILURE);
@@ -36,6 +39,12 @@ int	main(int argc, char *argv[])
 	rays = raycaster(data.player, data.map);
 	if (!rays)
 		return (EXIT_FAILURE); //malloc
+	mlx = mlx_init(WIDTH, HEIGHT, "cub3D", false);
+	printf("%s\n", mlx_strerror(mlx_errno));
+	if (!mlx)
+		return (EXIT_FAILURE);
+	render(data, rays, mlx);
+	mlx_loop(mlx);
 	clear_parser(&data);
 	clear_texturer(&data.textures);
 	return (0);
