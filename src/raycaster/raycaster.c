@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 09:48:31 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/19 10:51:46 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/19 12:55:41 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_list	*raycaster(t_player player, char **map)
 	}
 	return (rays);
 }
-
+#include <stdio.h>
 t_ray	*cast_one_ray(t_player player, char **map, int ray_num)
 {
 	t_vector	move;
@@ -90,10 +90,10 @@ int	dda(t_ray *ray, t_vector move, char **map)
 			ray->ray_pos.y += move.y;
 			hit_dir = HORI;
 		}
-		set_wall_hit_dir(hit_dir, ray, move);
 		if (map[(int)ray->ray_pos.y][(int)ray->ray_pos.x] == '1')
 			break ;
 	}
+	set_wall_hit_dir(hit_dir, ray, move);
 	if (hit_dir == VERT)
 		return (HEIGHT / (ray->ray_len.x - ray->advance.x));
 	else

@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:29:05 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/19 11:25:20 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/19 12:05:31 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ void	render(t_data data, t_list *rays, void *mlx)
 	img = mlx_new_image(mlx, WIDTH, HEIGHT);
 	if (!img)
 		exit(EXIT_FAILURE); //print error
+	
+	if (mlx_image_to_window(mlx, img, 0, 0) < 0)
+		exit (EXIT_FAILURE);
 	i = 0;
 	while (rays)
 	{
@@ -32,7 +35,6 @@ void	render(t_data data, t_list *rays, void *mlx)
 		i++;
 	}
 	(void)data;
-	mlx_image_to_window(mlx, img, 0, 0);
 }
 
 void	draw_a_ray(t_ray *ray, int col, void *img)
