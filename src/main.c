@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 14:35:49 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/15 11:13:17 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/19 09:13:02 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 #include "libft.h"
 #include "parser.h"
 #include "texturer.h"
+#include "raycaster.h"
 #include "MLX42.h"
 
 int	main(int argc, char *argv[])
 {
 	t_data	data;
+	t_list	*rays;
 
 	if (argc < 2)
 		return (ft_putendl_fd(RED "Error: Too few arguments" NC, 2), EXIT_FAILURE);
@@ -31,6 +33,9 @@ int	main(int argc, char *argv[])
 		clear_parser(&data);
 		return (EXIT_FAILURE);
 	}
+	rays = raycaster(data.player, data.map);
+	if (!rays)
+		return (EXIT_FAILURE); //malloc
 	clear_parser(&data);
 	clear_texturer(&data.textures);
 	return (0);
