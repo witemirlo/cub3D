@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 09:48:31 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/19 10:15:48 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/19 10:44:51 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ t_ray	*cast_one_ray(t_player player, char **map, int ray_num)
 	move = get_ray_mov(ray_num, player);
 	ray->ray_len = first_iteration(player, *ray, move);
 	ray->wall_len = dda(ray, move, map);
+	if (ray->wall_len > HEIGHT)
+		ray->wall_len = HEIGHT;
 	return (ray);
 }
 
