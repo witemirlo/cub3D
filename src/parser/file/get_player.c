@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 13:44:24 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/19 10:00:01 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/19 12:39:01 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 static t_vector	get_position(char **map);
 static t_vector	get_dir(char content);
+static t_vector	get_cam(char content);
 
 t_player	get_player(char **map)
 {
@@ -30,9 +31,24 @@ t_player	get_player(char **map)
 		get_dir(map[(size_t)(player.position.y)][(size_t)(player.position.x)]);
 	if (player.direction.x == -1 && player.direction.y == -1)
 		return (player);
-	player.camera = (t_vector){0, 1};
-	map[(size_t)(player.position.x)][(size_t)(player.position.y)] = '0';
+	player.camera = \
+		get_cam(map[(size_t)(player.position.y)][(size_t)(player.position.x)]);
+	map[(size_t)(player.position.y)][(size_t)(player.position.x)] = '0';
 	return (player);
+}
+
+static t_vector	get_cam(char content)
+{
+	if (content == 'N')
+		return ((t_vector){1, 0});
+	else if (content == 'S')
+		return ((t_vector){-1, 0});
+	else if (content == 'W')
+		return ((t_vector){0, 1});
+	else if (content == 'E')
+		return ((t_vector){0, -1});
+	else
+		return ((t_vector){-1, -1});
 }
 
 static t_vector	get_position(char **map)
