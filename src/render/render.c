@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:29:05 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/20 09:24:42 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/20 09:38:04 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	render(t_data data, t_list *rays, void *mlx)
 	img = mlx_new_image(mlx, WIDTH, HEIGHT);
 	if (!img)
 		exit(EXIT_FAILURE); //print error
-	
 	if (mlx_image_to_window(mlx, img, 0, 0) < 0)
 		exit (EXIT_FAILURE);
+	ft_memset(img->pixels, 255, img->width * img->height * sizeof(int32_t));
 	i = 0;
 	while (rays)
 	{
