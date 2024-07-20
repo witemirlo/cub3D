@@ -56,6 +56,10 @@ leaks: $(NAME)
 	--track-origins=yes --log-file="leaks.log" \
 	./$(NAME) map/debug.cub
 
+check:
+	@cppcheck --project=compile_commands.json --check-level=exhaustive \
+	&& make fclean && scan-build make
+
 norm:
 	norminette include/ lib/libft/ src | grep -v OK
 
@@ -75,11 +79,11 @@ $(NAME): $(MLX42) $(LIBFT) $(OBJ)
 	@$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@ && printf "Compiled: $(notdir $<)\n" 
 
 $(LIBFT):
-	@make -C lib/libft/
+	@make -C lib/libft/ -j4
 
 $(MLX42):
-	@cmake lib/MLX42/ -B lib/MLX42/build/ && make -C lib/MLX42/build/
+	@cmake lib/MLX42/ -B lib/MLX42/build/ && make -C lib/MLX42/build/ -j4
 
 .SECONDARY: $(OBJ) $(LIBFT) $(MLX42)
-.PHONY: all clean fclean re leaks
+.PHONY: all clean fclean re leaks norm
 
