@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:12:46 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/19 11:46:09 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/20 09:30:36 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_data
 	t_textures		*textures;
 	t_player		player;
 	char			**map;
+	void			*mlx;
 }	t_data;
 
 #endif

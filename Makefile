@@ -31,7 +31,8 @@ SRC = src/main.c\
 	  src/texturer/print_texturer_error.c\
 	  src/texturer/texturer.c\
 	  src/raycaster/raycaster.c\
-	  src/render/render.c
+	  src/render/render.c\
+	  src/hooks/keyhook.c
 
 # COLORS -----------------------------------------------------------------------
 BLACK  	= \033[1;30m

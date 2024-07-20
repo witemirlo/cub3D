@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:29:05 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/19 12:05:31 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/20 09:24:42 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	render(t_data data, t_list *rays, void *mlx)
 		rays = rays->next;
 		i++;
 	}
+	ft_lstclear(&rays, free);
 	(void)data;
 }
 
