@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 08:56:16 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/20 09:47:35 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/20 10:52:09 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	more_keys(mlx_key_data_t keydata, t_data *param);
 void	get_trig(double *my_sin, double *my_cos);
 void	new_camera(t_player *player);
 
-#include <stdio.h>
 void	keyhook(mlx_key_data_t keydata, void* param)
 {
 	static double	sin_r;
@@ -45,7 +44,35 @@ void	keyhook(mlx_key_data_t keydata, void* param)
 	}
 	else
 		more_keys(keydata, (t_data *)param);
-	printf("dir_x: %f, dir_y: %f\n", player->direction.x, player->direction.y);
+}
+#include <stdio.h>
+void	more_keys(mlx_key_data_t keydata, t_data *data)
+{
+	t_vector	move;
+
+	move = data->player.position;
+	if (keydata.key == MLX_KEY_W)
+	{
+		move.x += data->player.direction.x * MV_FACTOR;
+		move.y += data->player.direction.y * MV_FACTOR;
+	}
+	else if (keydata.key == MLX_KEY_S)
+	{
+		move.x -= data->player.direction.x * MV_FACTOR;
+		move.y -= data->player.direction.y * MV_FACTOR;
+	}
+	else if (keydata.key == MLX_KEY_A)
+	{
+		move.x -= data->player.camera.x * MV_FACTOR;
+		move.y -= data->player.camera.y * MV_FACTOR;
+	}
+	else if (keydata.key == MLX_KEY_D)
+	{
+		move.x += data->player.camera.x * MV_FACTOR;
+		move.y += data->player.camera.y * MV_FACTOR;
+	}
+	if (data->map[(int)move.y][(int)move.x] == '0') //maybe tolerance to walls?
+		data->player.position = move;
 }
 
 void	new_camera(t_player *player)
@@ -58,14 +85,8 @@ void	new_camera(t_player *player)
 		player->camera.y *= -1;
 }
 
-void	more_keys(mlx_key_data_t keydata, t_data *param)
-{
-	(void)keydata;
-	(void)param;
-}
-
 void	get_trig(double *my_sin, double *my_cos)
 {
-	*my_sin = sin(ROT_SPEED);
-	*my_cos = cos(ROT_SPEED);
+	*my_sin = sin(MY_PI / ROT_FACTOR);
+	*my_cos = cos(MY_PI / ROT_FACTOR);
 }
