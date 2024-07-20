@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 14:35:49 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/19 11:29:10 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/20 08:48:02 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 #include "render.h"
 #include "MLX42.h"
 
-#include <stdio.h>
 int	main(int argc, char *argv[])
 {
 	t_data	data;
@@ -40,7 +39,6 @@ int	main(int argc, char *argv[])
 	if (!rays)
 		return (EXIT_FAILURE); //malloc
 	mlx = mlx_init(WIDTH, HEIGHT, "cub3D", false);
-	printf("%s\n", mlx_strerror(mlx_errno));
 	if (!mlx)
 		return (EXIT_FAILURE);
 	render(data, rays, mlx);
