@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 14:35:49 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/20 09:34:38 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/20 11:17:17 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,8 @@ int	main(int argc, char *argv[])
 	draw(&data);
 	mlx_key_hook(mlx, keyhook, &data);
 	mlx_loop_hook(mlx, draw, &data);
+	mlx_close_hook(mlx, closehook, &data);
 	mlx_loop(mlx);
-	mlx_terminate(mlx);
-	clear_parser(&data); //clear mlx
-	clear_texturer(&data.textures);
 	return (0);
 }
 
@@ -61,4 +59,5 @@ void	draw(void *param)
 	if (!rays)
 		exit(EXIT_FAILURE); //malloc
 	render(data, rays, data.mlx);
+	ft_lstclear(&rays, free);
 }

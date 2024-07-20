@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 08:56:16 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/20 10:52:09 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/20 11:19:59 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	keyhook(mlx_key_data_t keydata, void* param)
 	t_player		*player;
 	t_vector		old_dir;
 
+	if (keydata.key == MLX_KEY_ESCAPE)
+		closehook(param);
 	if (!sin_r && !cos_r)
 		get_trig(&sin_r, &cos_r);
 	player = &((t_data *)param)->player;
@@ -45,7 +47,7 @@ void	keyhook(mlx_key_data_t keydata, void* param)
 	else
 		more_keys(keydata, (t_data *)param);
 }
-#include <stdio.h>
+
 void	more_keys(mlx_key_data_t keydata, t_data *data)
 {
 	t_vector	move;
@@ -71,7 +73,7 @@ void	more_keys(mlx_key_data_t keydata, t_data *data)
 		move.x += data->player.camera.x * MV_FACTOR;
 		move.y += data->player.camera.y * MV_FACTOR;
 	}
-	if (data->map[(int)move.y][(int)move.x] == '0') //maybe tolerance to walls?
+	if (data->map[(int)move.y][(int)move.x] == '0')
 		data->player.position = move;
 }
 

@@ -32,7 +32,8 @@ SRC = src/main.c\
 	  src/texturer/texturer.c\
 	  src/raycaster/raycaster.c\
 	  src/render/render.c\
-	  src/hooks/keyhook.c
+	  src/hooks/keyhook.c\
+	  src/hooks/closehook.c
 
 # COLORS -----------------------------------------------------------------------
 BLACK  	= \033[1;30m
@@ -54,7 +55,7 @@ re: fclean all
 leaks: $(NAME)
 	valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all \
 	--track-origins=yes --log-file="leaks.log" \
-	./$(NAME) map/debug.cub
+	./$(NAME) map/root.cub
 
 check:
 	@cppcheck --project=compile_commands.json --check-level=exhaustive \

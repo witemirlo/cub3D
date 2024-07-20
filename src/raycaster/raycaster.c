@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 09:48:31 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/19 12:55:41 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/20 11:04:13 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_list	*raycaster(t_player player, char **map)
 	}
 	return (rays);
 }
-#include <stdio.h>
+
 t_ray	*cast_one_ray(t_player player, char **map, int ray_num)
 {
 	t_vector	move;

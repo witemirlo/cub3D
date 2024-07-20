@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks.h                                            :+:      :+:    :+:   */
+/*   closehook.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/20 08:56:27 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/20 11:13:13 by psacrist         ###   ########.fr       */
+/*   Created: 2024/07/20 11:07:50 by psacrist          #+#    #+#             */
+/*   Updated: 2024/07/20 11:14:04 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HOOKS_H
-# define HOOKS_H
+#include "hooks.h"
+#include "cub3d.h"
+#include "parser.h"
+#include "texturer.h"
+#include "MLX42.h"
 
-# define MY_PI 3.14159265358979323846
-# define ROT_FACTOR 12
-# define MV_FACTOR 0.2
+void	closehook(void *param)
+{
+	t_data *data;
 
-# include "MLX42.h"
-
-void	keyhook(mlx_key_data_t keydata, void *param);
-void	closehook(void *param);
-
-#endif
+	data = param;
+	clear_parser(data);
+	clear_texturer(&data->textures);
+	mlx_close_window(data->mlx);
+	mlx_terminate(data->mlx);
+	exit(EXIT_SUCCESS);
+}
