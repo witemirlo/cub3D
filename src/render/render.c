@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:29:05 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/20 11:17:39 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/20 12:12:41 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	draw_a_ray(t_ray *ray, int col, void *img)
 		color = EWALLCOL;
 	else
 		color = WWALLCOL;
+	color += (int)(0xFF * ray->wall_x) << 24;
 	while (start < end)
 	{
 		mlx_put_pixel(img, col, start, color);

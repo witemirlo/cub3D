@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 09:48:31 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/20 11:04:13 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/21 08:38:59 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_vector	first_iteration(t_player player, t_ray ray, t_vector move);
 t_vector	get_ray_dir(int ray_num, t_player player);
 t_vector	get_ray_mov(int ray_num, t_player player);
 double		ft_dabs(double num);
-void		set_wall_hit_dir(int hit_dir, t_ray *ray, t_vector move);
+void		set_wall_hit_info(t_ray *ray, t_vector move, t_player s_player);
 
 /*
 	Generates all the rays for an specific scene with a player and a map
@@ -67,6 +67,7 @@ t_ray	*cast_one_ray(t_player player, char **map, int ray_num)
 	move = get_ray_mov(ray_num, player);
 	ray->ray_len = first_iteration(player, *ray, move);
 	ray->wall_len = dda(ray, move, map);
+	set_wall_hit_info(ray, move, player);
 	if (ray->wall_len > HEIGHT)
 		ray->wall_len = HEIGHT;
 	return (ray);
@@ -74,40 +75,39 @@ t_ray	*cast_one_ray(t_player player, char **map, int ray_num)
 
 int	dda(t_ray *ray, t_vector move, char **map)
 {
-	int	hit_dir;
-
 	while (42)
 	{
 		if (ray->ray_len.x < ray->ray_len.y)
 		{
 			ray->ray_len.x += ray->advance.x;
 			ray->ray_pos.x += move.x;
-			hit_dir = VERT;
+			ray->hit_dir = VERT;
 		}
 		else
 		{
 			ray->ray_len.y += ray->advance.y;
 			ray->ray_pos.y += move.y;
-			hit_dir = HORI;
+			ray->hit_dir = HORI;
 		}
 		if (map[(int)ray->ray_pos.y][(int)ray->ray_pos.x] == '1')
 			break ;
 	}
-	set_wall_hit_dir(hit_dir, ray, move);
-	if (hit_dir == VERT)
+	if (ray->hit_dir == VERT)
 		return (HEIGHT / (ray->ray_len.x - ray->advance.x));
 	else
 		return (HEIGHT / (ray->ray_len.y - ray->advance.y));
 }
 
-void	set_wall_hit_dir(int hit_dir, t_ray *ray, t_vector move)
+void	set_wall_hit_info(t_ray *ray, t_vector move, t_player player)
 {
-	if (hit_dir == HORI)
+	if (ray->hit_dir == HORI)
 	{
 		if (move.y == -1)
 			ray->wall_dir = N;
 		else
 			ray->wall_dir = S;
+		ray->wall_x = player.position.x + \
+			(ray->ray_len.y - ray->advance.y) * ray->ray_dir.x;
 	}
 	else
 	{
@@ -115,7 +115,11 @@ void	set_wall_hit_dir(int hit_dir, t_ray *ray, t_vector move)
 			ray->wall_dir = E;
 		else
 			ray->wall_dir = W;
+		ray->wall_x = player.position.y + \
+			(ray->ray_len.x - ray->advance.x) * ray->ray_dir.y;
 	}
+	ray->wall_x -= (int)ray->wall_x;
+	ray->wall_x = ft_dabs(ray->wall_x);
 }
 
 t_vector	first_iteration(t_player pl, t_ray ray, t_vector move)
