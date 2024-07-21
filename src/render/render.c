@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:29:05 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/20 12:12:41 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/21 09:01:24 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	render(t_data data, t_list *rays, void *mlx)
 		exit(EXIT_FAILURE); //print error
 	if (mlx_image_to_window(mlx, img, 0, 0) < 0)
 		exit (EXIT_FAILURE);
-	ft_memset(img->pixels, 255, img->width * img->height * sizeof(int32_t));
 	i = 0;
 	while (rays)
 	{
@@ -42,6 +41,7 @@ void	draw_a_ray(t_ray *ray, int col, void *img)
 	int	start;
 	int	end;
 	uint32_t color;
+	int	i;
 
 	start = (HEIGHT - ray->wall_len) / 2;
 	end = start + ray->wall_len;
@@ -54,9 +54,20 @@ void	draw_a_ray(t_ray *ray, int col, void *img)
 	else
 		color = WWALLCOL;
 	color += (int)(0xFF * ray->wall_x) << 24;
+	i = 0;
+	while (i < start)
+	{
+		mlx_put_pixel(img, col, i, 0x16E3CDFF);
+		i++;
+	}
 	while (start < end)
 	{
 		mlx_put_pixel(img, col, start, color);
 		start++;
+	}
+	while (end < HEIGHT)
+	{
+		mlx_put_pixel(img, col, end, 0x7B5A12FF);
+		end++;
 	}
 }
