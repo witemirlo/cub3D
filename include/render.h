@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 09:39:10 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/20 12:10:13 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/22 16:56:33 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 # include "libft.h"
 # include "raycaster.h"
 
-# define SWALLCOL 0x000F90FF
-# define NWALLCOL 0x00FF00FF
-# define WWALLCOL 0x0000FFFF
-# define EWALLCOL 0x00FFFFFF
+# define SWALLCOL 0x008080FF
+# define NWALLCOL 0x008080FF
+# define WWALLCOL 0x004040FF
+# define EWALLCOL 0x00B0B0FF
 
 void	render(t_data data, t_list *rays, void *mlx);
 
