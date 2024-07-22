@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 09:39:10 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/22 16:56:33 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/22 17:14:57 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@
 # define WWALLCOL 0x004040FF
 # define EWALLCOL 0x00B0B0FF
 
-void	render(t_data data, t_list *rays, void *mlx);
+void	render(t_data *data, t_list *rays, void *mlx);
 
 #endif

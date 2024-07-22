@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 14:35:49 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/20 11:17:17 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/22 17:17:04 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ int	main(int argc, char *argv[])
 
 void	draw(void *param)
 {
-	t_data	data;
+	t_data	*data;
 	t_list	*rays;
 
-	data = *(t_data *)param;
-	rays = raycaster(data.player, data.map);
+	data = (t_data *)param;
+	rays = raycaster(data->player, data->map);
 	if (!rays)
 		exit(EXIT_FAILURE); //malloc
-	render(data, rays, data.mlx);
+	render(data, rays, data->mlx);
 	ft_lstclear(&rays, free);
 }

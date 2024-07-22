@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 11:07:50 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/20 11:14:04 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/22 17:14:50 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	closehook(void *param)
 	data = param;
 	clear_parser(data);
 	clear_texturer(&data->textures);
+	mlx_delete_image(data->mlx, data->scene);
 	mlx_close_window(data->mlx);
 	mlx_terminate(data->mlx);
 	exit(EXIT_SUCCESS);

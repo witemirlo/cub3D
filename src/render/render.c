@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:29:05 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/21 09:01:24 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/22 17:13:47 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,27 @@
 
 void	draw_a_ray(t_ray *ray, int col, void *img);
 
-void	render(t_data data, t_list *rays, void *mlx)
+void	render(t_data *data, t_list *rays, void *mlx)
 {
-	mlx_image_t	*img;
 	t_ray		*ray;
 	int			i;
 
-	img = mlx_new_image(mlx, WIDTH, HEIGHT);
-	if (!img)
-		exit(EXIT_FAILURE); //print error
-	if (mlx_image_to_window(mlx, img, 0, 0) < 0)
+	if (!data->scene)
+	{
+		data->scene = mlx_new_image(mlx, WIDTH, HEIGHT);
+		if (!data->scene)
+			exit(EXIT_FAILURE); //print error
+	}
+	if (mlx_image_to_window(mlx, data->scene, 0, 0) < 0)
 		exit (EXIT_FAILURE);
 	i = 0;
 	while (rays)
 	{
 		ray = (t_ray *)rays->content;
-		draw_a_ray(ray, i, img);
+		draw_a_ray(ray, i, data->scene);
 		rays = rays->next;
 		i++;
 	}
-	(void)data;
 }
 
 void	draw_a_ray(t_ray *ray, int col, void *img)
