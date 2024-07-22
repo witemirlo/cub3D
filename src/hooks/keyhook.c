@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 08:56:16 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/20 11:19:59 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/22 16:47:43 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,15 +76,13 @@ void	more_keys(mlx_key_data_t keydata, t_data *data)
 	if (data->map[(int)move.y][(int)move.x] == '0')
 		data->player.position = move;
 }
-
+#include <stdio.h>
 void	new_camera(t_player *player)
 {
 	player->camera.x = player->direction.y;
 	player->camera.y = player->direction.x;
-	if (player->camera.x)
-		player->camera.x *= -1;
-	else
-		player->camera.y *= -1;
+	player->camera.x *= -1;
+	printf("cam x: %f; cam y: %f\n", player->camera.x, player->camera.y);
 }
 
 void	get_trig(double *my_sin, double *my_cos)
