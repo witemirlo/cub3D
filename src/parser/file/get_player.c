@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/11 13:44:24 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/22 16:39:18 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/23 11:41:10 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ t_player	get_player(char **map)
 static t_vector	get_cam(char content)
 {
 	if (content == 'N')
-		return ((t_vector){1, 0});
+		return ((t_vector){(double)2 / 3, 0});
 	else if (content == 'S')
-		return ((t_vector){-1, 0});
+		return ((t_vector){(double)-2 / 3, 0});
 	else if (content == 'W')
-		return ((t_vector){0, -1});
+		return ((t_vector){0, (double)-2 / 3});
 	else if (content == 'E')
-		return ((t_vector){0, 1});
+		return ((t_vector){0, (double)2 / 3});
 	else
 		return ((t_vector){-1, -1});
 }

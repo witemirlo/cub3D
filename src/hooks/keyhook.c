@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 08:56:16 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/22 16:56:53 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/23 11:37:43 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ void	more_keys(mlx_key_data_t keydata, t_data *data)
 
 void	new_camera(t_player *player)
 {
-	player->camera.x = player->direction.y;
-	player->camera.y = player->direction.x;
+	player->camera.x = player->direction.y * 2 / 3;
+	player->camera.y = player->direction.x * 2 / 3;
 	player->camera.x *= -1;
 }
 
