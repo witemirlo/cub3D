@@ -6,13 +6,15 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:29:05 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/22 17:13:47 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/23 11:33:30 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
+#include "cub3d.h"
+#include "parser.h"
 
-void	draw_a_ray(t_ray *ray, int col, void *img);
+void	draw_a_ray(t_ray *ray, int col, void *img, t_texture_paths colors);
 
 void	render(t_data *data, t_list *rays, void *mlx)
 {
@@ -31,13 +33,13 @@ void	render(t_data *data, t_list *rays, void *mlx)
 	while (rays)
 	{
 		ray = (t_ray *)rays->content;
-		draw_a_ray(ray, i, data->scene);
+		draw_a_ray(ray, i, data->scene, *data->raw_textures);
 		rays = rays->next;
 		i++;
 	}
 }
 
-void	draw_a_ray(t_ray *ray, int col, void *img)
+void	draw_a_ray(t_ray *ray, int col, void *img, t_texture_paths colors)
 {
 	int	start;
 	int	end;
@@ -58,7 +60,7 @@ void	draw_a_ray(t_ray *ray, int col, void *img)
 	i = 0;
 	while (i < start)
 	{
-		mlx_put_pixel(img, col, i, 0x16E3CDFF);
+		mlx_put_pixel(img, col, i, colors.ceiling);
 		i++;
 	}
 	while (start < end)
@@ -68,7 +70,7 @@ void	draw_a_ray(t_ray *ray, int col, void *img)
 	}
 	while (end < HEIGHT)
 	{
-		mlx_put_pixel(img, col, end, 0x7B5A12FF);
+		mlx_put_pixel(img, col, end, colors.floor);
 		end++;
 	}
 }
