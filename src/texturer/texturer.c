@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texturer.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:28:24 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/16 13:33:46 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/07/23 14:22:14 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

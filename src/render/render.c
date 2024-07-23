@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:29:05 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/23 11:33:30 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/23 17:33:54 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "parser.h"
 
 void	draw_a_ray(t_ray *ray, int col, void *img, t_texture_paths colors);
+int		select_color(t_ray *ray, int wall_y);
 
 void	render(t_data *data, t_list *rays, void *mlx)
 {
@@ -41,36 +42,51 @@ void	render(t_data *data, t_list *rays, void *mlx)
 
 void	draw_a_ray(t_ray *ray, int col, void *img, t_texture_paths colors)
 {
-	int	start;
-	int	end;
-	uint32_t color;
-	int	i;
+	int				start;
+	int				end;
+	int				i;
 
 	start = (HEIGHT - ray->wall_len) / 2;
 	end = start + ray->wall_len;
-	if (ray->wall_dir == N)
-		color = NWALLCOL;
-	else if (ray->wall_dir == S)
-		color = SWALLCOL;
-	else if (ray->wall_dir == E)
-		color = EWALLCOL;
-	else
-		color = WWALLCOL;
-	color += (int)(0xFF * ray->wall_x) << 24;
+	if (start < 0)
+		start = 0;
+	if (end > HEIGHT)
+		end = HEIGHT;
 	i = 0;
 	while (i < start)
 	{
 		mlx_put_pixel(img, col, i, colors.ceiling);
 		i++;
 	}
-	while (start < end)
+	while (i < end)
 	{
-		mlx_put_pixel(img, col, start, color);
-		start++;
+		mlx_put_pixel(img, col, i, select_color(ray, i - (HEIGHT - ray->wall_len) / 2));
+		i++;
 	}
 	while (end < HEIGHT)
 	{
 		mlx_put_pixel(img, col, end, colors.floor);
 		end++;
 	}
+}
+
+int	select_color(t_ray *ray, int wall_y)
+{
+	int	tex_x;
+	int	tex_y;
+	int	color;
+	int	pixel_index;
+	int	i;
+
+	tex_x = ray->wall_tex->width * ray->wall_x;
+	tex_y = (double)ray->wall_tex->height / (double)ray->wall_len * (double)wall_y;
+	pixel_index = (tex_y * ray->wall_tex->height + tex_x) * ray->wall_tex->bytes_per_pixel;
+	i = 0;
+	while (i < ray->wall_tex->bytes_per_pixel)
+	{
+		color <<= 8;
+		color += ray->wall_tex->pixels[pixel_index + i];
+		i++;
+	}
+	return (color);
 }

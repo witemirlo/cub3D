@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 14:35:49 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/22 17:17:04 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/23 14:34:06 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	draw(void *param)
 	t_list	*rays;
 
 	data = (t_data *)param;
-	rays = raycaster(data->player, data->map);
+	rays = raycaster(data->player, data->map, *data->textures);
 	if (!rays)
 		exit(EXIT_FAILURE); //malloc
 	render(data, rays, data->mlx);

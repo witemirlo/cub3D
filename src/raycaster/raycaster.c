@@ -6,19 +6,20 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 09:48:31 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/21 08:38:59 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/23 17:28:14 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "raycaster.h"
+#include "texturer.h"
 
-t_ray		*cast_one_ray(t_player player, char **map, int ray_num);
+t_ray		*cast_one_ray(t_player player, char **map, int ray_num, t_textures tex);
 int			dda(t_ray *ray, t_vector move, char **map);
 t_vector	first_iteration(t_player player, t_ray ray, t_vector move);
 t_vector	get_ray_dir(int ray_num, t_player player);
 t_vector	get_ray_mov(int ray_num, t_player player);
 double		ft_dabs(double num);
-void		set_wall_hit_info(t_ray *ray, t_vector move, t_player s_player);
+void		wall_hit_info(t_ray *ray, t_vector mv, t_player player, t_textures tex);
 
 /*
 	Generates all the rays for an specific scene with a player and a map
@@ -28,7 +29,7 @@ void		set_wall_hit_info(t_ray *ray, t_vector move, t_player s_player);
 			NULL if error
 			A t_list with all the rays needed for the scene
 */
-t_list	*raycaster(t_player player, char **map)
+t_list	*raycaster(t_player player, char **map, t_textures tex)
 {
 	t_list	*rays;
 	t_list	*node;
@@ -38,7 +39,7 @@ t_list	*raycaster(t_player player, char **map)
 	rays = NULL;
 	while (ray_num < WIDTH)
 	{
-		node = ft_lstnew(cast_one_ray(player, map, ray_num));
+		node = ft_lstnew(cast_one_ray(player, map, ray_num, tex));
 		if (!node)
 			return (NULL); //malloc y liberar
 		if (!node->content)
@@ -52,7 +53,7 @@ t_list	*raycaster(t_player player, char **map)
 	return (rays);
 }
 
-t_ray	*cast_one_ray(t_player player, char **map, int ray_num)
+t_ray	*cast_one_ray(t_player player, char **map, int ray_num, t_textures tex)
 {
 	t_vector	move;
 	t_ray		*ray;
@@ -67,9 +68,7 @@ t_ray	*cast_one_ray(t_player player, char **map, int ray_num)
 	move = get_ray_mov(ray_num, player);
 	ray->ray_len = first_iteration(player, *ray, move);
 	ray->wall_len = dda(ray, move, map);
-	set_wall_hit_info(ray, move, player);
-	if (ray->wall_len > HEIGHT)
-		ray->wall_len = HEIGHT;
+	wall_hit_info(ray, move, player, tex);
 	return (ray);
 }
 
@@ -98,23 +97,23 @@ int	dda(t_ray *ray, t_vector move, char **map)
 		return (HEIGHT / (ray->ray_len.y - ray->advance.y));
 }
 
-void	set_wall_hit_info(t_ray *ray, t_vector move, t_player player)
+void	wall_hit_info(t_ray *ray, t_vector mv, t_player player, t_textures tex)
 {
 	if (ray->hit_dir == HORI)
 	{
-		if (move.y == -1)
-			ray->wall_dir = N;
+		if (mv.y == -1)
+			ray->wall_tex = tex.north;
 		else
-			ray->wall_dir = S;
+			ray->wall_tex = tex.south;
 		ray->wall_x = player.position.x + \
 			(ray->ray_len.y - ray->advance.y) * ray->ray_dir.x;
 	}
 	else
 	{
-		if (move.x == -1)
-			ray->wall_dir = E;
+		if (mv.x == -1)
+			ray->wall_tex = tex.east;
 		else
-			ray->wall_dir = W;
+			ray->wall_tex = tex.west;
 		ray->wall_x = player.position.y + \
 			(ray->ray_len.x - ray->advance.x) * ray->ray_dir.y;
 	}
