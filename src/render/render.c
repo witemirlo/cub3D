@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:29:05 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/23 17:33:54 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/24 10:10:26 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	select_color(t_ray *ray, int wall_y)
 
 	tex_x = ray->wall_tex->width * ray->wall_x;
 	tex_y = (double)ray->wall_tex->height / (double)ray->wall_len * (double)wall_y;
-	pixel_index = (tex_y * ray->wall_tex->height + tex_x) * ray->wall_tex->bytes_per_pixel;
+	pixel_index = (tex_y * ray->wall_tex->width + tex_x) * ray->wall_tex->bytes_per_pixel;
 	i = 0;
 	while (i < ray->wall_tex->bytes_per_pixel)
 	{

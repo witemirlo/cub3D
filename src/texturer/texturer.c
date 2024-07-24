@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:28:24 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/23 14:22:14 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/23 17:49:28 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 static mlx_texture_t	*get_texture(char *path, int *error, int n);
 static void				error_loaded(int *error, int n);
-static void				error_size(int *error, int n);
+/*static void				error_size(int *error, int n);*/
 
 int	texturer(t_data *data)
 {
@@ -55,8 +55,8 @@ static mlx_texture_t	*get_texture(char *path, int *error, int n)
 		error_loaded(error, n);
 		return (NULL);
 	}
-	if (texture->height != TILE_SIZE || texture->width != TILE_SIZE)
-		error_size(error, n);
+	/*if (texture->height != TILE_SIZE || texture->width != TILE_SIZE)
+		error_size(error, n);*/
 	return (texture);
 }
 
@@ -72,7 +72,7 @@ static void	error_loaded(int *error, int n)
 		*error |= F_EAST;
 }
 
-static void	error_size(int *error, int n)
+/*static void	error_size(int *error, int n)
 {
 	if (n == 0)
 		*error |= SIZE_NORTH;
@@ -82,4 +82,4 @@ static void	error_size(int *error, int n)
 		*error |= SIZE_WEST;
 	else if (n == 3)
 		*error |= SIZE_EAST;
-}
+}*/
