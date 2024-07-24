@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:12:46 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/23 11:30:54 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/24 10:16:16 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_data
 	char			**map;
 	void			*mlx;
 	mlx_image_t		*scene;
+	mlx_image_t		*minimap;
 }	t_data;
 
 #endif

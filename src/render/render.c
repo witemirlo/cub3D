@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:29:05 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/24 10:10:26 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/24 12:57:40 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,22 @@
 
 void	draw_a_ray(t_ray *ray, int col, void *img, t_texture_paths colors);
 int		select_color(t_ray *ray, int wall_y);
+void	minimap(t_data *data);
+int	minimap_color(t_vector map_coord, char **map);
+int	len_2d_array(char **array);
+int	create_images(t_data *data);
+void	draw_player(int cam_w, int cam_h, mlx_image_t *img);
 
-void	render(t_data *data, t_list *rays, void *mlx)
+void	render(t_data *data, t_list *rays)
 {
 	t_ray		*ray;
 	int			i;
 
 	if (!data->scene)
 	{
-		data->scene = mlx_new_image(mlx, WIDTH, HEIGHT);
-		if (!data->scene)
-			exit(EXIT_FAILURE); //print error
+		if (!create_images(data))
+			exit(EXIT_FAILURE);
 	}
-	if (mlx_image_to_window(mlx, data->scene, 0, 0) < 0)
-		exit (EXIT_FAILURE);
 	i = 0;
 	while (rays)
 	{
@@ -38,6 +40,96 @@ void	render(t_data *data, t_list *rays, void *mlx)
 		rays = rays->next;
 		i++;
 	}
+	minimap(data);
+}
+
+int	create_images(t_data *data)
+{
+	data->scene = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+	if (!data->scene)
+		return (0); //print error
+	if (mlx_image_to_window(data->mlx, data->scene, 0, 0) < 0)
+		return (0);
+	data->minimap = mlx_new_image(data->mlx, WIDTH / MINI_FRAC, HEIGHT / MINI_FRAC);
+	if (!data->minimap)
+		return (0); //print error
+	if (mlx_image_to_window(data->mlx, data->minimap, 0, 0) < 0)
+		return (0);
+	return (1);
+}
+
+void	minimap(t_data *data)
+{
+	t_vector	map;
+	int			i;
+	int			j;
+	int			cam_w;
+	int			cam_h;
+
+	cam_w = WIDTH / MINI_FRAC;
+	cam_h = HEIGHT / MINI_FRAC;
+	i = 0;
+	while (i < cam_w) //mirar rendimiento
+	{
+		map.x = data->player.position.x + (i + 1 - (double)cam_w / 2) / MINI_TILE;
+		j = 0;
+		while (j < cam_h)
+		{
+			map.y = data->player.position.y + (j + 1 - (double)cam_h / 2) / MINI_TILE;
+			mlx_put_pixel(data->minimap, i, j, minimap_color(map, data->map));
+			j++;
+		}
+		i++;
+	}
+	draw_player(cam_w, cam_h, data->minimap);
+}
+
+void	draw_player(int cam_w, int cam_h, mlx_image_t *img)
+{
+	int	player_size;
+	int	i;
+	int j;
+
+	player_size = MINI_TILE / 2;
+	i = (cam_w - player_size) / 2;
+	while (i < (cam_w + player_size) / 2)
+	{
+		j = (cam_h - player_size) / 2;
+		while (j < (cam_h + player_size) / 2)
+		{
+			mlx_put_pixel(img, i, j, MINI_PLAY_COL);
+			j++;
+		}
+		i++;
+	}
+}
+
+int	minimap_color(t_vector map_coord, char **map)
+{
+	char	tile;
+
+	if (map_coord.x < 0 || map_coord.y < 0)
+		return (MINI_VOID_COL);
+	if (map_coord.y > len_2d_array(map))
+		return (MINI_VOID_COL);
+	if (map_coord.x > ft_strlen(map[(int)map_coord.y]))
+		return (MINI_VOID_COL);
+	tile = map[(int)map_coord.y][(int)map_coord.x];
+	if (tile == '0')
+		return (MINI_FLOO_COL);
+	if (tile == '1')
+		return (MINI_WALL_COL);	
+	return (MINI_VOID_COL);
+}
+
+int	len_2d_array(char **array)
+{
+	int	len;
+
+	len = 0;
+	while (array[len])
+		len++;
+	return (len);
 }
 
 void	draw_a_ray(t_ray *ray, int col, void *img, t_texture_paths colors)
