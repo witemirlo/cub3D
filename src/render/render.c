@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:29:05 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/24 12:57:40 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/25 10:08:56 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	create_images(t_data *data)
 	data->minimap = mlx_new_image(data->mlx, WIDTH / MINI_FRAC, HEIGHT / MINI_FRAC);
 	if (!data->minimap)
 		return (0); //print error
-	if (mlx_image_to_window(data->mlx, data->minimap, 0, 0) < 0)
+	if (mlx_image_to_window(data->mlx, data->minimap, MINI_TILE, MINI_TILE) < 0)
 		return (0);
 	return (1);
 }

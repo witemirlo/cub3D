@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 08:56:16 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/23 11:37:43 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/25 10:06:57 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	keyhook(mlx_key_data_t keydata, void* param)
 
 	if (keydata.key == MLX_KEY_ESCAPE)
 		closehook(param);
+	if (keydata.action == MLX_RELEASE)
+		return ;
 	if (!sin_r && !cos_r)
 		get_trig(&sin_r, &cos_r);
 	player = &((t_data *)param)->player;
