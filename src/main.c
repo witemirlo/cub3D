@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 14:35:49 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/24 12:18:23 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/25 10:25:53 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	main(int argc, char *argv[])
 	mlx_key_hook(mlx, keyhook, &data);
 	mlx_loop_hook(mlx, draw, &data);
 	mlx_close_hook(mlx, closehook, &data);
+	mlx_cursor_hook(mlx, cursorhook, &data);
 	mlx_loop(mlx);
 	return (0);
 }

@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks.h                                            :+:      :+:    :+:   */
+/*   cursorhook.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/20 08:56:27 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/25 10:45:41 by psacrist         ###   ########.fr       */
+/*   Created: 2024/07/25 10:25:24 by psacrist          #+#    #+#             */
+/*   Updated: 2024/07/25 10:45:45 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HOOKS_H
-# define HOOKS_H
+#include "hooks.h"
+#include "MLX42.h"
+#include "cub3d.h"
 
-# define MY_PI 3.14159265358979323846
-# define ROT_FACTOR 48
-# define MV_FACTOR 0.2
+void	cursorhook(double xpos, double ypos, void *param)
+{
+	mlx_key_data_t	keydata;
 
-# include "MLX42.h"
-
-void	keyhook(mlx_key_data_t keydata, void *param);
-void	closehook(void *param);
-void	cursorhook(double xpos, double ypos, void *param);
-
-#endif
+	keydata.modifier = 0;
+	keydata.os_key = 0;
+	keydata.action = MLX_PRESS;
+	(void)ypos;
+	if (xpos > 3 * WIDTH / 4)
+		keydata.key = MLX_KEY_RIGHT;
+	else if (xpos < WIDTH / 4)
+		keydata.key = MLX_KEY_LEFT;
+	else
+		return ;
+	keyhook(keydata, param);
+}

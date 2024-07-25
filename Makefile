@@ -2,7 +2,7 @@ NAME = cub3D
 
 CC = cc
 
-CFLAGS  = -Wall -Wextra -Werror -pedantic -O0 -g3 -fsanitize=leak,address#-fanalyzer
+CFLAGS  = -Wall -Wextra -Werror -pedantic -O0 -g3 #-fsanitize=leak,address#-fanalyzer
 CPPFLAGS = -I include/ -I lib/libft/ -I lib/MLX42/include/MLX42/
 LIBRARY = -L lib/libft/ -lft -L lib/MLX42/build/ -lmlx42 -ldl -lglfw -pthread -lm
 
@@ -34,7 +34,8 @@ SRC = src/main.c\
 	  src/raycaster/ray_utils.c\
 	  src/render/render.c\
 	  src/hooks/keyhook.c\
-	  src/hooks/closehook.c
+	  src/hooks/closehook.c\
+	  src/hooks/cursorhook.c
 
 # COLORS -----------------------------------------------------------------------
 BLACK  	= \033[1;30m
