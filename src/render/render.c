@@ -6,13 +6,14 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:29:05 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/25 10:08:56 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/07/28 16:52:05 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
 #include "cub3d.h"
 #include "parser.h"
+#include <math.h>
 
 void	draw_a_ray(t_ray *ray, int col, void *img, t_texture_paths colors);
 int		select_color(t_ray *ray, int wall_y);
@@ -76,7 +77,8 @@ void	minimap(t_data *data)
 		while (j < cam_h)
 		{
 			map.y = data->player.position.y + (j + 1 - (double)cam_h / 2) / MINI_TILE;
-			mlx_put_pixel(data->minimap, i, j, minimap_color(map, data->map));
+			//if (pow(i - cam_w / 2, 2) + pow(j - cam_h / 2, 2) <= pow(cam_h / 2, 2)) //uncomment this to make a circle
+				mlx_put_pixel(data->minimap, i, j, minimap_color(map, data->map));
 			j++;
 		}
 		i++;
