@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:29:05 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/25 10:08:56 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/08/01 17:41:07 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,6 +174,7 @@ int	select_color(t_ray *ray, int wall_y)
 	tex_y = (double)ray->wall_tex->height / (double)ray->wall_len * (double)wall_y;
 	pixel_index = (tex_y * ray->wall_tex->width + tex_x) * ray->wall_tex->bytes_per_pixel;
 	i = 0;
+	color = 0;
 	while (i < ray->wall_tex->bytes_per_pixel)
 	{
 		color <<= 8;
