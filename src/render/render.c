@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:29:05 by psacrist          #+#    #+#             */
-/*   Updated: 2024/08/01 17:41:07 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/06 16:08:01 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int	minimap_color(t_vector map_coord, char **map)
 {
 	char	tile;
 
-	if (map_coord.x < 0 || map_coord.y < 0)
+	if (map_coord.x <= 0 || map_coord.y <= 0)
 		return (MINI_VOID_COL);
 	if (map_coord.y > len_2d_array(map))
 		return (MINI_VOID_COL);
