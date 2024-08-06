@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:46:28 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/08/06 17:24:01 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/06 18:39:08 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,9 @@ t_error_flags	check_map_closed(char **map)
 
 static int	check_map_surrounding(char **map, size_t i, size_t j)
 {
-	ft_putstr_fd("DEBUG FROM CHECK_MAP_CLOSED: ", 2);
-	ft_putendl_fd(map[i], 2);
-
 	if (ft_strchr("0NSEW", map[i][j]))
 	{
-		if (j == 0 || j == (ft_strlen(map[i] - 1))
-			|| i == 0)
+		if (j == 0 || j == ft_strlen(map[i]) - 1 || i == 0)
 			return (0);
 		else if (j
 			&& map[i][j - 1] == ' ')
