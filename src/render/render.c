@@ -92,9 +92,13 @@ void	draw_player(int cam_w, int cam_h, mlx_image_t *img)
 
 	player_size = MINI_TILE / 2;
 	i = (cam_w - player_size) / 2;
+	if (i < 0)
+		return ;
 	while (i < (cam_w + player_size) / 2)
 	{
 		j = (cam_h - player_size) / 2;
+		if (j < 0)
+			return ;
 		while (j < (cam_h + player_size) / 2)
 		{
 			mlx_put_pixel(img, i, j, MINI_PLAY_COL);
