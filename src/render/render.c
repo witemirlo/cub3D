@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:29:05 by psacrist          #+#    #+#             */
-/*   Updated: 2024/08/06 16:08:01 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/08 18:35:33 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 void	draw_a_ray(t_ray *ray, int col, void *img, t_texture_paths colors);
 int		select_color(t_ray *ray, int wall_y);
 void	minimap(t_data *data);
-int	minimap_color(t_vector map_coord, char **map);
-int	len_2d_array(char **array);
-int	create_images(t_data *data);
+int		minimap_color(t_vector map_coord, char **map);
+int		len_2d_array(char **array);
+int		create_images(t_data *data);
 void	draw_player(int cam_w, int cam_h, mlx_image_t *img);
 
 void	render(t_data *data, t_list *rays)
@@ -138,9 +138,9 @@ int	len_2d_array(char **array)
 
 void	draw_a_ray(t_ray *ray, int col, void *img, t_texture_paths colors)
 {
-	int				start;
-	int				end;
-	int				i;
+	int	start;
+	int	end;
+	int	i;
 
 	start = (HEIGHT - ray->wall_len) / 2;
 	end = start + ray->wall_len;
