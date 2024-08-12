@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 15:50:58 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/09 16:55:42 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/12 17:57:11 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static int	set_color(char const *data, int *color)
 	i = 0;
 	while (splited[i])
 	{
-		tmp = ft_strtrim(splited[i++], " ");
+		tmp = ft_strtrim(splited[i++], " \t\v\n");
 		if (!strisnum(tmp))
 			return (free(tmp), clear_2d_array(&splited), 0);
 		color_tmp = atoi(tmp);
