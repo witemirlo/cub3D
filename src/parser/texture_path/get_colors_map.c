@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 15:50:58 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/08/12 18:26:10 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/12 22:47:04 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 static t_list	*get_key(t_list *file, char const *key);
 static int		set_color(char const *data, int *color);
-int				check_n_colors(char const *data);
+static int		check_n_colors(char const *data);
 
 int	get_colors_map(t_list *file, t_texture_paths *texture_paths)
 {
@@ -86,7 +86,7 @@ static int	set_color(char const *data, int *color)
 	return (clear_2d_array(&splited), 1);
 }
 
-int	check_n_colors(char const *data)
+static int	check_n_colors(char const *data)
 {
 	int	n;
 
