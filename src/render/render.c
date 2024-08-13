@@ -6,19 +6,19 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:29:05 by psacrist          #+#    #+#             */
-/*   Updated: 2024/08/08 18:35:33 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/13 14:31:37 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
 #include "cub3d.h"
 #include "parser.h"
+#include "libft.h"
 
 void	draw_a_ray(t_ray *ray, int col, void *img, t_texture_paths colors);
 int		select_color(t_ray *ray, int wall_y);
 void	minimap(t_data *data);
 int		minimap_color(t_vector map_coord, char **map);
-int		len_2d_array(char **array);
 int		create_images(t_data *data);
 void	draw_player(int cam_w, int cam_h, mlx_image_t *img);
 
@@ -114,7 +114,7 @@ int	minimap_color(t_vector map_coord, char **map)
 
 	if (map_coord.x <= 0 || map_coord.y <= 0)
 		return (MINI_VOID_COL);
-	if (map_coord.y > len_2d_array(map))
+	if (map_coord.y > size_2d_array((char const**)map))
 		return (MINI_VOID_COL);
 	if (map_coord.x > ft_strlen(map[(int)map_coord.y]))
 		return (MINI_VOID_COL);
@@ -124,16 +124,6 @@ int	minimap_color(t_vector map_coord, char **map)
 	if (tile == '1')
 		return (MINI_WALL_COL);	
 	return (MINI_VOID_COL);
-}
-
-int	len_2d_array(char **array)
-{
-	int	len;
-
-	len = 0;
-	while (array[len])
-		len++;
-	return (len);
 }
 
 void	draw_a_ray(t_ray *ray, int col, void *img, t_texture_paths colors)
