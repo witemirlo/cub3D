@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:29:05 by psacrist          #+#    #+#             */
-/*   Updated: 2024/08/13 14:42:06 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/13 14:46:35 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 #include "parser.h"
 #include "libft.h"
 
-void	draw_a_ray(t_ray *ray, int col, void *img, t_texture_paths colors);
-int		select_color(t_ray *ray, int wall_y);
-int		create_images(t_data *data);
+static void	draw_a_ray(t_ray *ray, int col, void *img, t_texture_paths colors);
+static int		select_color(t_ray *ray, int wall_y);
+static int		create_images(t_data *data);
 
 void	render(t_data *data, t_list *rays)
 {
@@ -40,7 +40,7 @@ void	render(t_data *data, t_list *rays)
 	minimap(data);
 }
 
-int	create_images(t_data *data)
+static int	create_images(t_data *data)
 {
 	data->scene = mlx_new_image(data->mlx, WIDTH, HEIGHT);
 	if (!data->scene)
@@ -56,7 +56,7 @@ int	create_images(t_data *data)
 	return (1);
 }
 
-void	draw_a_ray(t_ray *ray, int col, void *img, t_texture_paths colors)
+static void	draw_a_ray(t_ray *ray, int col, void *img, t_texture_paths colors)
 {
 	int	start;
 	int	end;
@@ -87,7 +87,7 @@ void	draw_a_ray(t_ray *ray, int col, void *img, t_texture_paths colors)
 	}
 }
 
-int	select_color(t_ray *ray, int wall_y)
+static int	select_color(t_ray *ray, int wall_y)
 {
 	int	tex_x;
 	int	tex_y;

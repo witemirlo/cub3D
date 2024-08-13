@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 14:41:20 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/08/13 14:45:06 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/13 14:47:29 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "render.h"
 #include "libft.h"
 
-static int		minimap_color(t_vector map_coord, char **map);
+static int	minimap_color(t_vector map_coord, char **map);
 static void	draw_player(int cam_w, int cam_h, mlx_image_t *img);
 
 void	minimap(t_data *data)
