@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:29:05 by psacrist          #+#    #+#             */
-/*   Updated: 2024/08/13 14:31:37 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/13 14:39:05 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ int	create_images(t_data *data)
 		return (0); //print error
 	if (mlx_image_to_window(data->mlx, data->scene, 0, 0) < 0)
 		return (0);
-	data->minimap = mlx_new_image(data->mlx, WIDTH / MINI_FRAC, HEIGHT / MINI_FRAC);
+	data->minimap = mlx_new_image(data->mlx, WIDTH / MINI_FRAC, \
+		HEIGHT / MINI_FRAC);
 	if (!data->minimap)
 		return (0); //print error
 	if (mlx_image_to_window(data->mlx, data->minimap, MINI_TILE, MINI_TILE) < 0)
@@ -71,11 +72,13 @@ void	minimap(t_data *data)
 	i = 0;
 	while (i < cam_w) //mirar rendimiento
 	{
-		map.x = data->player.position.x + (i + 1 - (double)cam_w / 2) / MINI_TILE;
+		map.x = data->player.position.x + \
+			(i + 1 - (double)cam_w / 2) / MINI_TILE;
 		j = 0;
 		while (j < cam_h)
 		{
-			map.y = data->player.position.y + (j + 1 - (double)cam_h / 2) / MINI_TILE;
+			map.y = data->player.position.y + \
+				(j + 1 - (double)cam_h / 2) / MINI_TILE;
 			mlx_put_pixel(data->minimap, i, j, minimap_color(map, data->map));
 			j++;
 		}
@@ -88,7 +91,7 @@ void	draw_player(int cam_w, int cam_h, mlx_image_t *img)
 {
 	int	player_size;
 	int	i;
-	int j;
+	int	j;
 
 	player_size = MINI_TILE / 2;
 	i = (cam_w - player_size) / 2;
@@ -114,7 +117,7 @@ int	minimap_color(t_vector map_coord, char **map)
 
 	if (map_coord.x <= 0 || map_coord.y <= 0)
 		return (MINI_VOID_COL);
-	if (map_coord.y > size_2d_array((char const**)map))
+	if (map_coord.y > size_2d_array((char const **)map))
 		return (MINI_VOID_COL);
 	if (map_coord.x > ft_strlen(map[(int)map_coord.y]))
 		return (MINI_VOID_COL);
@@ -122,7 +125,7 @@ int	minimap_color(t_vector map_coord, char **map)
 	if (tile == '0')
 		return (MINI_FLOO_COL);
 	if (tile == '1')
-		return (MINI_WALL_COL);	
+		return (MINI_WALL_COL);
 	return (MINI_VOID_COL);
 }
 
@@ -146,7 +149,8 @@ void	draw_a_ray(t_ray *ray, int col, void *img, t_texture_paths colors)
 	}
 	while (i < end)
 	{
-		mlx_put_pixel(img, col, i, select_color(ray, i - (HEIGHT - ray->wall_len) / 2));
+		mlx_put_pixel(img, col, i, \
+			select_color(ray, i - (HEIGHT - ray->wall_len) / 2));
 		i++;
 	}
 	while (end < HEIGHT)
@@ -165,8 +169,10 @@ int	select_color(t_ray *ray, int wall_y)
 	int	i;
 
 	tex_x = ray->wall_tex->width * ray->wall_x;
-	tex_y = (double)ray->wall_tex->height / (double)ray->wall_len * (double)wall_y;
-	pixel_index = (tex_y * ray->wall_tex->width + tex_x) * ray->wall_tex->bytes_per_pixel;
+	tex_y = (double)ray->wall_tex->height / (double)ray->wall_len \
+		* (double)wall_y;
+	pixel_index = (tex_y * ray->wall_tex->width + tex_x) \
+		* ray->wall_tex->bytes_per_pixel;
 	i = 0;
 	color = 0;
 	while (i < ray->wall_tex->bytes_per_pixel)
