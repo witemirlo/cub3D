@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:29:05 by psacrist          #+#    #+#             */
-/*   Updated: 2024/08/13 14:46:35 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/13 14:54:07 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 #include "libft.h"
 
 static void	draw_a_ray(t_ray *ray, int col, void *img, t_texture_paths colors);
-static int		select_color(t_ray *ray, int wall_y);
-static int		create_images(t_data *data);
+static int	select_color(t_ray *ray, int wall_y);
+static int	create_images(t_data *data);
 
 void	render(t_data *data, t_list *rays)
 {
@@ -81,10 +81,7 @@ static void	draw_a_ray(t_ray *ray, int col, void *img, t_texture_paths colors)
 		i++;
 	}
 	while (end < HEIGHT)
-	{
-		mlx_put_pixel(img, col, end, colors.floor);
-		end++;
-	}
+		mlx_put_pixel(img, col, end++, colors.floor);
 }
 
 static int	select_color(t_ray *ray, int wall_y)
