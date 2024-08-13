@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyhook.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 08:56:16 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/25 10:06:57 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/08/13 15:06:31 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	more_keys(mlx_key_data_t keydata, t_data *param);
 void	get_trig(double *my_sin, double *my_cos);
 void	new_camera(t_player *player);
 
-void	keyhook(mlx_key_data_t keydata, void* param)
+void	keyhook(mlx_key_data_t keydata, void *param)
 {
 	static double	sin_r;
 	static double	cos_r;
@@ -43,7 +43,7 @@ void	keyhook(mlx_key_data_t keydata, void* param)
 	else if (keydata.key == MLX_KEY_LEFT)
 	{
 		player->direction.x = cos_r * old_dir.x + sin_r * old_dir.y;
-		player->direction.y = - sin_r * old_dir.x + cos_r * old_dir.y;
+		player->direction.y = -sin_r * old_dir.x + cos_r * old_dir.y;
 		new_camera(player);
 	}
 	else

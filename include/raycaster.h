@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 09:48:50 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/24 09:46:24 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/08/13 15:02:24 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct s_ray
 	t_vector		advance;
 }	t_ray;
 
-t_list	*raycaster(t_player player, char **map, t_textures tex);
+t_list		*raycaster(t_player player, char **map, t_textures tex);
 
 t_vector	first_iteration(t_player player, t_ray ray, t_vector move);
 t_vector	get_ray_dir(int ray_num, t_player player);

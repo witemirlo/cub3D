@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   closehook.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 11:07:50 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/25 10:24:40 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/08/13 15:05:17 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 void	closehook(void *param)
 {
-	t_data *data;
+	t_data	*data;
 
 	data = param; //a lo mejor aqui solo hay que cerrar la imagen y poner el resto en main
 	clear_parser(data);
