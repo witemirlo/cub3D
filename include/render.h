@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 09:39:10 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/24 12:35:04 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/08/13 14:44:49 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@
 # define MINI_PLAY_COL 0xFF0000FF
 
 void	render(t_data *data, t_list *rays);
+void	minimap(t_data *data);
 
 #endif

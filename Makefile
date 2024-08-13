@@ -32,6 +32,7 @@ SRC = src/main.c\
 	  src/texturer/texturer.c\
 	  src/raycaster/raycaster.c\
 	  src/raycaster/ray_utils.c\
+	  src/render/minimap.c\
 	  src/render/render.c\
 	  src/hooks/keyhook.c\
 	  src/hooks/closehook.c\
