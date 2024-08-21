@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 15:50:58 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/09 16:55:42 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/12 22:47:04 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 static t_list	*get_key(t_list *file, char const *key);
 static int		set_color(char const *data, int *color);
+static int		check_n_colors(char const *data);
 
 int	get_colors_map(t_list *file, t_texture_paths *texture_paths)
 {
@@ -64,15 +65,15 @@ static int	set_color(char const *data, int *color)
 	char	**splited;
 	char	*tmp;
 
+	if (!check_n_colors(data))
+		return (0);
 	splited = ft_split(data, ',');
 	if (!splited)
-		return (perror(RED"Error"NC), 0);
-	if (size_2d_array((char const **)splited) != 3)
 		return (clear_2d_array(&splited), 0);
 	i = 0;
 	while (splited[i])
 	{
-		tmp = ft_strtrim(splited[i++], " ");
+		tmp = ft_strtrim(splited[i++], " \t\v\n");
 		if (!strisnum(tmp))
 			return (free(tmp), clear_2d_array(&splited), 0);
 		color_tmp = atoi(tmp);
@@ -83,4 +84,26 @@ static int	set_color(char const *data, int *color)
 	}
 	*color = ((*color << 8) | 0xff);
 	return (clear_2d_array(&splited), 1);
+}
+
+static int	check_n_colors(char const *data)
+{
+	int	n;
+
+	n = 0;
+	while (data)
+	{
+		if (ft_isspace(*data) || ft_isdigit(*data))
+			data++;
+		else if (*data == ',')
+		{
+			n++;
+			data++;
+		}
+		else
+			break ;
+	}
+	if (n != 2)
+		return (0);
+	return (1);
 }

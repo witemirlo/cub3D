@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 14:35:49 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/25 10:25:53 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/08/13 15:04:05 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int	main(int argc, char *argv[])
 	void	*mlx;
 
 	if (argc < 2)
-		return (ft_putendl_fd(RED "Error: Too few arguments" NC, 2), EXIT_FAILURE);
+		return (ft_putendl_fd(RED "Error: Too few arguments" NC, 2), \
+			EXIT_FAILURE);
 	ft_memset(&data, 0, sizeof(t_data));
 	if (!parser(&data, argv[1]))
 		return (EXIT_FAILURE);

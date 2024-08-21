@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   goto_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jberdugo <jberdugo@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:51:59 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/05 11:52:41 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/06 16:53:26 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_list	*goto_map(t_list *raw_list)
 		tmp = (char *)(raw_list->content);
 		if (ft_strlen(tmp) > 0)
 		{
-			while (*tmp != '\0' && ft_strchr(" 1NSEW", *tmp))
+			while (*tmp != '\0' && ft_strchr(" 01NSEW", *tmp))
 				tmp++;
 			if (*tmp == '\0')
 				break ;
