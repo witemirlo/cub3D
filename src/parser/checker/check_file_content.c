@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:42:25 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/08/21 17:15:46 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/21 19:31:28 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,14 @@ int	check_file_content(t_list *file)
 
 	mask = 0;
 	mask |= check_correct_order(file);
-	mask |= check_all_textures(file);
+	mask |= check_all_textures(file);// TODO: check si tiene puerta o sprite
 	mask |= check_unique_textures(file);
 	mask |= check_correct_data(file);
-	mask |= check_map(goto_map(file));
-	if (mask != ALL_TEXTURES)
+	mask |= check_map(goto_map(file));// TODO: check de si tiene puerta o no
+	if ((mask & FAILURE) == FAILURE)
+	// TODO: ((mask & ALL_TEXTURES) != ALL_TEXTURES) && !((mask & FAILURE) == FAILURE)
+	// TODO: checkear si existe textura de puerta E instancia de puerta
+	// TODO: checkear si existe sprite E instancia de sprite
 	{
 		print_parse_error(mask);
 		return (0);
@@ -133,7 +136,7 @@ static t_error_flags	check_unique_textures(t_list *file)
 			}
 		}
 		if (count > 1)
-			return (REPEATED_TEXTURE);
+			return (FAILURE | REPEATED_TEXTURE);
 		i++;
 	}
 	return (0);
