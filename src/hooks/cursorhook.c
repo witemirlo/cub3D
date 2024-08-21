@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 10:25:24 by psacrist          #+#    #+#             */
-/*   Updated: 2024/07/25 11:18:21 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/08/21 14:19:22 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	cursorhook(double xpos, double ypos, void *param)
 	keydata.os_key = 0;
 	keydata.action = MLX_PRESS;
 	(void)ypos;
-	if (xpos > 3 * WIDTH / 4 && xpos > last_x) //tambien podria ser solo el last_x
+	if (xpos > last_x) //tambien podria ser solo el last_x
 		keydata.key = MLX_KEY_RIGHT;
-	else if (xpos < WIDTH / 4 && xpos < last_x)
+	else if (xpos < last_x)
 		keydata.key = MLX_KEY_LEFT;
 	else
 	{

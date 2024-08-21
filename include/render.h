@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 09:39:10 by psacrist          #+#    #+#             */
-/*   Updated: 2024/08/13 14:44:49 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/21 14:55:50 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@
 # define MINI_H 5	
 # define MINI_W 10
 # define MINI_TILE 10
-# define MINI_WALL_COL 0x00FF00FF
-# define MINI_FLOO_COL 0x0000FFFF
-# define MINI_VOID_COL 0x00000080
-# define MINI_PLAY_COL 0xFF0000FF
+# define MINI_WALL_COL 0x7A9CC6FF
+# define MINI_FLOO_COL 0x9FBBCCFF
+# define MINI_VOID_COL 0x9FBBCC80
+# define MINI_PLAY_COL 0xBDE4A7FF
 
 void	render(t_data *data, t_list *rays);
 void	minimap(t_data *data);
