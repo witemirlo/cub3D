@@ -19,7 +19,7 @@ char	**generate_map(t_list *list_map)
 	char	*tmp;
 	size_t	i;
 
-	array_map = ft_calloc((ft_lstsize(list_map) + 1), sizeof(char **));
+	array_map = ft_calloc((ft_lstsize(list_map) + 1), sizeof(char *));
 	if (!array_map)
 		return (NULL);
 	i = 0;
