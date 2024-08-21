@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 12:24:46 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/10 14:53:13 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/21 17:12:41 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ t_error_flags	check_map(t_list *map)
 
 static t_error_flags	check_map_chars(char **map)
 {
-	const char	allowed_chars[] = " 01NSEW";
 	size_t		i;	
 	size_t		j;	
 
@@ -47,7 +46,7 @@ static t_error_flags	check_map_chars(char **map)
 		j = 0;
 		while (map[i][j])
 		{
-			if (ft_strchr(allowed_chars, map[i][j]) == NULL)
+			if (ft_strchr(MAP_VALID_CHARS, map[i][j]) == NULL)
 				return (FAILURE | FORBIDDEN_MAP);
 			j++;
 		}

@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 18:13:27 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/17 18:53:19 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/21 17:15:46 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static t_error_flags	extract_map(t_list **new_list, t_list *o_list)
 		tmp = (char *)(o_list->content);
 		while (*tmp != '\0')
 		{
-			if (!ft_strrchr(" 01NSEW", *tmp))
+			if (!ft_strrchr(MAP_VALID_CHARS, *tmp))
 				return (FAILURE | BAD_SITE_MAP);
 			tmp++;
 		}
@@ -100,7 +100,7 @@ static void	count_blank_lines(t_list *o_list, int *blank_lines)
 	while (o_list)
 	{
 		tmp = (char *)(o_list->content);
-		while (*tmp && ft_strchr(" 01NSEW", *tmp))
+		while (*tmp && ft_strchr(MAP_VALID_CHARS, *tmp))
 			tmp++;
 		if (*tmp != '\0')
 			break ;

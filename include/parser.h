@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 14:10:55 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/17 18:47:12 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/21 17:11:27 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "libft.h"
 # include "cub3d.h"
 # include "error_flags.h"
+
+# define MAP_VALID_CHARS " 01NSEW"
 
 /******************************************************************************/
 typedef struct s_texture_paths

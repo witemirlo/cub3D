@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   generate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jberdugo <jberdugo@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:42:48 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/05 13:53:58 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/21 17:15:46 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	**generate_map(t_list *list_map)
 	while (list_map)
 	{
 		tmp = (char *)(list_map->content);
-		while (*tmp && ft_strchr(" 01NSEW", *tmp))
+		while (*tmp && ft_strchr(MAP_VALID_CHARS, *tmp))
 			tmp++;
 		if (*tmp != '\0')
 			break ;

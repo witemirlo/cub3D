@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:42:25 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/17 18:48:00 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/21 17:15:46 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void printData(t_list *data)
 
 	while (data) {
 		tmp = (char *)(data->content);
-		while (*tmp && ft_strchr(" 01NSEW", *tmp))
+		while (*tmp && ft_strchr(MAP_VALID_CHARS, *tmp))
 			tmp++;
 		if (*tmp != '\0')
 			break;
@@ -151,7 +151,7 @@ static t_error_flags	check_correct_order(t_list *file)
 		tmp = (char *)(file->content);
 		while (*tmp != '\0')
 		{
-			if (!ft_strrchr(" 01NSEW", *tmp))
+			if (!ft_strrchr(MAP_VALID_CHARS, *tmp))
 				return (FAILURE | BAD_SITE_MAP);
 			tmp++;
 		}
