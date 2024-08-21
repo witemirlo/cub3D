@@ -6,12 +6,13 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:42:25 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/08/21 19:31:28 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/21 19:54:25 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "parser.h"
+#include "error_flags.h"
 
 static t_error_flags	check_correct_order(t_list *file);
 static t_error_flags	check_all_textures(t_list *file);
@@ -80,7 +81,6 @@ int	check_file_content(t_list *file)
 	mask |= check_correct_data(file);
 	mask |= check_map(goto_map(file));// TODO: check de si tiene puerta o no
 	if ((mask & FAILURE) == FAILURE)
-	// TODO: ((mask & ALL_TEXTURES) != ALL_TEXTURES) && !((mask & FAILURE) == FAILURE)
 	// TODO: checkear si existe textura de puerta E instancia de puerta
 	// TODO: checkear si existe sprite E instancia de sprite
 	{
@@ -110,6 +110,10 @@ static t_error_flags	check_all_textures(t_list *file)
 		mask |= F_CEILING;
 	if ((mask & ALL_TEXTURES) != ALL_TEXTURES)
 		mask |= FAILURE;
+	if (search_key(file, "DOOR"))
+		mask |= F_DOOR;
+	if (search_key(file, "SPRITE"))
+		mask |= F_SPRITE;
 	return (mask);
 }
 
