@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 14:41:20 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/08/21 20:09:35 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/08/22 12:26:36 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ void	minimap(t_data *data)
 	t_vector	map;
 	int			i;
 	int			j;
-	int			cam_w;
+	int			cam_w; //si es círculo, quita una
 	int			cam_h;
 
-	cam_w = WIDTH / MINI_FRAC;
-	cam_h = HEIGHT / MINI_FRAC;
+	cam_w = HEIGHT / MINI_FRAC;
+	cam_h = cam_w;
 	i = 0;
 	while (i < cam_w) //mirar rendimiento
 	{
