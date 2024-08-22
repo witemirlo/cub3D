@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 12:24:46 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/10 14:53:13 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/22 17:20:10 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,23 +37,28 @@ t_error_flags	check_map(t_list *map)
 
 static t_error_flags	check_map_chars(char **map)
 {
-	const char	allowed_chars[] = " 01NSEW";
-	size_t		i;	
-	size_t		j;	
+	t_error_flags	mask;
+	size_t			i;	
+	size_t			j;	
 
+	mask = 0;
 	i = 0;
 	while (map[i])
 	{
 		j = 0;
 		while (map[i][j])
 		{
-			if (ft_strchr(allowed_chars, map[i][j]) == NULL)
+			if (ft_strchr(MAP_VALID_CHARS, map[i][j]) == NULL)
 				return (FAILURE | FORBIDDEN_MAP);
+			if (map[i][j] == 'A')
+				mask |= F_SPRITE_M;
+			else if (map[i][j] == 'C' || map[i][j] == 'O')
+				mask |= F_DOOR_M;
 			j++;
 		}
 		i++;
 	}
-	return (0);
+	return (mask);
 }
 
 static t_error_flags	check_map_unique_player(char **map)
