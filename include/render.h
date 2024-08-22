@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 09:39:10 by psacrist          #+#    #+#             */
-/*   Updated: 2024/08/22 15:11:56 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/08/22 17:31:06 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # define MINI_VOID_COL 0x9FBBCC80
 # define MINI_PLAY_COL 0xBDE4A7FF
 
-void	render(t_data *data, t_list *rays);
+void	render_walls(t_data *data, t_list *rays);
 void	minimap(t_data *data);
 
 #endif

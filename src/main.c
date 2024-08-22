@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 14:35:49 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/08/13 15:04:05 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/22 17:31:23 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	draw(void *param)
 	rays = raycaster(data->player, data->map, *data->textures);
 	if (!rays)
 		exit(EXIT_FAILURE); //malloc
-	render(data, rays);
+	render_walls(data, rays);
+	minimap(data);
 	ft_lstclear(&rays, free);
 }

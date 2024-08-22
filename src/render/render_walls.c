@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   render_walls.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:29:05 by psacrist          #+#    #+#             */
-/*   Updated: 2024/08/22 12:26:11 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/08/22 17:31:13 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	draw_a_ray(t_ray *ray, int col, void *img, t_texture_paths colors);
 static int	select_color(t_ray *ray, int wall_y);
 static int	create_images(t_data *data);
 
-void	render(t_data *data, t_list *rays)
+void	render_walls(t_data *data, t_list *rays)
 {
 	t_ray		*ray;
 	int			i;
@@ -37,7 +37,6 @@ void	render(t_data *data, t_list *rays)
 		rays = rays->next;
 		i++;
 	}
-	minimap(data);
 }
 
 static int	create_images(t_data *data)
