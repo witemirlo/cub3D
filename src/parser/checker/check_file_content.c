@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:42:25 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/08/21 19:54:25 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/22 14:28:37 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	check_file_content(t_list *file)
 
 	mask = 0;
 	mask |= check_correct_order(file);
-	mask |= check_all_textures(file);// TODO: check si tiene puerta o sprite
+	mask |= check_all_textures(file);
 	mask |= check_unique_textures(file);
 	mask |= check_correct_data(file);
 	mask |= check_map(goto_map(file));// TODO: check de si tiene puerta o no
@@ -120,19 +120,19 @@ static t_error_flags	check_all_textures(t_list *file)
 /* check that only exists one instance of each texture instrucction */
 static t_error_flags	check_unique_textures(t_list *file)
 {
-	const char	str[6][3] = {"NO", "SO", "WE", "EA", "F", "C"};
+	const char	s[8][7] = {"NO", "SO", "WE", "EA", "F", "C", "DOOR", "SPRITE"};
 	int			i;
 	int			count;
 	t_list		*tmp;
 
 	i = 0;
-	while (i < 6)
+	while (i < 8)
 	{
 		count = 0;
 		tmp = file;
 		while (tmp)
 		{
-			tmp = search_key(tmp, str[i]);
+			tmp = search_key(tmp, s[i]);
 			if (tmp)
 			{
 				count++;
