@@ -6,13 +6,15 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 15:10:26 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/15 11:26:43 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/22 18:37:07 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "texturer.h"
 #include "MLX42.h"
 #include <stdlib.h>
+
+void	clear_texturer2(t_textures **textures);
 
 void	clear_texturer(t_textures **textures)
 {
@@ -38,6 +40,21 @@ void	clear_texturer(t_textures **textures)
 		mlx_delete_texture((*textures)->east);
 		(*textures)->east = NULL;
 	}
+	clear_texturer2(textures);
 	free(*textures);
 	*textures = NULL;
+}
+
+void	clear_texturer2(t_textures **textures)
+{
+	if ((*textures)->door)
+	{
+		mlx_delete_texture((*textures)->door);
+		(*textures)->door = NULL;
+	}
+	if ((*textures)->sprite)
+	{
+		mlx_delete_texture((*textures)->sprite);
+		(*textures)->sprite = NULL;
+	}
 }
