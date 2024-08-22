@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:54:29 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/08/21 19:56:18 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/22 17:08:30 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,11 @@ mask cheatsheet:
 0000 0000 | 0000 0000 | 0000 0000 | 0010 0000 -> 0x20       -> F_CEILING
 0000 0000 | 0000 0000 | 0000 0000 | 0011 1111 -> 0x3F       -> ALL_TEXTURES
 0000 0000 | 0000 0000 | 0000 0000 | 1000 0000 -> 0x80       -> REPEATED_TEXTURE
+
 0000 0000 | 0000 0000 | 0000 0001 | 0000 0000 -> 0x100      -> F_DOOR
-0000 0000 | 0000 0000 | 0000 0010 | 0000 0000 -> 0x200      -> F_SPRITE
+0000 0000 | 0000 0000 | 0000 0010 | 0000 0000 -> 0x200      -> F_DOOR_TX
+0000 0000 | 0000 0000 | 0000 0100 | 0000 0000 -> 0x400      -> F_SPRITE
+0000 0000 | 0000 0000 | 0000 1000 | 0000 0000 -> 0x800      -> F_SPRITE_TX
 
 0010 0000 | 0000 0000 | 0000 0000 | 0000 0000 -> 0x20000000 -> WRONG_DATA
 0001 0000 | 0000 0000 | 0000 0000 | 0000 0000 -> 0x10000000 -> BAD_SITE_MAP
@@ -51,8 +54,10 @@ typedef enum e_error_flags
 	F_EAST				= 0x8,
 	F_FLOOR				= 0x10,
 	F_CEILING			= 0x20,
-	F_DOOR				= 0X100,
-	F_SPRITE			= 0X200,
+	F_DOOR				= 0x100,
+	F_DOOR_TX			= 0x200,
+	F_SPRITE			= 0x400,
+	F_SPRITE_TX			= 0x800,
 	ALL_TEXTURES		= 0x3F,
 	REPEATED_TEXTURE	= 0X80,
 	WRONG_DATA			= 0x20000000,
@@ -63,6 +68,7 @@ typedef enum e_error_flags
 	REPEATED_PLAYER		= 0x1000000,
 	NO_PLAYER			= 0x800000,
 	MAP_BREAK			= 0x400000,
+
 	SIZE_NORTH			= 0x200000,
 	SIZE_WEST			= 0x100000,
 	SIZE_SOUTH			= 0x80000,
