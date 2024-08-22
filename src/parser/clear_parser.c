@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 18:54:24 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/08/22 18:38:17 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/22 20:01:47 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	clear_parser(t_data *data)
 	free(data->raw_textures->sprite);
 	data->raw_textures->sprite = NULL;
 	free(data->raw_textures);
+	free(data->sprites);
+	data->sprites = NULL;
 	clear_2d_array(&data->map);
 	data->raw_textures = NULL;
 }
