@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 15:39:11 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/17 18:55:52 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/22 17:48:00 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "parser.h"
 
 static void	print_parse_error2(t_error_flags flags);
+static void	print_parse_error3(t_error_flags flags);
 
 void	print_parse_error(t_error_flags flags)
 {
@@ -42,6 +43,7 @@ void	print_parse_error(t_error_flags flags)
 	if ((flags & FORBIDDEN_MAP) == FORBIDDEN_MAP)
 		ft_putendl_fd("The map has forbidden char", 2);
 	print_parse_error2(flags);
+	print_parse_error3(flags);
 }
 
 static void	print_parse_error2(t_error_flags flags)
@@ -54,4 +56,26 @@ static void	print_parse_error2(t_error_flags flags)
 		ft_putendl_fd("There is no player", 2);
 	if ((flags & MAP_BREAK) == MAP_BREAK)
 		ft_putendl_fd("The map is break", 2);
+}
+
+static void	print_parse_error3(t_error_flags flags)
+{
+	if (((flags & DOOR_COMP) != DOOR_COMP) && ((flags & DOOR_COMP) != 0))
+	{
+		if ((flags & F_DOOR) == F_DOOR)
+			ft_putendl_fd
+				("There is a door texture without an instance in the map", 2);
+		else
+			ft_putendl_fd
+				("There is a door instance in the map without texture", 2);
+	}
+	if (((flags & SPRITE_COMP) != SPRITE_COMP) && ((flags & SPRITE_COMP) != 0))
+	{
+		if ((flags & F_SPRITE) == F_SPRITE)
+			ft_putendl_fd
+				("There is a sprite texture without an instance in the map", 2);
+		else
+			ft_putendl_fd
+				("There is a sprite instance in the map without texture", 2);
+	}
 }

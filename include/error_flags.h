@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:54:29 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/08/22 17:08:30 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/22 18:00:32 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@ mask cheatsheet:
 0000 0000 | 0000 0000 | 0000 0000 | 1000 0000 -> 0x80       -> REPEATED_TEXTURE
 
 0000 0000 | 0000 0000 | 0000 0001 | 0000 0000 -> 0x100      -> F_DOOR
-0000 0000 | 0000 0000 | 0000 0010 | 0000 0000 -> 0x200      -> F_DOOR_TX
+0000 0000 | 0000 0000 | 0000 0010 | 0000 0000 -> 0x200      -> F_DOOR_M
+0000 0000 | 0000 0000 | 0000 0011 | 0000 0000 -> 0x300      -> DOOR_COMP
 0000 0000 | 0000 0000 | 0000 0100 | 0000 0000 -> 0x400      -> F_SPRITE
-0000 0000 | 0000 0000 | 0000 1000 | 0000 0000 -> 0x800      -> F_SPRITE_TX
+0000 0000 | 0000 0000 | 0000 1000 | 0000 0000 -> 0x800      -> F_SPRITE_M
+0000 0000 | 0000 0000 | 0000 1100 | 0000 0000 -> 0xC00      -> SPRITE_COMP
 
 0010 0000 | 0000 0000 | 0000 0000 | 0000 0000 -> 0x20000000 -> WRONG_DATA
 0001 0000 | 0000 0000 | 0000 0000 | 0000 0000 -> 0x10000000 -> BAD_SITE_MAP
@@ -55,9 +57,11 @@ typedef enum e_error_flags
 	F_FLOOR				= 0x10,
 	F_CEILING			= 0x20,
 	F_DOOR				= 0x100,
-	F_DOOR_TX			= 0x200,
+	F_DOOR_M			= 0x200,
+	DOOR_COMP			= 0x300,
 	F_SPRITE			= 0x400,
-	F_SPRITE_TX			= 0x800,
+	F_SPRITE_M			= 0x800,
+	SPRITE_COMP			= 0xC00,
 	ALL_TEXTURES		= 0x3F,
 	REPEATED_TEXTURE	= 0X80,
 	WRONG_DATA			= 0x20000000,
@@ -69,10 +73,12 @@ typedef enum e_error_flags
 	NO_PLAYER			= 0x800000,
 	MAP_BREAK			= 0x400000,
 
+	// TODO: borrar
 	SIZE_NORTH			= 0x200000,
 	SIZE_WEST			= 0x100000,
 	SIZE_SOUTH			= 0x80000,
 	SIZE_EAST			= 0x40000,
+
 	FAILURE				= 0x40000000
 }	t_error_flags;
 

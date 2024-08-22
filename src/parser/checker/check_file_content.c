@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:42:25 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/08/22 14:28:37 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/22 17:28:53 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,17 +72,25 @@ printData(file);
 /* check if the file is correct*/
 int	check_file_content(t_list *file)
 {
-	t_error_flags	mask;
+	t_error_flags		mask;
 
 	mask = 0;
 	mask |= check_correct_order(file);
 	mask |= check_all_textures(file);
 	mask |= check_unique_textures(file);
 	mask |= check_correct_data(file);
-	mask |= check_map(goto_map(file));// TODO: check de si tiene puerta o no
+	mask |= check_map(goto_map(file));
 	if ((mask & FAILURE) == FAILURE)
-	// TODO: checkear si existe textura de puerta E instancia de puerta
-	// TODO: checkear si existe sprite E instancia de sprite
+	{
+		print_parse_error(mask);
+		return (0);
+	}
+	if (((mask & DOOR_COMP) != DOOR_COMP) && ((mask & DOOR_COMP) != 0))
+	{
+		print_parse_error(mask);
+		return (0);
+	}
+	if (((mask & SPRITE_COMP) != SPRITE_COMP) && ((mask & SPRITE_COMP) != 0))
 	{
 		print_parse_error(mask);
 		return (0);
