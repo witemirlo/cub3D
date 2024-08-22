@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 18:13:27 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/08/21 17:15:46 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/22 14:31:42 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,16 @@ t_error_flags	check_correct_data(t_list *o_list)
 
 static int	extract_texture_paths(t_list **n_list, t_list *o_list)
 {
-	const char	str[6][3] = {"NO", "SO", "WE", "EA", "F", "C"};
+	const char	s[8][7] = {"NO", "SO", "WE", "EA", "F", "C", "DOOR", "SPRITE"};
 	int			i;
 	t_list		*p;
 	t_list		*node;
 	char		*content;
 
 	i = 0;
-	while (i < 6)
+	while (i < 8)
 	{
-		p = search_key(o_list, str[i]);
+		p = search_key(o_list, s[i]);
 		if (p)
 		{
 			content = ft_strdup(p->content);
