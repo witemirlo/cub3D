@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:54:29 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/08/22 18:00:32 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/22 18:26:50 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,6 @@ typedef enum e_error_flags
 	REPEATED_PLAYER		= 0x1000000,
 	NO_PLAYER			= 0x800000,
 	MAP_BREAK			= 0x400000,
-
-	// TODO: borrar
-	SIZE_NORTH			= 0x200000,
-	SIZE_WEST			= 0x100000,
-	SIZE_SOUTH			= 0x80000,
-	SIZE_EAST			= 0x40000,
-
 	FAILURE				= 0x40000000
 }	t_error_flags;
 
