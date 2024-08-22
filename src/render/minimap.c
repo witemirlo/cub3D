@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 14:41:20 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/08/22 12:26:36 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/08/22 15:15:30 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@
 
 #include <math.h>
 
-static int	minimap_color(t_vector map_coord, char **map);
-static void	draw_player(int cam_w, int cam_h, mlx_image_t *img);
-t_vector	rot_map(t_vector map, t_vector dir, t_vector pos);
+static int		minimap_color(t_vector map_coord, char **map);
+static void		draw_player(int cam_w, int cam_h, mlx_image_t *img);
+static t_vector	rot_map(t_vector map, t_vector dir, t_vector pos);
+static int		door_tile(t_vector map_coord, int tile);
 
 void	minimap(t_data *data)
 {
@@ -50,7 +51,7 @@ void	minimap(t_data *data)
 	draw_player(cam_w, cam_h, data->minimap);
 }
 
-t_vector	rot_map(t_vector map, t_vector dir, t_vector pos)
+static t_vector	rot_map(t_vector map, t_vector dir, t_vector pos)
 {
 	t_vector	centered;
 	t_vector	transformed;
@@ -76,7 +77,28 @@ static int	minimap_color(t_vector map_coord, char **map)
 		return (MINI_FLOO_COL);
 	if (tile == '1')
 		return (MINI_WALL_COL);
+	if (tile == 'C' || tile == 'O')
+		return (door_tile(map_coord, tile));
 	return (MINI_VOID_COL);
+}
+
+static int	door_tile(t_vector map_coord, int tile)
+{
+	int	tile_x;
+	int	tile_y;
+
+	tile_x = (map_coord.x - (int)map_coord.x) * 10;
+	tile_y = (map_coord.y - (int)map_coord.y) * 10;
+
+	if (tile == 'O')
+	{
+		if ((tile_x >= 4 && tile_x <= 6) || (tile_y >= 4 && tile_y <= 6))
+			return  (MINI_FLOO_COL);
+		return (MINI_WALL_COL);
+	}
+	if ((tile_x >= 4 && tile_x <= 6) || (tile_y >= 4 && tile_y <= 6))
+		return  (MINI_WALL_COL);
+	return (MINI_FLOO_COL);
 }
 
 static void	draw_player(int cam_w, int cam_h, mlx_image_t *img)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyhook.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 08:56:16 by psacrist          #+#    #+#             */
-/*   Updated: 2024/08/13 15:06:31 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/22 15:01:03 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 void	more_keys(mlx_key_data_t keydata, t_data *param);
 void	get_trig(double *my_sin, double *my_cos);
 void	new_camera(t_player *player);
+void	door_key(t_data *data);
 
 void	keyhook(mlx_key_data_t keydata, void *param)
 {
@@ -46,8 +47,18 @@ void	keyhook(mlx_key_data_t keydata, void *param)
 		player->direction.y = -sin_r * old_dir.x + cos_r * old_dir.y;
 		new_camera(player);
 	}
+	if (keydata.key == MLX_KEY_SPACE)
+		door_key(param);
 	else
 		more_keys(keydata, (t_data *)param);
+}
+
+void	door_key(t_data *data)
+{
+	if (data->map[(int)(data->player.position.y + data->player.direction.y)][(int)(data->player.position.x + data->player.direction.x)] == 'C')
+		data->map[(int)(data->player.position.y + data->player.direction.y)][(int)(data->player.position.x + data->player.direction.x)] = 'O';
+	else
+		data->map[(int)(data->player.position.y + data->player.direction.y)][(int)(data->player.position.x + data->player.direction.x)] = 'C';
 }
 
 void	more_keys(mlx_key_data_t keydata, t_data *data)
@@ -75,7 +86,8 @@ void	more_keys(mlx_key_data_t keydata, t_data *data)
 		move.x += data->player.camera.x * MV_FACTOR;
 		move.y += data->player.camera.y * MV_FACTOR;
 	}
-	if (data->map[(int)move.y][(int)move.x] == '0')
+	if (data->map[(int)move.y][(int)move.x] == '0'
+		|| data->map[(int)move.y][(int)move.x] == 'O')
 		data->player.position = move;
 }
 
