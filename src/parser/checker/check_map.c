@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 12:24:46 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/08/22 17:20:10 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/24 15:08:11 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ static t_error_flags	check_map_chars(char **map)
 			if (ft_strchr(MAP_VALID_CHARS, map[i][j]) == NULL)
 				return (FAILURE | FORBIDDEN_MAP);
 			if (map[i][j] == 'A')
-				mask |= F_SPRITE_M;
+				mask |= F_SPRITE_MAP;
 			else if (map[i][j] == 'C' || map[i][j] == 'O')
-				mask |= F_DOOR_M;
+				mask |= F_DOOR_MAP;
 			j++;
 		}
 		i++;
