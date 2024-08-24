@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 19:08:50 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/08/22 20:00:35 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/24 11:37:15 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ static void		set_vectors(t_data *data);
 
 int	get_sprites(t_data *data)
 {
-	data->sprites_size = get_size(data->map);
+	data->sprites_size = get_size((char const **)(data->map));
 	if (data->sprites_size == 0)
 		return (1);
-	data->sprites = ft_calloc(data->sprites_size, sizeof(data->sprites));
+	data->sprites = ft_calloc(data->sprites_size, sizeof(t_vector));
 	if (errno == ENOMEM)
 		return (0);
 	set_vectors(data);
@@ -66,7 +66,7 @@ static void	set_vectors(t_data *data)
 		{
 			if (data->map[i][j] == 'A')
 			{
-				data->map[i][j] == '0';
+				data->map[i][j] = '0';
 				data->sprites[tmp] = (t_vector){i + 0.5, j + 0.5};
 				tmp++;
 			}
