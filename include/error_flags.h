@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:54:29 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/08/22 18:26:50 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/24 15:08:59 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ mask cheatsheet:
 0000 0000 | 0000 0000 | 0000 0100 | 0000 0000 -> 0x400      -> F_SPRITE
 0000 0000 | 0000 0000 | 0000 1000 | 0000 0000 -> 0x800      -> F_SPRITE_MAP
 0000 0000 | 0000 0000 | 0000 1100 | 0000 0000 -> 0xC00      -> SPRITE_COMP
+0000 0000 | 0000 0000 | 0001 0000 | 0000 0000 -> 0x1000     -> F_SPRITE_SIZE
 
 0010 0000 | 0000 0000 | 0000 0000 | 0000 0000 -> 0x20000000 -> WRONG_DATA
 0001 0000 | 0000 0000 | 0000 0000 | 0000 0000 -> 0x10000000 -> BAD_SITE_MAP
@@ -61,6 +62,7 @@ typedef enum e_error_flags
 	DOOR_COMP			= 0x300,
 	F_SPRITE			= 0x400,
 	F_SPRITE_MAP		= 0x800,
+	F_SPRITE_SIZE		= 0x1000,
 	SPRITE_COMP			= 0xC00,
 	ALL_TEXTURES		= 0x3F,
 	REPEATED_TEXTURE	= 0X80,
