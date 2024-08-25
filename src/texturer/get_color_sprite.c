@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 10:52:31 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/08/25 16:41:29 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/25 23:27:31 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,9 @@
 
 int	get_sprite_px(mlx_texture_t *tex, int const fr, int const x, int const y)
 {
-	int	index;
-	int	color;
-	int	i;
-
-	index = tex->bytes_per_pixel * tex->width * y;
-	index += tex->bytes_per_pixel * x + (tex->width * (fr));
+	int const	index = (tex->bytes_per_pixel * tex->width * y) + (tex->bytes_per_pixel * x + (tex->width * fr));
+	int			color;
+	int			i;
 
 	i = 0;
 	color = 0;
