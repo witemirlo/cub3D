@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_color_sprite.c                                 :+:      :+:    :+:   */
+/*   get_sprite_color.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 10:52:31 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/08/25 23:27:31 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/25 23:38:24 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@
  * @return int with the color value in RGBA of the given coordinate
  */
 
-int	get_sprite_px(mlx_texture_t *tex, int const fr, int const x, int const y)
+int	get_sprite_color(mlx_texture_t *tex, int fr, int x, int y)
 {
-	int const	index = (tex->bytes_per_pixel * tex->width * y) + (tex->bytes_per_pixel * x + (tex->width * fr));
+	int const	index = (tex->bytes_per_pixel * tex->width * y) + \
+						((tex->bytes_per_pixel * x) + (tex->width * fr));
 	int			color;
 	int			i;
 
@@ -41,4 +42,3 @@ int	get_sprite_px(mlx_texture_t *tex, int const fr, int const x, int const y)
 	}
 	return (color);
 }
-

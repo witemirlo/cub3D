@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:20:53 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/08/22 18:31:03 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/25 23:37:13 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,12 @@ typedef struct s_textures
 	mlx_texture_t	*sprite;
 }	t_textures;
 
-int			texturer(t_data *data);
+int		texturer(t_data *data);
 
-void		print_texturer_error(t_error_flags flags);
+void	print_texturer_error(t_error_flags flags);
 
-void		clear_texturer(t_textures **textures);
+void	clear_texturer(t_textures **textures);
+
+int		get_sprite_color(mlx_texture_t *tex, int fr, int x, int y);
 
 #endif
