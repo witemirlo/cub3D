@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:46:28 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/08/06 19:28:51 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/22 16:38:45 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_error_flags	check_map_closed(char **map)
 
 static int	check_map_surrounding(char **map, size_t i, size_t j)
 {
-	if (ft_strchr("0NSEW", map[i][j]))
+	if (ft_strchr("0NSEWOCA", map[i][j]))
 	{
 		if (j == 0 || j == ft_strlen(map[i]) - 1
 			|| i == 0 || ft_strlen(map[i - 1]) < j)

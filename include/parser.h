@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 14:10:55 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/17 18:47:12 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/24 11:34:39 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include "cub3d.h"
 # include "error_flags.h"
 
+# define MAP_VALID_CHARS " 01NSEWOCA"
+
 /******************************************************************************/
 typedef struct s_texture_paths
 {
@@ -24,6 +26,8 @@ typedef struct s_texture_paths
 	char	*south;
 	char	*west;
 	char	*east;
+	char	*door;
+	char	*sprite;
 	int		floor;
 	int		ceiling;
 }	t_texture_paths;
@@ -41,6 +45,7 @@ int				check_file_content(t_list *file);
 t_texture_paths	*get_texture_paths(t_list *raw_file);
 int				get_colors_map(t_list *file, t_texture_paths *texture_paths);
 t_player		get_player(char **map);
+int				get_sprites(t_data *data);
 
 t_error_flags	check_correct_data(t_list *raw_list);
 t_error_flags	check_map(t_list *map);

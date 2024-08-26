@@ -28,6 +28,7 @@ SRC = src/main.c\
 	  src/parser/clear_parser.c\
 	  src/parser/parser.c\
 	  src/texturer/clear_texturer.c\
+	  src/texturer/get_sprite_color.c\
 	  src/texturer/print_texturer_error.c\
 	  src/texturer/texturer.c\
 	  src/raycaster/raycaster.c\

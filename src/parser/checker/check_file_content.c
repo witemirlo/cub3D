@@ -6,12 +6,13 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:42:25 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/17 18:48:00 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/22 17:28:53 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "parser.h"
+#include "error_flags.h"
 
 static t_error_flags	check_correct_order(t_list *file);
 static t_error_flags	check_all_textures(t_list *file);
@@ -34,7 +35,7 @@ static void printData(t_list *data)
 
 	while (data) {
 		tmp = (char *)(data->content);
-		while (*tmp && ft_strchr(" 01NSEW", *tmp))
+		while (*tmp && ft_strchr(MAP_VALID_CHARS, *tmp))
 			tmp++;
 		if (*tmp != '\0')
 			break;
@@ -71,7 +72,7 @@ printData(file);
 /* check if the file is correct*/
 int	check_file_content(t_list *file)
 {
-	t_error_flags	mask;
+	t_error_flags		mask;
 
 	mask = 0;
 	mask |= check_correct_order(file);
@@ -79,7 +80,17 @@ int	check_file_content(t_list *file)
 	mask |= check_unique_textures(file);
 	mask |= check_correct_data(file);
 	mask |= check_map(goto_map(file));
-	if (mask != ALL_TEXTURES)
+	if ((mask & FAILURE) == FAILURE)
+	{
+		print_parse_error(mask);
+		return (0);
+	}
+	if (((mask & DOOR_COMP) != DOOR_COMP) && ((mask & DOOR_COMP) != 0))
+	{
+		print_parse_error(mask);
+		return (0);
+	}
+	if (((mask & SPRITE_COMP) != SPRITE_COMP) && ((mask & SPRITE_COMP) != 0))
 	{
 		print_parse_error(mask);
 		return (0);
@@ -107,25 +118,29 @@ static t_error_flags	check_all_textures(t_list *file)
 		mask |= F_CEILING;
 	if ((mask & ALL_TEXTURES) != ALL_TEXTURES)
 		mask |= FAILURE;
+	if (search_key(file, "DOOR"))
+		mask |= F_DOOR;
+	if (search_key(file, "SPRITE"))
+		mask |= F_SPRITE;
 	return (mask);
 }
 
 /* check that only exists one instance of each texture instrucction */
 static t_error_flags	check_unique_textures(t_list *file)
 {
-	const char	str[6][3] = {"NO", "SO", "WE", "EA", "F", "C"};
+	const char	s[8][7] = {"NO", "SO", "WE", "EA", "F", "C", "DOOR", "SPRITE"};
 	int			i;
 	int			count;
 	t_list		*tmp;
 
 	i = 0;
-	while (i < 6)
+	while (i < 8)
 	{
 		count = 0;
 		tmp = file;
 		while (tmp)
 		{
-			tmp = search_key(tmp, str[i]);
+			tmp = search_key(tmp, s[i]);
 			if (tmp)
 			{
 				count++;
@@ -133,7 +148,7 @@ static t_error_flags	check_unique_textures(t_list *file)
 			}
 		}
 		if (count > 1)
-			return (REPEATED_TEXTURE);
+			return (FAILURE | REPEATED_TEXTURE);
 		i++;
 	}
 	return (0);
@@ -151,7 +166,7 @@ static t_error_flags	check_correct_order(t_list *file)
 		tmp = (char *)(file->content);
 		while (*tmp != '\0')
 		{
-			if (!ft_strrchr(" 01NSEW", *tmp))
+			if (!ft_strrchr(MAP_VALID_CHARS, *tmp))
 				return (FAILURE | BAD_SITE_MAP);
 			tmp++;
 		}
