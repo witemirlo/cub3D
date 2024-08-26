@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 08:56:16 by psacrist          #+#    #+#             */
-/*   Updated: 2024/08/22 15:01:03 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/08/26 13:10:00 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	keyhook(mlx_key_data_t keydata, void *param)
 		player->direction.y = -sin_r * old_dir.x + cos_r * old_dir.y;
 		new_camera(player);
 	}
-	if (keydata.key == MLX_KEY_SPACE)
+	if (keydata.key == MLX_KEY_SPACE && keydata.action == MLX_PRESS)
 		door_key(param);
 	else
 		more_keys(keydata, (t_data *)param);
@@ -55,10 +55,15 @@ void	keyhook(mlx_key_data_t keydata, void *param)
 
 void	door_key(t_data *data)
 {
-	if (data->map[(int)(data->player.position.y + data->player.direction.y)][(int)(data->player.position.x + data->player.direction.x)] == 'C')
-		data->map[(int)(data->player.position.y + data->player.direction.y)][(int)(data->player.position.x + data->player.direction.x)] = 'O';
-	else
-		data->map[(int)(data->player.position.y + data->player.direction.y)][(int)(data->player.position.x + data->player.direction.x)] = 'C';
+	int	target_x;
+	int	target_y;
+
+	target_x = data->player.position.x + data->player.direction.x;
+	target_y = data->player.position.y + data->player.direction.y;
+	if (data->map[target_y][target_x] == 'C')
+		data->map[target_y][target_x] = 'O';
+	else if (data->map[target_y][target_x] == 'O')
+		data->map[target_y][target_x] = 'C';
 }
 
 void	more_keys(mlx_key_data_t keydata, t_data *data)

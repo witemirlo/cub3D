@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 09:48:31 by psacrist          #+#    #+#             */
-/*   Updated: 2024/08/22 12:59:15 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/08/26 13:03:56 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ t_ray	*cast_one_ray(t_player player, char **map, int ray_num, t_textures tex)
 	ray->wall_len = dda(ray, move, map);
 	wall_hit_info(ray, move, player, tex);
 	if (map[(int)ray->ray_pos.y][(int)ray->ray_pos.x] == 'C')
-		ray->wall_tex = tex.east; //cambiarlo por puerta
+		ray->wall_tex = tex.door;
 	return (ray);
 }
 
