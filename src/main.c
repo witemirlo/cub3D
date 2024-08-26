@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 14:35:49 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/08/22 17:31:23 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/08/26 14:07:19 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	draw(void *param)
 	if (!rays)
 		exit(EXIT_FAILURE); //malloc
 	render_walls(data, rays);
+	render_sprites(data, rays);
 	minimap(data);
 	ft_lstclear(&rays, free);
 }

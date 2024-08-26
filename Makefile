@@ -21,9 +21,9 @@ SRC = src/main.c\
 	  src/parser/file/close_file.c\
 	  src/parser/file/generate_map.c\
 	  src/parser/file/get_player.c\
+	  src/parser/file/get_sprites.c\
 	  src/parser/file/goto_map.c\
 	  src/parser/file/read_file.c\
-	  src/parser/file/get_sprites.c\
 	  src/parser/texture_path/get_colors_map.c\
 	  src/parser/texture_path/get_texture_paths.c\
 	  src/parser/clear_parser.c\
@@ -36,6 +36,7 @@ SRC = src/main.c\
 	  src/raycaster/ray_utils.c\
 	  src/render/minimap.c\
 	  src/render/render_walls.c\
+	  src/render/render_sprites.c\
 	  src/hooks/keyhook.c\
 	  src/hooks/closehook.c\
 	  src/hooks/cursorhook.c

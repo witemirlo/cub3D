@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 14:41:20 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/08/22 15:15:30 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/08/26 17:35:14 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static t_vector	rot_map(t_vector map, t_vector dir, t_vector pos)
 {
 	t_vector	centered;
 	t_vector	transformed;
-	(void)pos;
+
 	centered = (t_vector){map.x - pos.x, map.y - pos.y};
 	transformed.x = (- dir.x * centered.y - dir.y * centered.x) + pos.x;
 	transformed.y = (dir.x * centered.x - dir.y * centered.y) + pos.y;
