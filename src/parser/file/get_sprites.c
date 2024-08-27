@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_sprites.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 19:08:50 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/08/24 11:37:15 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/26 14:12:50 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static void	set_vectors(t_data *data)
 			if (data->map[i][j] == 'A')
 			{
 				data->map[i][j] = '0';
-				data->sprites[tmp] = (t_vector){i + 0.5, j + 0.5};
+				data->sprites[tmp] = (t_vector){j + 0.5, i + 0.5};
 				tmp++;
 			}
 			j++;

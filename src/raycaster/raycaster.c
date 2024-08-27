@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 09:48:31 by psacrist          #+#    #+#             */
-/*   Updated: 2024/08/13 15:08:26 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/26 13:03:56 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ t_ray	*cast_one_ray(t_player player, char **map, int ray_num, t_textures tex)
 	ray->ray_len = first_iteration(player, *ray, move);
 	ray->wall_len = dda(ray, move, map);
 	wall_hit_info(ray, move, player, tex);
+	if (map[(int)ray->ray_pos.y][(int)ray->ray_pos.x] == 'C')
+		ray->wall_tex = tex.door;
 	return (ray);
 }
 
@@ -84,7 +86,8 @@ int	dda(t_ray *ray, t_vector move, char **map)
 			ray->ray_pos.y += move.y;
 			ray->hit_dir = HORI;
 		}
-		if (map[(int)ray->ray_pos.y][(int)ray->ray_pos.x] == '1')
+		if (map[(int)ray->ray_pos.y][(int)ray->ray_pos.x] == '1'
+			|| map[(int)ray->ray_pos.y][(int)ray->ray_pos.x] == 'C')
 			break ;
 	}
 	if (ray->hit_dir == VERT)

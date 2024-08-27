@@ -35,7 +35,8 @@ SRC = src/main.c\
 	  src/raycaster/raycaster.c\
 	  src/raycaster/ray_utils.c\
 	  src/render/minimap.c\
-	  src/render/render.c\
+	  src/render/render_walls.c\
+	  src/render/render_sprites.c\
 	  src/hooks/keyhook.c\
 	  src/hooks/closehook.c\
 	  src/hooks/cursorhook.c
