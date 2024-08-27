@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 08:56:16 by psacrist          #+#    #+#             */
-/*   Updated: 2024/08/13 15:06:31 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/27 14:48:36 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ void	keyhook(mlx_key_data_t keydata, void *param)
 		return ;
 	if (!sin_r && !cos_r)
 		get_trig(&sin_r, &cos_r);
+	if (keydata.key == MLX_KEY_C)
+	{
+		((t_data*)param)->mouse_movement ^= 1;
+		return ;
+	}
 	player = &((t_data *)param)->player;
 	old_dir = player->direction;
 	if (keydata.key == MLX_KEY_RIGHT)

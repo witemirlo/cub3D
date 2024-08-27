@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cursorhook.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 10:25:24 by psacrist          #+#    #+#             */
-/*   Updated: 2024/08/21 14:19:22 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/08/27 14:49:53 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@
 
 void	cursorhook(double xpos, double ypos, void *param)
 {
-	mlx_key_data_t	keydata;
 	static double	last_x;
+	mlx_key_data_t	keydata;
 
+	if (!(((t_data*)param)->mouse_movement))
+		return ;
 	keydata.modifier = 0;
 	keydata.os_key = 0;
 	keydata.action = MLX_PRESS;

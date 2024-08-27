@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:12:46 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/08/22 20:02:42 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/27 14:48:36 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_data
 	mlx_image_t		*minimap;
 	t_vector		*sprites;
 	size_t			sprites_size;
+	int				mouse_movement;
 }	t_data;
 
 #endif

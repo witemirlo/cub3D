@@ -21,6 +21,7 @@ SRC = src/main.c\
 	  src/parser/file/close_file.c\
 	  src/parser/file/generate_map.c\
 	  src/parser/file/get_player.c\
+	  src/parser/file/get_sprites.c\
 	  src/parser/file/goto_map.c\
 	  src/parser/file/read_file.c\
 	  src/parser/texture_path/get_colors_map.c\
