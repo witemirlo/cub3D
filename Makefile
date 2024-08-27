@@ -37,6 +37,7 @@ SRC = src/main.c\
 	  src/render/minimap.c\
 	  src/render/render_walls.c\
 	  src/render/render_sprites.c\
+	  src/render/render_one_sprite.c\
 	  src/hooks/keyhook.c\
 	  src/hooks/closehook.c\
 	  src/hooks/cursorhook.c
