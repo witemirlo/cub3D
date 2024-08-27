@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 17:36:43 by psacrist          #+#    #+#             */
-/*   Updated: 2024/08/26 19:17:30 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/08/27 14:42:20 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	render_sprites(t_data *data, t_list *rays)
 	t_vector	*sprites; //ordenados
 
 	t_vector	dis;
+	//t_vector	dis_rot;
 	double		wide_x;
 	int			screen_x;
 	int			line_h;
@@ -41,28 +42,36 @@ void	render_sprites(t_data *data, t_list *rays)
 	dis = rotate_dis(dis, data->player.direction);
 	if (dis.y < 0)
 		return ;
-	wide_x = dis.y * 2 / 3; //camera
+	wide_x = dis.y * (double)4 / (double)3; //use camera
 	screen_x = ((WIDTH / wide_x) * dis.x) + WIDTH / 2;
-	sprite_width = (WIDTH / wide_x); //tiene que ser igual ma line_h
+	sprite_width = (WIDTH / wide_x); //tiene que ser igual ma line_h?
 	line_h = (HEIGHT) / dis.y;
-	if (line_h > HEIGHT)
-		line_h = HEIGHT;
+	//if (line_h > HEIGHT)
+	//	line_h = HEIGHT;
 	//printf("\tsprite size: w %d, h %d\n", sprite_width, line_h);
-	for (int i = 0; i < line_h; i++)
+	//printf("wide_x %f\n", wide_x);
+	//printf("\tsprite loc %d\n", screen_x);
+	//printf("\tdistance to spr: x %f, y %f\n", dis.x, dis.y);
+	for (int i = 0; i < sprite_width; i++)
 	{
-		int x = screen_x - (line_h / 2) + i;
-		if (/*HEIGHT / ((t_ray *)(ft_lstget(rays, i)))->wall_len < dis.y ||*/ x < 0 || x > WIDTH)
+		int x = screen_x - (sprite_width / 2) + i;
+		if (x < 0 || x >= WIDTH)
+			continue;
+		if ((double)HEIGHT / ((t_ray *)(ft_lstget(rays, x)))->wall_len < dis.y)
 			continue;
 		for (int j = 0; j < line_h; j++)
 		{
 			int y = (HEIGHT / 2) - (line_h / 2) + j;
-			if (y < 0 || y > HEIGHT)
+			if (y < 0 || y >= HEIGHT)
 				continue;
-			color = select_color((double)i / line_h, (double)j / line_h, data->textures->door);
+			color = select_color((double)i / sprite_width, (double)j / line_h, data->textures->sprite);
 			if (color & 0xFF)
 				mlx_put_pixel(data->scene, x, y, color);
 		}
 	}
+	//TODO: multiple
+	//TODO: fisheye
+	//TODO: revisar calculo 
 }
 
 t_vector	rotate_dis(t_vector	sprite, t_vector dir)
