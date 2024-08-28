@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:12:46 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/08/27 16:58:54 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/08/28 12:32:43 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 typedef struct s_texture_paths	t_texture_paths;
 typedef struct s_textures		t_textures;
+
 
 typedef struct s_vector
 {
@@ -33,6 +34,12 @@ typedef struct s_player
 	t_vector	camera;
 }	t_player;
 
+typedef struct s_anim
+{
+	int	frame;
+	int	last_update;
+}	t_anim;
+
 typedef struct s_data
 {
 	t_texture_paths	*raw_textures;
@@ -45,6 +52,7 @@ typedef struct s_data
 	t_vector		*sprites;
 	size_t			sprites_size;
 	int				mouse_movement;
+	t_anim			anim_info;
 }	t_data;
 
 #endif
