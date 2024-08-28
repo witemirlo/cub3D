@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 10:25:24 by psacrist          #+#    #+#             */
-/*   Updated: 2024/08/27 15:48:24 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/08/28 11:56:00 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	cursorhook(double xpos, double ypos, void *param)
 	static double	last_x;
 	mlx_key_data_t	keydata;
 	t_data			*data;
-	static double	last_x;
 
 	if (!(((t_data*)param)->mouse_movement))
 		return ;
