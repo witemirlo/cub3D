@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 09:39:10 by psacrist          #+#    #+#             */
-/*   Updated: 2024/08/28 17:21:52 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/08/28 18:45:31 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,15 @@
 # define MINI_VOID_COL 0x9FBBCC80
 # define MINI_PLAY_COL 0xBDE4A7FF
 
+# define FOG_COL 0x303030FF
+# define FOG_MULT 100
+
+typedef enum e_dis_type
+{
+	WALL,
+	CIEL_OR_FLOOR,
+}	t_dis_type;
+
 typedef struct s_sp_info
 {
 	t_vector	dis;
@@ -47,5 +56,6 @@ void	render_walls(t_data *data, t_list *rays);
 void	minimap(t_data *data);
 void	render_sprites(t_data *data, t_list *rays);
 void	render_one_sprite(t_data *data, t_list *rays, t_sp_info info);
+int		fogger(int ori_color, int dis, t_dis_type tp);
 
 #endif
