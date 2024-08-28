@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:28:24 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/08/27 16:48:52 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/08/28 13:43:42 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,11 @@ static mlx_texture_t	*get_texture(char *path, int *error, int n)
 		error_loaded(error, n);
 		return (NULL);
 	}
-	/*if (n == 5 && ((texture->width < 4) || ((texture->width % 4) != 0)))
+	if (n == 5 && ((texture->width < 4) || ((texture->width % 4) != 0)))
 	{
 		error_loaded(error, 6);
 		return (NULL);
-	}*/
+	}
 	return (texture);
 }
 
