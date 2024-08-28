@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 14:35:49 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/08/28 13:01:11 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/08/28 19:36:13 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 #include "render.h"
 #include "MLX42.h"
 #include "hooks.h"
+
+#include <stdio.h>
 
 void	draw(void *param);
 
@@ -59,7 +61,10 @@ void	draw(void *param)
 	data = (t_data *)param;
 	rays = raycaster(data->player, data->map, *data->textures);
 	if (!rays)
-		exit(EXIT_FAILURE); //malloc
+	{
+		perror("Error: ");
+		exit(EXIT_FAILURE);
+	}
 	render_walls(data, rays);
 	if (data->anim_info.last_update >= ANIM_UPDATE)
 	{
