@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 14:12:46 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/08/28 12:32:43 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/08/28 19:30:35 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 
 typedef struct s_texture_paths	t_texture_paths;
 typedef struct s_textures		t_textures;
-
 
 typedef struct s_vector
 {
