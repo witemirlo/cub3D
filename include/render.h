@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 09:39:10 by psacrist          #+#    #+#             */
-/*   Updated: 2024/08/28 18:45:31 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/08/28 19:29:04 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,6 @@
 # define MINI_FLOO_COL 0x9FBBCCFF
 # define MINI_VOID_COL 0x9FBBCC80
 # define MINI_PLAY_COL 0xBDE4A7FF
-
-# define FOG_COL 0x303030FF
-# define FOG_MULT 100
-
-typedef enum e_dis_type
-{
-	WALL,
-	CIEL_OR_FLOOR,
-}	t_dis_type;
 
 typedef struct s_sp_info
 {

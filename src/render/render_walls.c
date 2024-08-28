@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:29:05 by psacrist          #+#    #+#             */
-/*   Updated: 2024/08/28 18:39:08 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/08/28 19:29:17 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static void	draw_a_ray(t_ray *ray, int col, void *img, t_texture_paths colors)
 	i = 0;
 	while (i < start)
 	{
-		mlx_put_pixel(img, col, i, fogger(colors.ceiling, i, CIEL_OR_FLOOR));
+		mlx_put_pixel(img, col, i, colors.ceiling);
 		i++;
 	}
 	while (i < end)
