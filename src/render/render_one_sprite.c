@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 18:00:31 by psacrist          #+#    #+#             */
-/*   Updated: 2024/08/27 18:07:14 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/08/28 13:00:58 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 
 static void	draw_sprite_col(t_data *data, t_sp_info info, int i, int x);
 static void	*ft_lstget(t_list *list, unsigned int index);
-static int	select_color(double sp_x, double sp_y, mlx_texture_t *sprite);
 
 void	render_one_sprite(t_data *data, t_list *rays, t_sp_info info)
 {
@@ -41,6 +40,8 @@ static void	draw_sprite_col(t_data *data, t_sp_info info, int i, int x)
 	int	y;
 	int	color;
 	int	j;
+	int	tx_x;
+	int	tx_y;
 
 	j = -1;
 	while (++j < info.sprite_h)
@@ -48,34 +49,13 @@ static void	draw_sprite_col(t_data *data, t_sp_info info, int i, int x)
 		y = (HEIGHT / 2) - (info.sprite_h / 2) + j;
 		if (y < 0 || y >= HEIGHT)
 			continue ;
-		color = select_color((double)i / info.sprite_w, \
-			(double)j / info.sprite_h, data->textures->sprite);
+		tx_x = ((double)i / info.sprite_w) * data->textures->sprite->width / 4;
+		tx_y = ((double)j / info.sprite_h) * data->textures->sprite->height;
+		color = get_sprite_color(data->textures->sprite, data->anim_info.frame, \
+			tx_x, tx_y);
 		if (color & 0xFF)
 			mlx_put_pixel(data->scene, x, y, color);
 	}
-}
-
-static int	select_color(double sp_x, double sp_y, mlx_texture_t *sprite)
-{
-	int	tex_x;
-	int	tex_y;
-	int	color;
-	int	pixel_index;
-	int	i;
-
-	tex_x = sprite->width * sp_x;
-	tex_y = sprite->height * sp_y;
-	pixel_index = (tex_y * sprite->width + tex_x) \
-		* sprite->bytes_per_pixel;
-	i = 0;
-	color = 0;
-	while (i < sprite->bytes_per_pixel)
-	{
-		color <<= 8;
-		color += sprite->pixels[pixel_index + i];
-		i++;
-	}
-	return (color);
 }
 
 static void	*ft_lstget(t_list *list, unsigned int index)

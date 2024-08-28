@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cursorhook.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 10:25:24 by psacrist          #+#    #+#             */
-/*   Updated: 2024/08/28 14:10:55 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/28 17:30:14 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

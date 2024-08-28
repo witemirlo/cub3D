@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 14:35:49 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/08/26 14:07:19 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/08/28 13:01:11 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int	main(int argc, char *argv[])
 	}
 	mlx = mlx_init(WIDTH, HEIGHT, "cub3D", false);
 	if (!mlx)
-		return (EXIT_FAILURE); //add mlx_strerror?
-	data.mlx = mlx; //try
+		return (EXIT_FAILURE);
+	data.mlx = mlx;
 	draw(&data);
 	mlx_key_hook(mlx, keyhook, &data);
 	mlx_loop_hook(mlx, draw, &data);
@@ -61,6 +61,14 @@ void	draw(void *param)
 	if (!rays)
 		exit(EXIT_FAILURE); //malloc
 	render_walls(data, rays);
+	if (data->anim_info.last_update >= ANIM_UPDATE)
+	{
+		data->anim_info.frame++;
+		data->anim_info.frame = data->anim_info.frame % 4;
+		data->anim_info.last_update = 0;
+	}
+	else
+		data->anim_info.last_update++;
 	render_sprites(data, rays);
 	minimap(data);
 	ft_lstclear(&rays, free);

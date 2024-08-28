@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 09:39:10 by psacrist          #+#    #+#             */
-/*   Updated: 2024/08/27 18:05:47 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/08/28 17:21:52 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # define NWALLCOL 0x008080FF
 # define WWALLCOL 0x004040FF
 # define EWALLCOL 0x00B0B0FF
+
+# define ANIM_UPDATE 1
 
 # define MINI_FRAC 4
 # define MINI_H 5	

@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 08:56:16 by psacrist          #+#    #+#             */
-/*   Updated: 2024/08/27 19:14:12 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/08/28 14:33:34 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,12 @@ static void	move_keys(mlx_key_data_t keydata, char **map, t_player *player)
 		return ;
 	move.x = move.x * MV_FACTOR + player->position.x;
 	move.y = move.y * MV_FACTOR + player->position.y;
-	if (map[(int)move.y][(int)move.x] == '0'
-		|| map[(int)move.y][(int)move.x] == 'O')
+	if ((map[(int)move.y][(int)move.x] == '0' \
+		|| map[(int)move.y][(int)move.x] == 'O') \
+		&& (map[(int)move.y][(int)player->position.x] == '0' \
+		|| map[(int)move.y][(int)player->position.x] == 'O') \
+		&& (map[(int)player->position.y][(int)move.x] == '0' \
+		|| map[(int)player->position.y][(int)move.x] == 'O'))
 		player->position = move;
 }
 

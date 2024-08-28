@@ -1,0 +1,14 @@
+C 60, 0, 0
+
+F 170, 86, 86
+
+NO map/a1.png
+SO map/a2.png
+WE map/a1.png
+EA map/a2.png
+DOOR map/door.png
+    
+1111
+11C1
+1N11
+1111
