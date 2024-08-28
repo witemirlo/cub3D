@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 13:46:28 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/08/22 16:38:45 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/28 14:18:23 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,18 @@ static int	check_map_surrounding(char **map, size_t i, size_t j)
 			|| i == 0 || ft_strlen(map[i - 1]) < j)
 			return (0);
 		else if (j
-			&& map[i][j - 1] == ' ')
+			&& ft_isspace(map[i][j - 1]))
 			return (0);
 		else if (map[i][j + 1]
-			&& map[i][j + 1] == ' ')
+			&& ft_isspace(map[i][j + 1]))
 			return (0);
 		else if (i
 			&& ft_strlen(map[i - 1]) >= j
-			&& map[i - 1][j] == ' ')
+			&& ft_isspace(map[i - 1][j]))
 			return (0);
 		else if (map[i + 1]
 			&& ft_strlen(map[i + 1]) >= j
-			&& map[i + 1][j] == ' ')
+			&& ft_isspace(map[i + 1][j]))
 			return (0);
 		else if (!map[i + 1] || ft_strlen(map[i + 1]) < j)
 			return (0);
