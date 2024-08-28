@@ -6,7 +6,7 @@
 /*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 09:39:10 by psacrist          #+#    #+#             */
-/*   Updated: 2024/08/28 19:29:04 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/08/28 19:33:00 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,5 @@ void	render_walls(t_data *data, t_list *rays);
 void	minimap(t_data *data);
 void	render_sprites(t_data *data, t_list *rays);
 void	render_one_sprite(t_data *data, t_list *rays, t_sp_info info);
-int		fogger(int ori_color, int dis, t_dis_type tp);
 
 #endif
