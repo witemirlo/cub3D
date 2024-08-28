@@ -24,7 +24,6 @@
  *
  * @return int with the color value in RGBA of the given coordinate
  */
-
 int	get_sprite_color(mlx_texture_t *tex, int fr, int x, int y)
 {
 	int const	index = (tex->bytes_per_pixel * tex->width * y) + \
