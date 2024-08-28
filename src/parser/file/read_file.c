@@ -6,7 +6,7 @@
 /*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 12:07:22 by jberdugo          #+#    #+#             */
-/*   Updated: 2024/07/15 10:40:50 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/08/28 19:39:37 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdio.h>
+#include <errno.h>
 
 static t_list	*create_list(int fd);
 
@@ -35,6 +36,7 @@ t_list	*read_file(char *name)
 		ft_putendl_fd("': is a directory", 2);
 		return (NULL);
 	}
+	errno = 0;
 	fd = open(name, O_RDONLY);
 	if (fd < 0)
 		return (perror("Error"), NULL);
