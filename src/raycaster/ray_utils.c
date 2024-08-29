@@ -12,9 +12,9 @@
 
 #include "raycaster.h"
 
-/*
-	Returns the abs value of a double
-*/
+/**
+ * @return the absolute value of the num param
+ */
 double	ft_dabs(double num)
 {
 	if (num < 0)
@@ -22,13 +22,15 @@ double	ft_dabs(double num)
 	return (num);
 }
 
-/*
-	Calculates if the ray is moving up or down, left or right
-	Args:	ray_num -> the column number in the screen
-			player -> player info
-	Return:
-			a t_vector with the movement of the ray in the x and y axes
-*/
+/**
+ * @brief Calculates if the ray is moving up or down, left or right
+ *
+ * @param ray_num the column number in the screen correspondent to the ray
+ * @param player the info of the player
+ *
+ * @return a t_vector with the sign of the movement
+ *  of the ray in the x and y axes
+ */
 t_vector	get_ray_mov(int ray_num, t_player player)
 {
 	double		offset;
@@ -46,13 +48,15 @@ t_vector	get_ray_mov(int ray_num, t_player player)
 	return (move);
 }
 
-/*
-	Calculates the ray direction
-	Args:	ray_num -> the column number in the screen
-			player -> player info
-	Return:
-			a t_vector with the direcction of the ray
-*/
+
+/**
+ * @brief Calculates the components of the direction of the ray
+ *
+ * @param ray_num the column number in the screen correspondent to the ray
+ * @param player the info of the player
+ *
+ * @return a t_vector with the direcction of the ray
+ */
 t_vector	get_ray_dir(int ray_num, t_player player)
 {
 	double		offset;
@@ -64,14 +68,15 @@ t_vector	get_ray_dir(int ray_num, t_player player)
 	return (ray_dir);
 }
 
-/*
-	Calculates the distance to the first hit of the ray
-	Args:	pl -> player info
-			ray -> ray info
-			move -> if the ray is moving up or down, left or rigth		
-	Return:
-			a t_vector with the first distances
-*/
+/**
+ * @brief Calculates the distance to the first square
+ *
+ * @param pl the info of the player
+ * @param ray a t_ray with the ray_pos and ray_dir param calculated
+ * @param move a t_vector with the sign of the movement of the ray
+ *
+ * @return a t_vector the first distances
+ */
 t_vector	first_iteration(t_player pl, t_ray ray, t_vector move)
 {
 	t_vector	ray_1;

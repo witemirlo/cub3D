@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: psacrist <psacrist@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 09:48:31 by psacrist          #+#    #+#             */
 /*   Updated: 2024/08/26 13:03:56 by psacrist         ###   ########.fr       */
@@ -17,14 +17,15 @@ t_ray	*cast_one_ray(t_player player, char **map, int ray_num, t_textures tex);
 int		dda(t_ray *ray, t_vector move, char **map);
 void	wall_hit_info(t_ray *ray, t_vector mv, t_player player, t_textures tex);
 
-/*
-	Generates all the rays for an specific scene with a player and a map
-	Args:	player -> the info of the player
-			map -> a double array with the map
-	Return:
-			NULL if error
-			A t_list with all the rays needed for the scene
-*/
+/**
+ * @brief Generates all the rays for an specific scene with a player and a map
+ *
+ * @param player the info of the player
+ * @param map a double array with the map
+ * @param tex the different textures of the game
+ *
+ * @return a t_list with all the rays needed for the scene (or NULL if error)
+ */
 t_list	*raycaster(t_player player, char **map, t_textures tex)
 {
 	t_list	*rays;
@@ -49,6 +50,16 @@ t_list	*raycaster(t_player player, char **map, t_textures tex)
 	return (rays);
 }
 
+/**
+ * @brief Calculates the information of 1 ray of the scene
+ *
+ * @param player the info of the player
+ * @param map a double array with the map
+ * @param ray_num the column of the screen correspondent to this ray
+ * @param tex the different textures of the game
+ *
+ * @return a t_ray with all the info of the ray_num ray
+ */
 t_ray	*cast_one_ray(t_player player, char **map, int ray_num, t_textures tex)
 {
 	t_vector	move;
@@ -70,6 +81,20 @@ t_ray	*cast_one_ray(t_player player, char **map, int ray_num, t_textures tex)
 	return (ray);
 }
 
+/**
+ * @brief Performs the dda algo for an specific ray
+ *
+ * @param ray a pointer to a t_ray with the starting ray_pos, 
+ * the ray_len and advance parameters calculated
+ * @param move a t_vector with the sign of the movement of the ray
+ * @param map a double array with the map
+ *
+ * @return an int with the number of pixels that the wall 
+ * hitted by this ray occupies on the screen
+ * 
+ * @note It also modifies the ray_pos, ray_len and hit_dir t_ray
+ *  parameters to reflect the advancement of the ray
+ */
 int	dda(t_ray *ray, t_vector move, char **map)
 {
 	while (42)
@@ -96,6 +121,18 @@ int	dda(t_ray *ray, t_vector move, char **map)
 		return (HEIGHT / (ray->ray_len.y - ray->advance.y));
 }
 
+/**
+ * @brief Recovers information of the wall hitted by the ray
+ *
+ * @param ray a pointer to a t_ray wich the dda function was applied to
+ * @param mv a t_vector with the sign of the movement of the ray
+ * @param player the info of the player
+ * @param tex the different textures of the game
+ * 
+ * @note It stores a pointer to the correspondent wall texture in the 
+ * wall_tex param of the ray. It also calculate where in the wall the ray 
+ * hitted and stores it in the wall_x param
+ */
 void	wall_hit_info(t_ray *ray, t_vector mv, t_player player, t_textures tex)
 {
 	if (ray->hit_dir == HORI)
