@@ -43,13 +43,13 @@ static int	create_images(t_data *data)
 {
 	data->scene = mlx_new_image(data->mlx, WIDTH, HEIGHT);
 	if (!data->scene)
-		return (0); //print error
+		return (0);
 	if (mlx_image_to_window(data->mlx, data->scene, 0, 0) < 0)
 		return (0);
 	data->minimap = mlx_new_image(data->mlx, HEIGHT / MINI_FRAC, \
 		HEIGHT / MINI_FRAC);
 	if (!data->minimap)
-		return (0); //print error
+		return (0);
 	if (mlx_image_to_window(data->mlx, data->minimap, MINI_TILE, MINI_TILE) < 0)
 		return (0);
 	return (1);
