@@ -48,7 +48,6 @@ t_vector	get_ray_mov(int ray_num, t_player player)
 	return (move);
 }
 
-
 /**
  * @brief Calculates the components of the direction of the ray
  *

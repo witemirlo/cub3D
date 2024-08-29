@@ -38,9 +38,9 @@ t_list	*raycaster(t_player player, char **map, t_textures tex)
 	{
 		node = ft_lstnew(cast_one_ray(player, map, ray_num, tex));
 		if (!node)
-			return (NULL); //malloc y liberar
+			return (NULL);
 		if (!node->content)
-			return (NULL); //malloc? liberar
+			return (NULL);
 		if (!rays)
 			rays = node;
 		else
