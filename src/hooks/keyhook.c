@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyhook.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 08:56:16 by psacrist          #+#    #+#             */
-/*   Updated: 2024/08/29 19:08:26 by jberdugo         ###   ########.fr       */
+/*   Updated: 2024/09/02 11:08:45 by psacrist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,15 @@ static void	rotate(int key, t_player *player, double cos_r, double sin_r);
 
 void	keyhook(mlx_key_data_t keydata, void *param)
 {
-	static double	sin_r;
-	static double	cos_r;
+	static t_vector	trig;
 	t_player		*player;
 
 	if (keydata.key == MLX_KEY_ESCAPE)
 		closehook(param);
 	if (keydata.action == MLX_RELEASE)
 		return ;
-	if (!sin_r && !cos_r)
-		get_trig(&sin_r, &cos_r);
+	if (!trig.x && !trig.y)
+		get_trig(&trig.x, &trig.y);
 	if (keydata.key == MLX_KEY_C)
 	{
 		((t_data *)param)->mouse_movement ^= 1;
@@ -44,7 +43,7 @@ void	keyhook(mlx_key_data_t keydata, void *param)
 	}
 	player = &((t_data *)param)->player;
 	if (keydata.key == MLX_KEY_LEFT || keydata.key == MLX_KEY_RIGHT)
-		rotate(keydata.key, player, cos_r, sin_r);
+		rotate(keydata.key, player, trig.y, trig.x);
 	if (keydata.key == MLX_KEY_SPACE && keydata.action == MLX_PRESS)
 		door_key(param);
 	else

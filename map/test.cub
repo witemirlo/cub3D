@@ -1,6 +1,6 @@
-C 0, 0, 255
+C 0, 255, 0
 
-F 170, 86, 86
+F 255, 0, 0
 
 SO map/pedro.png
 NO map/birds.png
