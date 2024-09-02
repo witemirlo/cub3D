@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyhook.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psacrist <psacrist@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jberdugo <jberdugo@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 08:56:16 by psacrist          #+#    #+#             */
-/*   Updated: 2024/08/28 14:33:34 by psacrist         ###   ########.fr       */
+/*   Updated: 2024/08/29 19:08:26 by jberdugo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ void	keyhook(mlx_key_data_t keydata, void *param)
 	if (keydata.key == MLX_KEY_C)
 	{
 		((t_data *)param)->mouse_movement ^= 1;
+		if (((t_data *)param)->mouse_movement)
+			mlx_set_cursor_mode(((t_data *)(param))->mlx, MLX_MOUSE_HIDDEN);
+		else
+			mlx_set_cursor_mode(((t_data *)(param))->mlx, MLX_MOUSE_NORMAL);
 		return ;
 	}
 	player = &((t_data *)param)->player;
