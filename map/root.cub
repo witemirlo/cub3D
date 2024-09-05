@@ -1,20 +1,19 @@
-C 60, 0, 0
+C 121, 212, 212
 
-F 170, 86, 86
+F 64, 46, 26
 
-NO map/cats.png
-SO map/birds.png
-WE map/woodland.png
-EA map/vagabond.png
-DOOR map/door.png
-SPRITE map/anim_test.png
+NO assets/cats.png
+SO assets/birds.png
+WE assets/woodland.png
+EA assets/vagabond.png
+
     111
-11111A11111
+11111011111
 10000000001
-1000A0A0001
+10000000001
 10000N00001
 10111111101
-101     1O1
-101111111C1
+101     101
+10111111101
 10000000001
 11111111111

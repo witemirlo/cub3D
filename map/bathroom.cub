@@ -1,9 +1,9 @@
-NO map/a1.png
-SO map/a1.png
-WE map/a2.png
-EA map/a2.png
-DOOR map/door.png
-SPRITE map/anim.png
+NO assets/a1.png
+SO assets/a1.png
+WE assets/a2.png
+EA assets/a2.png
+DOOR assets/door.png
+SPRITE assets/anim.png
 
 F 159, 173, 196
 

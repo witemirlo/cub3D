@@ -1,0 +1,20 @@
+C 121, 212, 212
+
+F 219, 193, 140
+
+NO assets/black_wall.png
+SO assets/grey_wall.png
+WE assets/red_wall.png
+EA assets/white_wall.png
+DOOR assets/door.png
+
+    111
+11111011111
+10000000001
+10000000001
+10000N00001
+1C1111111C1
+101     101
+10111111101
+10000000001
+11111111111

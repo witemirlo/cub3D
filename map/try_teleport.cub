@@ -2,11 +2,11 @@ C 60, 0, 0
 
 F 170, 86, 86
 
-NO map/a1.png
-SO map/a2.png
-WE map/a1.png
-EA map/a2.png
-DOOR map/door.png
+NO assets/a1.png
+SO assets/a2.png
+WE assets/a1.png
+EA assets/a2.png
+DOOR assets/door.png
     
 1111
 11C1
