@@ -62,11 +62,7 @@ re: fclean all
 leaks: $(NAME)
 	valgrind --tool=memcheck --leak-check=full --show-leak-kinds=all \
 	--track-origins=yes --log-file="leaks.log" \
-	./$(NAME) map/root.cub
-
-check:
-	@cppcheck --project=compile_commands.json --check-level=exhaustive \
-	&& make fclean && scan-build make
+	./$(NAME) map/bathroom.cub 
 
 norm:
 	norminette include/ lib/libft/ src | grep -v OK
