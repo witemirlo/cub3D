@@ -2,7 +2,7 @@ NO assets/a1.png
 SO assets/a1.png
 WE assets/a2.png
 EA assets/a2.png
-DOOR assets/door.png
+DOOR assets/bathdoor.png
 SPRITE assets/anim.png
 
 F 159, 173, 196
@@ -10,9 +10,10 @@ F 159, 173, 196
 C 206, 212, 222
 
 11111111111
-10A0A0A0A01
+11A1A1A1A11
+11C1C1C1C11
 10000000001
-1C111111111
+10111111111
 10000000001
 10000N00001
 11111111111
