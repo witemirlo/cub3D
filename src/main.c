@@ -29,8 +29,8 @@ int	main(int argc, char *argv[])
 	t_data	data;
 	void	*mlx;
 
-	if (argc < 2)
-		return (ft_putendl_fd(RED "Error: Too few arguments" NC, 2), \
+	if (argc != 2)
+		return (ft_putendl_fd("usage: cub3D [PATH TO MAP]", 2), \
 			EXIT_FAILURE);
 	ft_memset(&data, 0, sizeof(t_data));
 	if (!parser(&data, argv[1]))
